@@ -1,0 +1,5 @@
+.nav button:hover, .nav svg:hover{
+    cursor: pointer !important;
+    width: 24px;
+    height: 24px;
+}
