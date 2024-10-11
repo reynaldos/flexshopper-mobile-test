@@ -1,0 +1,11 @@
+.hero h1{
+    color: var(--main500);
+}
+
+.hero strong{
+    color: var(--main500);
+}
+
+.hero>div>div button{
+    background-color: var(--main100);
+}
