@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* Custom Color Palette */
 :root {
-
   --foreground: #171717;
   --background: #f4f4f4;
 
@@ -14,32 +13,44 @@
   --accent400: #fe8e18;
   --highlight400: #6ea53a;
   --white: #ffffff;
-
-
-  cursor: inherit;
 }
 
+/* Global styles */
+body {
+  font-family: 'Open Sans', Arial, sans-serif; /* Fallback fonts */
+  background-color: var(--background);
+  color: var(--foreground);
+}
 
+/* Font Face Definitions */
 @font-face {
   font-family: 'Open Sans';
-  src: url('/fonts/OpenSans-Regular.ttf') format('truetype');
+  src: url('/fonts/OpenSans-Regular.woff2') format('woff2'),
+       url('/fonts/OpenSans-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
+  font-display: swap; /* Ensures text is visible while loading */
 }
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('/fonts/OpenSans-Bold.ttf') format('truetype');
+  src: url('/fonts/OpenSans-Bold.woff2') format('woff2'),
+       url('/fonts/OpenSans-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: 'Open Sans', sans-serif;
+@font-face {
+  font-family: 'Open Sans';
+  src: url('/fonts/OpenSans-Italic.woff2') format('woff2'),
+       url('/fonts/OpenSans-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
 }
 
+/* Custom Utility Class */
 @layer utilities {
   .text-balance {
     text-wrap: balance;

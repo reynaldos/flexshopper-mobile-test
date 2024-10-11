@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./product.module.css";
 import Accordion from "@/components/Accordion";
+import Image from "next/image";
 
 // Main ProductPage Component
-const ProductPage = ({  }: { params: { productId: string } }) => {
+const ProductPage = ({}: { params: { productId: string } }) => {
   return (
     <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-16">
       {/* Product Details Section */}
@@ -32,11 +33,14 @@ const ProductDetails = () => {
 
       {/* Product Image and Stock Info */}
       <div className="bg-white p-4 pb-1 mb-3 rounded-sm shadow-sm">
-        <img
-          src="https://images.flexshopper.xyz/800x800/product-beta-images/6b066782-7376-435a-9602-57688e7b855d.jpeg"
-          alt="Xbox Series X"
-          className="w-48 h-48 object-cover m-auto"
+        <Image
+          className="w-48 h-48 object-cover m-auto" width={192} height={192}
+          src={
+            "https://images.flexshopper.xyz/800x800/product-beta-images/6b066782-7376-435a-9602-57688e7b855d.jpeg"
+          }
+          alt={"Xbox Series X"}
         />
+
         <span className="block mt-6 text-center text-green-600 font-bold mb-2">
           In Stock
         </span>
