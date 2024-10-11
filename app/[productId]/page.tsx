@@ -3,7 +3,7 @@ import styles from "./product.module.css";
 import Accordion from "@/components/Accordion";
 
 // Main ProductPage Component
-const ProductPage = ({ params }: { params: { productId: string } }) => {
+const ProductPage = ({  }: { params: { productId: string } }) => {
   return (
     <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-16">
       {/* Product Details Section */}

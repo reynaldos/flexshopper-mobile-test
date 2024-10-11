@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const Accordion = ({
   accordianItems = ["Overview", "Features", "Specs"],
 }: {
-  accordianItems?: any[];
+  accordianItems?: string[];
 }) => {
   // Initialize activeIndex to 0 to open the first item by default
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
