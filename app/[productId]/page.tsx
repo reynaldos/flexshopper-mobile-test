@@ -7,7 +7,7 @@ import ProductSwiper from "@/components/ProductSwiper";
 // Main ProductPage Component
 const ProductPage = ({}: { params: { productId: string } }) => {
   return (
-    <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-16">
+    <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
       {/* Product Details Section */}
       <ProductDetails />
 
