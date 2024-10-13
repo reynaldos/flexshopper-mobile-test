@@ -1,4 +1,5 @@
-.hero h1{
+.hero>h1{
+    line-height: 1.2;
     color: var(--main500);
 }
 

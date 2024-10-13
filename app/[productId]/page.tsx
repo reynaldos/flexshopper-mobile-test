@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./product.module.css";
 import Accordion from "@/components/Accordion";
 import Image from "next/image";
+import ProductSwiper from "@/components/ProductSwiper";
 
 // Main ProductPage Component
 const ProductPage = ({}: { params: { productId: string } }) => {
@@ -12,7 +13,7 @@ const ProductPage = ({}: { params: { productId: string } }) => {
 
       {/* Accordion Section */}
       <section
-        className={`${styles.detailsAccordion} bg-white w-full sm:shadow-md`}
+        className={`${styles.detailsAccordion} bg-white w-full shadow-md`}
       >
         <Accordion />
       </section>
@@ -26,7 +27,7 @@ const ProductPage = ({}: { params: { productId: string } }) => {
 // ProductDetails Section
 const ProductDetails = () => {
   return (
-    <section className={`${styles.hero} p-6 w-full bg-gray-100 sm:shadow-md`}>
+    <section className={`${styles.hero} p-6 w-full bg-gray-100 shadow-md`}>
       <h1 className="text-xl font-bold text-center text-gray-900 mb-4 px-4">
         Microsoft - Xbox Series X 1TB Console - Carbon Black
       </h1>
@@ -49,14 +50,14 @@ const ProductDetails = () => {
         <div className="grid grid-cols-2 gap-4 mb-3">
           <button className="flex flex-col items-center justify-center p-4 border border-gray-200">
             <span className="text-gray-500 text-sm">As Low as</span>
-            <strong className="text-2xl text-gray-900">
+            <strong className="text-3xl font-semibold text-gray-900">
               $21<sup>00</sup>
             </strong>
             <span className="text-gray-500 text-sm">Per Week</span>
           </button>
           <button className="flex flex-col items-center justify-center p-4 border border-gray-200">
             <span className="text-gray-500 text-sm">As Low as</span>
-            <strong className="text-2xl text-gray-900">
+            <strong className="text-3xl text-gray-900">
               $679<sup>99</sup>
             </strong>
           </button>
@@ -64,7 +65,7 @@ const ProductDetails = () => {
       </div>
 
       {/* Unlock My Price Button */}
-      <button className="w-full bg-orange-500 text-white font-semibold py-3 rounded-sm">
+      <button className="w-full bg-[var(--accent400)] text-white font-semibold py-3 rounded-sm">
         Unlock My Price
       </button>
     </section>
@@ -75,11 +76,13 @@ const ProductDetails = () => {
 const CustomersAlsoViewed = () => {
   return (
     <section
-      className={`${styles.alsoViewedSwiper} p-6 w-full bg-gray-100 sm:shadow-md`}
+      className={`${styles.alsoViewedSwiper} p-6 w-full bg-gray-100 shadow-md`}
     >
       <h1 className="text-xl font-bold text-center text-gray-900 mb-4 px-4">
         Customers Also Viewed
       </h1>
+
+      <ProductSwiper/>
     </section>
   );
 };
