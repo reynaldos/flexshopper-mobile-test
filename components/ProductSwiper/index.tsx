@@ -62,11 +62,6 @@ const ProductSwiper = () => {
         className="rounded-sm"
         spaceBetween={10}
         slidesPerView={1}
-        breakpoints={{
-          640: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-        }}
         modules={[Navigation, Mousewheel, Autoplay]}
         lazyPreloadPrevNext={1}
         mousewheel={{
