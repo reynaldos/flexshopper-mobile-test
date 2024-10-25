@@ -1,9 +1,6 @@
 // pages/api/product/[id].ts
 
-import { NextApiRequest, NextApiResponse } from "next";
-
 export async function GET(
-  request: Request,
   { params }: { params: Promise<{ productId: string }> }
 ) {
   const productId = (await params).productId;
