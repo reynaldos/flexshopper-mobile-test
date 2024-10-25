@@ -1,0 +1,52 @@
+/* General text styling for paragraphs */
+.tabContent p {
+  font-size: 14px; /* Make the text slightly smaller */
+  color: #4a5568; /* Gray text */
+  line-height: 1.6; /* Adjust line-height for readability */
+  margin-bottom: 16px; /* Space between paragraphs */
+}
+
+/* Styling for unordered list (bulleted list) */
+.tabContent ul {
+  list-style-type: disc; /* Bullet points */
+  margin-left: 20px; /* Indent the list */
+  margin-bottom: 16px; /* Space below the list */
+}
+
+.tabContent ul li {
+  font-size: 14px; /* Smaller text */
+  color: #4a5568; /* Gray text */
+  margin-bottom: 8px; /* Space between list items */
+  line-height: 1.6;
+}
+
+/* Styling for table in the Specs section */
+.tabContent table {
+  width: 100%; /* Full width */
+  border-collapse: collapse; /* Remove gaps between table cells */
+  margin-bottom: 16px; /* Space below the table */
+  font-size: 14px; /* Make the text smaller */
+}
+
+/* Remove table borders */
+.tabContent table td,
+.tabContent table th {
+  border: none; /* Remove borders */
+  padding: 8px 12px; /* Padding inside the cells */
+  text-align: left; /* Align text to the left */
+  color: #4a5568; /* Gray text */
+}
+
+/* Bold text for the left column */
+.tabContent table td:first-child {
+  font-weight: bold;
+}
+
+/* Alternating row colors */
+.tabContent table tr:nth-child(odd) {
+  background-color: #f7fafc; /* Light background for even rows */
+}
+
+.tabContent table tr:nth-child(even) {
+  background-color: white; /* White background for odd rows */
+}
