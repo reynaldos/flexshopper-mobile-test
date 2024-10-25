@@ -1,89 +1,102 @@
-import React from "react";
+"use client";
+
+// ProductPage Component
+import React, { useEffect, useState } from "react";
 import styles from "./product.module.css";
-import Accordion from "@/components/Accordion";
-import Image from "next/image";
+
+import ProductHero from "@/components/ProductHero";
+import DetailsAccordion from "@/components/DetailsAccordion";
 import ProductSwiper from "@/components/ProductSwiper";
+import Proposition65Modal from "@/components/Proposition65Modal";
 
-// Main ProductPage Component
-const ProductPage = ({}: { params: { productId: string } }) => {
+import { fetchMockProductInfo } from "@/mock/mockAPI";
+import { ProductInfo } from "@/types/index";
+
+const ProductPage = ({ params }: { params: { productId: string } }) => {
+  const [product, setProduct] = useState<ProductInfo | null>(null);
+  const { productId } = params;
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    async function loadProduct() {
+      try {
+        const productData = await fetchMockProductInfo(Number(productId));
+        setProduct(productData);
+      } catch (error) {
+        console.error("Failed to fetch product data:", error);
+      }
+    }
+
+    loadProduct();
+  }, [productId]);
+
+  useEffect(() => {
+    if (showModal) {
+      // Add class to body to prevent scrolling
+      document.body.classList.add("overflow-hidden");
+    } else {
+      // Remove class when modal is closed
+      document.body.classList.remove("overflow-hidden");
+    }
+
+    // Cleanup function to remove the class if the component unmounts
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [showModal]);
+
+  if (!product) {
+    return (
+      <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
+        Loading....
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
-      {/* Product Details Section */}
-      <ProductDetails />
+    <>
+      <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
+        {/* Product Details Section */}
+        <section className={`${styles.hero} p-6 w-full bg-gray-100 shadow-md`}>
+          <h1 className="text-xl font-bold text-center text-gray-900 mb-4 px-4">
+            {product.name}
+          </h1>
 
-      {/* Accordion Section */}
-      <section
-        className={`${styles.detailsAccordion} bg-white w-full shadow-md`}
-      >
-        <Accordion />
-      </section>
+          <ProductHero product={product} />
+        </section>
 
-      {/* Customers Also Viewed Section */}
-      <CustomersAlsoViewed />
-    </div>
-  );
-};
+        {/* Accordion Section */}
+        <section
+          className={`${styles.detailsAccordion} bg-white w-full shadow-md`}
+        >
+          <DetailsAccordion
+            product={product}
+            openModal={() => {
+              setShowModal(true);
+            }}
+          />
+        </section>
 
-// ProductDetails Section
-const ProductDetails = () => {
-  return (
-    <section className={`${styles.hero} p-6 w-full bg-gray-100 shadow-md`}>
-      <h1 className="text-xl font-bold text-center text-gray-900 mb-4 px-4">
-        Microsoft - Xbox Series X 1TB Console - Carbon Black
-      </h1>
+        {/* Customers Also Viewed Section */}
+        <section
+          className={`${styles.alsoViewedSwiper} p-6 w-full bg-gray-100 shadow-md`}
+        >
+          <h1 className="text-xl font-bold text-center text-gray-900 mb-4 px-4">
+            Customers Also Viewed
+          </h1>
 
-      {/* Product Image and Stock Info */}
-      <div className="bg-white p-4 pb-1 mb-3 rounded-sm shadow-sm">
-        <Image
-          className="w-48 h-48 object-cover m-auto" width={192} height={192}
-          src={
-            "https://images.flexshopper.xyz/800x800/product-beta-images/6b066782-7376-435a-9602-57688e7b855d.jpeg"
-          }
-          alt={"Xbox Series X"}
-        />
-
-        <span className="block mt-6 text-center text-green-600 font-bold mb-2">
-          In Stock
-        </span>
-
-        {/* Pricing Section */}
-        <div className="grid grid-cols-2 gap-4 mb-3">
-          <button className="flex flex-col items-center justify-center p-4 border border-gray-200">
-            <span className="text-gray-500 text-sm">As Low as</span>
-            <strong className="text-3xl font-semibold text-gray-900">
-              $21<sup>00</sup>
-            </strong>
-            <span className="text-gray-500 text-sm">Per Week</span>
-          </button>
-          <button className="flex flex-col items-center justify-center p-4 border border-gray-200">
-            <span className="text-gray-500 text-sm">As Low as</span>
-            <strong className="text-3xl text-gray-900">
-              $679<sup>99</sup>
-            </strong>
-          </button>
-        </div>
+          <ProductSwiper />
+        </section>
       </div>
 
-      {/* Unlock My Price Button */}
-      <button className="w-full bg-[var(--accent400)] text-white font-semibold py-3 rounded-sm">
-        Unlock My Price
-      </button>
-    </section>
-  );
-};
-
-// CustomersAlsoViewed Section
-const CustomersAlsoViewed = () => {
-  return (
-    <section
-      className={`${styles.alsoViewedSwiper} p-6 w-full bg-gray-100 shadow-md`}
-    >
-      <h1 className="text-xl font-bold text-center text-gray-900 mb-4 px-4">
-        Customers Also Viewed
-      </h1>
-
-      <ProductSwiper/>
-    </section>
+      {showModal && (
+        <Proposition65Modal
+          closeModal={() => {
+            setShowModal(false);
+          }}
+        />
+      )}
+    </>
   );
 };
 
