@@ -38,8 +38,6 @@ export async function GET(
         { status: 500, headers: { "Content-Type": "application/json" } }
       );
 
-    console.log("data:", data);
-
     return new Response(JSON.stringify(data), {
       status: 200,
       headers: { "Content-Type": "application/json" },

@@ -9,7 +9,7 @@ import DetailsAccordion from "@/components/DetailsAccordion";
 import ProductSwiper from "@/components/ProductSwiper";
 import Proposition65Modal from "@/components/Proposition65Modal";
 
-import { fetchMockProductInfo } from "@/mock/mockAPI";
+// import { fetchMockProductInfo } from "@/mock/mockAPI";
 import { ProductInfo } from "@/types/index";
 
 const ProductPage = ({ params }: { params: { productId: string } }) => {
