@@ -19,7 +19,13 @@
     ],
     "paths": {
      "@/components/*": ["./components/*"],
-     "@/styles/*": ["./styles/*"]
+     "@/styles/*": ["./styles/*"],
+     "@/mock/*": ["./mock/*"],
+     "@/types/*": ["./types/*"],
+     "@/utils/*": ["./utils/*"],
+
+
+
 
     }
   },

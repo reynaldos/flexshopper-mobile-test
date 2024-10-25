@@ -12,7 +12,7 @@ const ProductHero = ({ product }: { product: ProductInfo }) => {
     .toFixed(2)
     .split(".");
 
-  const markedUpPrice = (product.inventories[0]?.markedUpPrice / 100)
+  const markedUpPrice = ((product.inventories[0]?.markedUpPrice | product.inventories[0]?.retailPrice) / 100)
     .toFixed(2)
     .split(".");
 

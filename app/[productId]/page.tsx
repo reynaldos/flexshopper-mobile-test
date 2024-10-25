@@ -17,17 +17,27 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
   const { productId } = params;
   const [showModal, setShowModal] = useState(false);
 
+  const [error, setError] = useState(false);
+
   useEffect(() => {
-    async function loadProduct() {
+    const fetchProduct = async () => {
       try {
-        const productData = await fetchMockProductInfo(Number(productId));
-        setProduct(productData);
+        const response = await fetch(`/api/v1/fetchProduct/${productId}`);
+        if (!response.ok) {
+          setError(true);
+          throw new Error("Failed to fetch product");
+        }
+
+        // const data = await fetchMockProductInfo(Number(productId));
+
+        const data = await response.json();
+        setProduct(data);
       } catch (error) {
         console.error("Failed to fetch product data:", error);
       }
-    }
+    };
 
-    loadProduct();
+    fetchProduct();
   }, [productId]);
 
   useEffect(() => {
@@ -45,9 +55,18 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
     };
   }, [showModal]);
 
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
+        Error....
+      </div>
+    );
+  }
+
   if (!product) {
     return (
-      <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
+      <div className="min-h-screen flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
         Loading....
       </div>
     );
