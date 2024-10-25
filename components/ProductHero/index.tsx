@@ -11,11 +11,10 @@ const ProductHero = ({ product }: { product: ProductInfo }) => {
   const salePrice = ((product.inventories[0]?.salePrice / 100 / 52) * 2)
     .toFixed(2)
     .split(".");
-    
+
   const markedUpPrice = (product.inventories[0]?.markedUpPrice / 100)
     .toFixed(2)
     .split(".");
-
 
   const inStock = product.inventories[0]?.qty > 0;
 
@@ -92,7 +91,11 @@ const ProductHero = ({ product }: { product: ProductInfo }) => {
             </svg>
           </button>
         </div>
-        <span className={`block mt-6 text-center ${inStock ? 'text-green-600' : 'text-red-600'} font-bold mb-2`}>
+        <span
+          className={`block mt-6 text-center ${
+            inStock ? "text-green-600" : "text-red-600"
+          } font-bold mb-2`}
+        >
           {inStock ? "In Stock" : "Out of Stock"}
         </span>
 
