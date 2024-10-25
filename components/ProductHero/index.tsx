@@ -12,7 +12,11 @@ const ProductHero = ({ product }: { product: ProductInfo }) => {
     .toFixed(2)
     .split(".");
 
-  const markedUpPrice = ((product.inventories[0]?.markedUpPrice | product.inventories[0]?.retailPrice) / 100)
+  const markedUpPrice = (
+    (product.inventories[0]?.markedUpPrice |
+      product.inventories[0]?.retailPrice) /
+    100
+  )
     .toFixed(2)
     .split(".");
 
@@ -23,26 +27,28 @@ const ProductHero = ({ product }: { product: ProductInfo }) => {
       {/* Product Image and Stock Info */}
       <div className="bg-white p-4 pb-1 mb-3 rounded-sm shadow-sm">
         <div className="flex items-center justify-center">
-          <button
-            aria-label={`Show previous product`}
-            className="prev"
-            style={{ backgroundColor: "white" }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-6 h-6 text-gray-500"
+          {product.images.length > 1 && (
+            <button
+              aria-label={`Show previous product`}
+              className="prev"
+              style={{ backgroundColor: "white" }}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-6 h-6 text-gray-500"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+          )}
 
           {/* Swiper for Product Images */}
           <Swiper
@@ -70,26 +76,28 @@ const ProductHero = ({ product }: { product: ProductInfo }) => {
             ))}
           </Swiper>
 
-          <button
-            aria-label={`Show next product`}
-            className="next"
-            style={{ backgroundColor: "white" }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-6 h-6 text-gray-500"
+          {product.images.length > 1 && (
+            <button
+              aria-label={`Show next product`}
+              className="next"
+              style={{ backgroundColor: "white" }}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-6 h-6 text-gray-500"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          )}
         </div>
         <span
           className={`block mt-6 text-center ${
