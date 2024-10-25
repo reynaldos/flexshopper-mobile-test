@@ -1,12 +1,15 @@
-// pages/api/product/[id].ts
+// app/api/v1/fetchProduct/[productId]/route.ts
+
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
-  { params }: { params: Promise<{ productId: string }> }
+  request: NextRequest,
+  { params }: { params: { productId: string } }
 ) {
-  const productId = (await params).productId;
+  const productId = params.productId;
 
   if (!productId) {
-    return new Response(JSON.stringify({ message: "Product Id required" }), {
+    return new NextResponse(JSON.stringify({ message: "Product Id required" }), {
       status: 401,
       headers: { "Content-Type": "application/json" },
     });
@@ -26,20 +29,20 @@ export async function GET(
     );
     const data = await response.json();
 
-    if(data.error)
-      return new Response(
+    if (data.error) {
+      return new NextResponse(
         JSON.stringify({
           message: `Failed to fetch product data for id ${productId}`,
           errorDetails: data.error,
         }),
         { status: 500, headers: { "Content-Type": "application/json" } }
       );
+    }
 
-    return new Response(JSON.stringify(data), {
+    return new NextResponse(JSON.stringify(data), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
-
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
@@ -47,7 +50,7 @@ export async function GET(
 
     console.error(errorMessage, errorStack);
 
-    return new Response(
+    return new NextResponse(
       JSON.stringify({
         message: `Failed to fetch product data for id ${productId}`,
         errorMessage,
