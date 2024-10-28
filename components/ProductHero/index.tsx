@@ -112,7 +112,7 @@ const ProductHero = ({ product }: { product: ProductInfo }) => {
         <div className="grid grid-cols-2 gap-4 mb-3">
           {/* weekly price */}
             <button className="flex flex-col items-center justify-start p-4 border border-gray-200">
-              <span className="text-gray-500 text-sm">As Low as</span>
+              <span className="text-gray-500 text-sm">As Low as<sup> 9</sup></span>
               <strong className="text-3xl font-semibold text-gray-900">
                 ${salePrice[0]}
                 <sup>00</sup>
@@ -126,7 +126,7 @@ const ProductHero = ({ product }: { product: ProductInfo }) => {
 
           {/* total price */}
             <button className="flex flex-col items-center justify-start p-4 border border-gray-200">
-              <span className="text-gray-500 text-sm">As Low as</span>
+              <span className="text-gray-500 text-sm">As Low as<sup> 9</sup></span>
               <strong className="text-3xl font-semibold text-gray-900">
                 ${markedUpPrice[0]}
                 <sup>{markedUpPrice[1]}</sup>
