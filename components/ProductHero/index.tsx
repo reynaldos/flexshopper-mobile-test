@@ -7,15 +7,16 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
+const FLEXSHOPPER_SIGNIN = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL;
+
 const ProductHero = ({ product }: { product: ProductInfo }) => {
   const salePrice = ((product.inventories[0]?.salePrice / 100 / 52) * 2)
     .toFixed(2)
     .split(".");
 
   const markedUpPrice = (
-    (product.inventories[0]?.markedUpPrice |
-      product.inventories[0]?.retailPrice) /
-    100
+    (product.inventories[0]?.markedUpPrice ||
+      product.inventories[0]?.markedUpRetailPrice) / 100
   )
     .toFixed(2)
     .split(".");
@@ -110,34 +111,36 @@ const ProductHero = ({ product }: { product: ProductInfo }) => {
         {/* Pricing Section */}
         <div className="grid grid-cols-2 gap-4 mb-3">
           {/* weekly price */}
-          <button className="flex flex-col items-center justify-start p-4 border border-gray-200">
-            <span className="text-gray-500 text-sm">As Low as</span>
-            <strong className="text-3xl font-semibold text-gray-900">
-              ${salePrice[0]}
-              <sup>00</sup>
-            </strong>
+            <button className="flex flex-col items-center justify-start p-4 border border-gray-200">
+              <span className="text-gray-500 text-sm">As Low as</span>
+              <strong className="text-3xl font-semibold text-gray-900">
+                ${salePrice[0]}
+                <sup>00</sup>
+              </strong>
 
-            {/* <strong className="text-3xl font-semibold text-gray-900">
+              {/* <strong className="text-3xl font-semibold text-gray-900">
               ${(product.inventories[0]?.salePrice / 100).toFixed(2)}
             </strong> */}
-            <span className="text-gray-500 text-sm">Per Week</span>
-          </button>
+              <span className="text-gray-500 text-sm">Per Week</span>
+            </button>
 
           {/* total price */}
-          <button className="flex flex-col items-center justify-start p-4 border border-gray-200">
-            <span className="text-gray-500 text-sm">As Low as</span>
-            <strong className="text-3xl font-semibold text-gray-900">
-              ${markedUpPrice[0]}
-              <sup>{markedUpPrice[1]}</sup>
-            </strong>
-          </button>
+            <button className="flex flex-col items-center justify-start p-4 border border-gray-200">
+              <span className="text-gray-500 text-sm">As Low as</span>
+              <strong className="text-3xl font-semibold text-gray-900">
+                ${markedUpPrice[0]}
+                <sup>{markedUpPrice[1]}</sup>
+              </strong>
+            </button>
         </div>
       </div>
 
       {/* Unlock My Price Button */}
-      <button className="w-full bg-[var(--accent400)] text-white font-semibold py-3 rounded-sm">
-        Unlock My Price
-      </button>
+      <a href={FLEXSHOPPER_SIGNIN}>
+        <button className="w-full bg-[var(--accent400)] text-white font-semibold py-3 rounded-sm">
+          Unlock My Price
+        </button>
+      </a>
     </>
   );
 };
