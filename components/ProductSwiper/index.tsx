@@ -25,30 +25,31 @@ const ProductSwiper = ({ productId }: { productId: string | undefined }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-
     const fetchProducts = async () => {
       try {
-        if (process.env.NEXT_PUBLIC_USE_MOCK) {
+        if (process.env.NEXT_PUBLIC_USE_MOCK === "true") {
           const data = await fetchMockProductList();
           setProductList(data);
           return;
         }
 
-        const response = await fetch(`/api/v1/getRandomIds/${productId}`);
-        if (!response.ok) {
-          setError(true);
-          throw new Error("Failed to fetch products");
-        }
+        if (productId) {
+          const response = await fetch(`/api/v1/getRandomIds/${productId}`);
+          if (!response.ok) {
+            setError(true);
+            throw new Error("Failed to fetch products");
+          }
 
-        const data = await response.json();
-        setProductList(data);
+          const data = await response.json();
+          setProductList(data.products);
+        }
       } catch (error) {
         console.error("Failed to fetch products data:", error);
       }
     };
 
     fetchProducts();
-  }, []);
+  }, [productId]);
 
   const handleClick = () => {
     window.location.href = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL || "";
@@ -92,60 +93,56 @@ const ProductSwiper = ({ productId }: { productId: string | undefined }) => {
         }}
         loop={true}
       >
-        {productList &&
-          productList.map((product) => {
-            const salePrice = (
-              (product.inventories[0]?.salePrice / 100 / 52) *
-              2
-            )
-              .toFixed(2)
-              .split(".");
+        {productList.map((product) => {
+          const salePrice = ((product.inventories[0]?.salePrice / 100 / 52) * 2)
+            .toFixed(2)
+            .split(".");
 
-            return (
-              <SwiperSlide key={product.id} onClick={handleClick}>
-                <div className="h-full bg-white rounded-sm p-4 flex flex-col items-center border border-gray-200 pointer cursor-pointer">
-                  <Image
-                    src={product.images[0].source || "/placeholder.png"}
-                    alt={product.name}
-                    width={150}
-                    height={150}
-                    className="object-cover mb-4"
-                    loading="eager"
-                    priority={true}
-                  />
-                  <h2 className="text-md font-semibold text-center text-gray-800 leading-6 mb-2">
-                    {product.name}
-                  </h2>
+          return (
+            <SwiperSlide key={product.id} onClick={handleClick}>
+              <div className="h-full bg-white rounded-sm p-4 flex flex-col items-center border border-gray-200 pointer cursor-pointer">
+                <Image
+                  src={product.images[0].source || "/placeholder.png"}
+                  alt={product.name}
+                  width={150}
+                  height={150}
+                  className="object-cover mb-4"
+                  loading="eager"
+                  priority={true}
+                />
+                <h2 className="text-md font-semibold text-center text-gray-800 leading-6 mb-2">
+                  {product.name}
+                </h2>
 
-                  <div className="w-full ">
-                    <div className="flex">
-                      <p className="text-blue-600 text-md my-2">
-                        As low as<sup> 9</sup>{" "}
-                        <span className="text-3xl font-normal ml-1">
-                          {salePrice[0]}
-                        </span>
-                      </p>
-                      <aside className="flex flex-col justify-center ml-1">
-                        <p className="text-blue-600 text-md leading-4">00</p>
-                        <p className="text-sm leading-5 uppercase text-gray-500">
-                          per week
-                        </p>
-                      </aside>
-                    </div>
-                    <p className="text-gray-500 text-xs">
-                      Ships from:{" "}
-                      <span className="font-semibold">
-                        {product.inventories[0].vendor.name}{" "}
+                <div className="w-full ">
+                  <div className="flex">
+                    <p className="text-blue-600 text-md my-2">
+                      As low as<sup> 9</sup>{" "}
+                      <span className="text-3xl font-normal ml-1">
+                        {salePrice[0]}
                       </span>
                     </p>
-                    <p className="text-green-600 text-sm mt-3 font-semibold">
-                      Store Pick Available
-                    </p>
+                    <aside className="flex flex-col justify-center ml-1">
+                      <p className="text-blue-600 text-md leading-4">00</p>
+                      <p className="text-sm leading-5 uppercase text-gray-500">
+                        per week
+                      </p>
+                    </aside>
                   </div>
+                  <p className="text-gray-500 text-xs">
+                    Ships from:{" "}
+                    <span className="font-semibold">
+                      {product.inventories[0].vendor.name}{" "}
+                    </span>
+                  </p>
+                  <p className="text-green-600 text-sm mt-3 font-semibold">
+                    Store Pick Available
+                  </p>
                 </div>
-              </SwiperSlide>
-            );
-          })}
+              </div>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
 
       <button aria-label={`Show next product`} className="next">

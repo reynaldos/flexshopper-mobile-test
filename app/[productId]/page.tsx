@@ -22,10 +22,9 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
   useEffect(() => {
 
 
-    console.log('process.env.NEXT_PUBLIC_USE_MOCK: ',process.env.NEXT_PUBLIC_USE_MOCK)
     const fetchProduct = async () => {
       try {
-        if (process.env.NEXT_PUBLIC_USE_MOCK) {
+        if (process.env.NEXT_PUBLIC_USE_MOCK === 'true') {
           const data = await fetchMockProductInfo();
           setProduct(data);
           return;
