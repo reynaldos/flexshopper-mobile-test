@@ -20,13 +20,22 @@ async function fetchProduct(productId: string): Promise<ProductInfo | null> {
     return data
   }
 
+  const apiKey = process.env.FMCORE_API_KEY;
+  if (!apiKey) {
+    throw new Error("Missing FMCORE_API_KEY");
+  }
+
   const response = await fetch(
     `https://apis.flexshopper.com/synthetics-fmcore/marketplace/Products/${productId}/overview`,
-    { headers: { Authorization: process.env.FMCORE_API_KEY || "" } }
+    {
+      headers: {
+        Authorization: apiKey,
+      },
+    }
   );
 
   if (!response.ok) {
-    throw new Error("Failed to fetch product data");
+    throw new Error(`Failed to fetch product data: ${response.statusText}`);
   }
 
   return response.json();
