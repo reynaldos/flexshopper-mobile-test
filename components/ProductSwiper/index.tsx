@@ -51,8 +51,9 @@ const ProductSwiper = ({ productId }: { productId: string | undefined }) => {
     fetchProducts();
   }, [productId]);
 
-  const handleClick = () => {
-    window.location.href = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL || "";
+  const handleClick = (productId: string | number) => {
+    window.location.href =
+      `${process.env.NEXT_PUBLIC_BASE_URL}/${productId}` || "";
   };
 
   if (!productList || !productId) {
@@ -99,7 +100,12 @@ const ProductSwiper = ({ productId }: { productId: string | undefined }) => {
             .split(".");
 
           return (
-            <SwiperSlide key={product.id} onClick={handleClick}>
+            <SwiperSlide
+              key={product.id}
+              onClick={() => {
+                handleClick(product.id);
+              }}
+            >
               <div className="h-full bg-white rounded-sm p-4 flex flex-col items-center border border-gray-200 pointer cursor-pointer">
                 <Image
                   src={product.images[0].source || "/placeholder.png"}
