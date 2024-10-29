@@ -11,14 +11,6 @@ import { ProductInfo } from "@/types/index";
 import { fetchMockProductList } from "@/mock/mockAPI";
 import ProductSwiperSkeleton from "./loading";
 
-interface Product {
-  id: number;
-  image: string;
-  name: string;
-  price: string;
-  store: string;
-  increment: string;
-}
 
 const ProductSwiper = ({ productId }: { productId: string | undefined }) => {
   const [productList, setProductList] = useState<ProductInfo[] | null>(null);
@@ -55,6 +47,11 @@ const ProductSwiper = ({ productId }: { productId: string | undefined }) => {
     window.location.href =
       `${process.env.NEXT_PUBLIC_BASE_URL}/${productId}` || "";
   };
+
+
+  if(error){
+    return(<></>)
+  }
 
   if (!productList || !productId) {
     return <ProductSwiperSkeleton />;
