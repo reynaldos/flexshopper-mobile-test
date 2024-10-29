@@ -961,10 +961,8 @@ export const mockProductList: ProductInfo[] = [
           _logo: {
             caption: "Ashley Furniture",
             description: "Ashley Furniture",
-            source:
-              "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/logo-ashley-signature.png",
-            sourceCdn:
-              "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/logo-ashley-signature.png",
+            source: "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/logo-ashley-signature.png",
+            sourceCdn: "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/logo-ashley-signature.png",
             primaryFlag: true,
             createdAt: null,
             updatedAt: "2016-07-26T15:13:58.336Z",
@@ -974,10 +972,8 @@ export const mockProductList: ProductInfo[] = [
           _secondaryLogo: {
             caption: "Ashley Furniture",
             description: "Ashley Furniture",
-            source:
-              "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
-            sourceCdn:
-              "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
+            source: "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
+            sourceCdn: "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
             primaryFlag: true,
             createdAt: null,
             updatedAt: null,
@@ -1404,10 +1400,8 @@ export const mockProductList: ProductInfo[] = [
           _logo: {
             caption: "Regala",
             description: "Regala",
-            source:
-              "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/regala.png",
-            sourceCdn:
-              "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/regala.png",
+            source: "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/regala.png",
+            sourceCdn: "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/regala.png",
             primaryFlag: true,
           },
         },
