@@ -3,44 +3,51 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
   // Static URLs
-  const staticUrls = [
-    { url: `${baseUrl}/`, priority: "0.1" },
-  ];
-
+  const staticUrls = [{ url: `${baseUrl}/`, priority: "0.1" }];
   // Fetch dynamic URLs, such as product pages
-  const products = await fetch(`${baseUrl}/api/v1/getProductIds`); // Replace with your actual data source
-  const productData = await products.json();
+  try {
+    const response = await fetch(`${baseUrl}/api/v1/getProductIds`);
 
-  // Map product IDs to URLs
-  const dynamicUrls = productData.map((productId: string) => ({
-    url: `${baseUrl}/${productId}`,
-    priority: "1.0",
-  }));
+    if (
+      !response.ok ||
+      response.headers.get("content-type") !== "application/json"
+    ) {
+      throw new Error("Failed to fetch product IDs or invalid response type");
+    }
 
-  // Combine static and dynamic URLs
-  const urls = [...staticUrls, ...dynamicUrls];
+    const productData = await response.json();
 
-  // Generate XML sitemap
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      ${urls
-        .map(
-          (item) => `
-          <url>
-            <loc>${item.url}</loc>
-            <priority>${item.priority}</priority>
-          </url>
-        `
-        )
-        .join("")}
-    </urlset>
-  `;
+    // Map product IDs to URLs
+    const dynamicUrls = productData.map((productId: string) => ({
+      url: `${baseUrl}/${productId}`,
+      priority: "1.0",
+    }));
 
-  return new NextResponse(sitemap.trim(), {
-    headers: {
-      "Content-Type": "application/xml",
-    },
-  });
+    // Combine static and dynamic URLs
+    const urls = [...staticUrls, ...dynamicUrls];
+
+    // Generate XML sitemap
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        ${urls
+          .map(
+            (item) => `
+            <url>
+              <loc>${item.url}</loc>
+              <priority>${item.priority}</priority>
+            </url>
+          `
+          )
+          .join("")}
+      </urlset>
+    `;
+
+    return new NextResponse(sitemap.trim(), {
+      headers: { "Content-Type": "application/xml" },
+    });
+  } catch (error) {
+    console.error("Error generating sitemap:", error);
+    return new NextResponse("Error generating sitemap", { status: 500 });
+  }
 }
