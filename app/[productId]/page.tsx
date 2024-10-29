@@ -20,11 +20,9 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-
-
     const fetchProduct = async () => {
       try {
-        if (process.env.NEXT_PUBLIC_USE_MOCK === 'true') {
+        if (process.env.NEXT_PUBLIC_USE_MOCK === "true") {
           const data = await fetchMockProductInfo();
           setProduct(data);
           return;
@@ -61,13 +59,15 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
     };
   }, [showModal]);
 
-  if (error) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
-        Error....
-      </div>
-    );
-  }
+  useEffect(() => {
+    const FLEXSHOPPER_URL = process.env.NEXT_PUBLIC_FLEXSHOPPER_URL || "";
+
+    if (error) {
+      setTimeout(() => {
+        window.location.href = FLEXSHOPPER_URL;
+      }, 100);
+    }
+  }, [error]);
 
   return (
     <>
