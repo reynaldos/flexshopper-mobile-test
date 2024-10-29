@@ -28,9 +28,12 @@ async function fetchProduct(productId: string): Promise<ProductInfo | null> {
   const response = await fetch(
     `https://apis.flexshopper.com/synthetics-fmcore/marketplace/Products/${productId}/overview`,
     {
+      method: "GET",
       headers: {
-        Authorization: apiKey,
+        Authorization: `${process.env.FMCORE_API_KEY}`,
+        "Content-Type": "application/json",
       },
+      next: { revalidate: 300 }, // Caching for 5 minutes at the CDN level
     }
   );
 
