@@ -23,6 +23,10 @@ const ProductHero = ({ product }: { product: ProductInfo }) => {
 
   const inStock = product.inventories[0]?.qty > 0;
 
+  const handleClick = () => {
+    window.location.href = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL || "";
+  };
+
   return (
     <>
       {/* Product Image and Stock Info */}
@@ -111,24 +115,34 @@ const ProductHero = ({ product }: { product: ProductInfo }) => {
         {/* Pricing Section */}
         <div className="grid grid-cols-2 gap-4 mb-3">
           {/* weekly price */}
-            <button className="flex flex-col items-center justify-start p-4 border border-gray-200">
-              <span className="text-gray-500 text-sm">As Low as<sup> 9</sup></span>
-              <strong className="text-3xl font-semibold text-gray-900">
-                ${salePrice[0]}
-                <sup>00</sup>
-              </strong>
+          <button
+            onClick={handleClick}
+            className="flex flex-col items-center justify-start p-4 border border-gray-200"
+          >
+            <span className="text-gray-500 text-sm">
+              As Low as<sup> 9</sup>
+            </span>
+            <strong className="text-3xl font-semibold text-gray-900">
+              ${salePrice[0]}
+              <sup>00</sup>
+            </strong>
 
-              <span className="text-gray-500 text-sm">Per Week</span>
-            </button>
+            <span className="text-gray-500 text-sm">Per Week</span>
+          </button>
 
           {/* total price */}
-            <button className="flex flex-col items-center justify-start p-4 border border-gray-200">
-              <span className="text-gray-500 text-sm">As Low as<sup> 9</sup></span>
-              <strong className="text-3xl font-semibold text-gray-900">
-                ${markedUpPrice[0]}
-                <sup>{markedUpPrice[1]}</sup>
-              </strong>
-            </button>
+          <button
+            onClick={handleClick}
+            className="flex flex-col items-center justify-start p-4 border border-gray-200"
+          >
+            <span className="text-gray-500 text-sm">
+              As Low as<sup> 9</sup>
+            </span>
+            <strong className="text-3xl font-semibold text-gray-900">
+              ${markedUpPrice[0]}
+              <sup>{markedUpPrice[1]}</sup>
+            </strong>
+          </button>
         </div>
       </div>
 
