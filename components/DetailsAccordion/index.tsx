@@ -5,6 +5,7 @@ import Image from "next/image";
 import React, { useState, useRef, useEffect } from "react";
 import { cleanUpFeatures } from "@/utils/strings";
 import styles from "./DetailsAccordion.module.css";
+import DetailsAccordionSkeleton from "./loading";
 
 const DetailsAccordion = ({
   product,
@@ -15,7 +16,7 @@ const DetailsAccordion = ({
   accordianItems?: string[];
   openModal: () => void;
 }) => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   const toggleAccordion = (index: number) => {
@@ -63,6 +64,18 @@ const DetailsAccordion = ({
       }
     };
   }, [product, activeIndex, openModal]);
+
+  useEffect(() => {
+    if (product) {
+      setTimeout(() => {
+        setActiveIndex(0);
+      }, 100);
+    }
+  }, [product]);
+
+  if (!product) {
+    return <DetailsAccordionSkeleton accordianItems={accordianItems} />;
+  }
 
   return (
     <div className="space-y-4 w-full max-w-lg mx-auto">

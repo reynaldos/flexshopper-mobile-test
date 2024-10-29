@@ -3,359 +3,1586 @@
 import { ProductInfo } from "../types";
 
 export const mockProductData: ProductInfo = {
-    "mpn": "BB20151320",
-    "name": "Apple - 10.9-Inch iPad - Latest Model - (10th Generation) with Wi-Fi - 64GB - Yellow",
-    "description": "Colorfully reimagined and more versatile than ever. With an all-screen design10.9-inch Liquid Retina display and four gorgeous colors. iPad delivers a powerful way to create stay connected and get things done.",
-    "weight": 2,
-    "slug": "apple-109-inch-ipad-latest-model-10th-generation-with-wi-fi-64gb-yellow-apple-bb20151320",
-    "features": "<ul><li><p>Striking 10.9-inch Liquid Retina display with True Tone</p><br><p>A14 Bionic chip with 6-core CPU and 4-core GPU</p><br><p>12MP Wide back camera</p><br><p>Landscape 12MP Ultra Wide front camera with Center Stage</p><br><p>Touch ID for secure authentication and Apple Pay</p><br><p>Stay connected with ultrafast Wi-Fi 6</p><br><p>USB-C connector for charging and accessories</p><br><p>Go far with all-day battery life</p><br><p>Works with Apple Pencil (USB-C) Apple Pencil (1st generation) and Magic Keyboard Folio4</p><br><p>iPadOS 17 makes your iPad even more capable with powerful new productivity and collaboration features</p><br><p>The display has rounded corners. When measured diagonally as a rectangle the iPad 10.9-inch screen is 10.9 inches. Actual viewable area is less.</p><br><p>Battery life varies by use and configuration. See apple.com/batteries for more information.</p><br><p>USB-C to Apple Pencil Adapter required to work with iPad (10th generation). Subject to availability.</p><br><p>4Accessories sold separately and subject to availability. Compatibility varies by generation. Apps are available on the App Store. Title availability is subject to change. Third-party software sold separately.</p><br></li></ul>",
-    "specs": "<table><tbody><tr><td>UPC</td><td>194253387985</td></tr><tr><td>Color</td><td>Yellow</td></tr><tr><td>Total Shipping Weight in Lbs</td><td>1.8</td></tr><tr><td>Carton Length (in)</td><td>2</td></tr><tr><td>Carton Width (in)</td><td>7.5</td></tr><tr><td>Carton Height (in)</td><td>10.3</td></tr><tr><td>Carton Weight (lbs)</td><td>2</td></tr><tr><td>Delivery Type</td><td>Small Parcel</td></tr><tr id=\"prop65Row\"><td>California residents</td><td><a href=\"#\" class=\"js-prop65PageBtn\"><strong>Click here</strong></a> for Proposition 65 warning.</td></tr></tbody></table>",
-    "condition": "new",
-    "importProductUpdate": false,
-    "tagsUpdate": true,
-    "attributesUpdate": true,
-    "useCnetGalleryFlag": true,
-    "source": "bestbuy",
-    "rank": 0,
-    "sales": 0,
-    "createdAt": "2024-10-08T00:55:01.179Z",
-    "updatedAt": "2024-10-25T15:20:03.536Z",
-    "id": "670482e59874cd49c59d34ad",
-    "brandId": "670410385c767a31ea0d8e12",
-    "feedId": "648a02c0-d34a-4adb-95c7-79a0cb8a8488",
-    "supplier": 100815,
-    "upc": "194253387985",
-    "breadcrumbs": [
-        {
-            "id": "6704102d5c767a31ea0d8b73",
-            "name": "Computers & Tablets",
-            "metaKeywords": "computers, and, tablets, flexshopper.com",
-            "metaDescription": "FlexShopper makes lease to own simple and affordable. Our marketplace has your favorite products in Computers & Tablets, available at low weekly prices.",
-            "slug": "computers-and-tablets",
-            "path": "6704102d5c767a31ea0d8b73"
-        },
-        {
-            "id": "670417a980c774a7ebe2fcf4",
-            "name": "Tablets & eBooks",
-            "metaKeywords": "tablets, and, ebooks, flexshopper.com",
-            "metaDescription": "Lease to own products from top brands in Tablets & eBooks and enjoy fast shipping and easy weekly payments from the comfort of your home. Learn More",
-            "slug": "tablets-and-ebooks",
-            "path": "6704102d5c767a31ea0d8b73/670417a980c774a7ebe2fcf4"
-        }
-    ],
-    "attributeList": [
-        {
-            "code": "model_number",
-            "value": "MPQ23LL/A",
-            "name": "Model Number",
-            "filterableFlag": false
-        },
-        {
-            "code": "width",
-            "value": "7.07 in",
-            "name": "Width",
-            "filterableFlag": true
-        },
-        {
-            "code": "height",
-            "value": "9.79 in",
-            "name": "Height",
-            "filterableFlag": true
-        },
-        {
-            "code": "length",
-            "value": "0.28 in",
-            "name": "Length",
-            "filterableFlag": true
-        },
-        {
-            "code": "weight",
-            "value": "32 oz",
-            "name": "Weight",
-            "filterableFlag": true
-        },
-        {
-            "code": "brand",
-            "value": "Apple",
-            "name": "Brand",
-            "filterableFlag": true
-        },
-        {
-            "code": "condition",
-            "value": "New",
-            "name": "Condition",
-            "filterableFlag": true
-        }
-    ],
-    "inventories": [
-        {
-            "enabledFlag": true,
-            "qty": 1419,
-            "sku": "bb20151320-bestbuy",
-            "primaryFlag": false,
-            "stockOutThreshold": 0,
-            "salePrice": 34126,
-            "markedUpPrice": 40999,
-            "itemCost": 34126,
-            "wholesaleCost": 0,
-            "retailPrice": 34126,
-            "markedUpRetailPrice": 40999,
-            "sale": 100,
-            "markupData": {
-                "applyMarkup": true,
-                "stateMarkup": {
-                    "AZ": {},
-                    "HI": {
-                        "salePrice": 37599,
-                        "retailPrice": 37599
-                    },
-                    "IN": {}
-                },
-                "vendorMarkup": {
-                    "salePrice": 40999,
-                    "retailPrice": 40999
-                },
-                "vendorStateMarkup": {
-                    "AZ": {
-                        "salePrice": 40999,
-                        "retailPrice": 40999
-                    },
-                    "HI": {
-                        "salePrice": 44399,
-                        "retailPrice": 44399
-                    },
-                    "IN": {
-                        "salePrice": 40999,
-                        "retailPrice": 40999
-                    }
-                }
-            },
-            "vendorProductId": "BB20151320",
-            "freeShippingFlag": false,
-            "condition": "new",
-            "holdDeliveryFlag": false,
-            "bundleInventories": null,
-            "id": "6706a7b49874cd49c57ff055",
-            "productId": "670482e59874cd49c59d34ad",
-            "vendorId": "5760425b9c73c4ff6c0f09f8",
-            "vendor": {
-                "code": "bestbuy",
-                "name": "BestBuy",
-                "displayName": "BestBuy",
-                "markupMultiplier": 1.2,
-                "nonMarkupItems": [
-                    "6000888505cd2c0948f4b9ad",
-                    "62a373084411c5cadba055db"
-                ],
-                "message": "Vendor auto created by fixture job",
-                "type": "retail",
-                "id": "5760425b9c73c4ff6c0f09f8",
-                "_logo": {
-                    "caption": "Best Buy",
-                    "description": "Best Buy",
-                    "source": "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/bestbuy.png",
-                    "sourceCdn": "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/bestbuy.png",
-                    "primaryFlag": true,
-                    "createdAt": null,
-                    "updatedAt": "2016-07-26T15:03:22.074Z",
-                    "id": null,
-                    "productId": null
-                },
-                "_secondaryLogo": {
-                    "caption": "Best Buy",
-                    "description": "Best Buy",
-                    "source": "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
-                    "sourceCdn": "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
-                    "primaryFlag": true,
-                    "createdAt": null,
-                    "updatedAt": null,
-                    "id": null,
-                    "productId": null
-                }
-            },
-            "shippingStrategies": [
-                {
-                    "code": "bestbuy-nationwide-store-FIXED_PRICE_X_ITEM",
-                    "id": "5835c7beeb87d299058f2899",
-                    "shippingMethodId": "5835c7bceb87d299058f2897",
-                    "shippingMethod": {
-                        "code": "store",
-                        "label": "Store Pick Up",
-                        "transportMode": "pick up",
-                        "id": "5835c7bceb87d299058f2897"
-                    }
-                },
-                {
-                    "code": "bestbuy-nationwide-standard-FIXED_PRICE_X_ITEM",
-                    "id": "665e17f400000000006e9b3e",
-                    "shippingMethodId": "5760425a9c73c4ff6c0f09e7",
-                    "shippingMethod": {
-                        "code": "ground",
-                        "label": "Ground",
-                        "transportMode": "ground",
-                        "id": "5760425a9c73c4ff6c0f09e7"
-                    }
-                }
-            ]
-        }
-    ],
-    "attributevalues": [
-        {
-            "value": "MPQ23LL/A",
-            "createdAt": "2024-10-25T15:20:03.579Z",
-            "updatedAt": "2024-10-25T15:20:03.579Z",
-            "id": "671bb7239874cd49c505a478",
-            "productId": "670482e59874cd49c59d34ad",
-            "attributeCode": "model_number"
-        },
-        {
-            "value": "7.07 in",
-            "createdAt": "2024-10-25T15:20:03.579Z",
-            "updatedAt": "2024-10-25T15:20:03.579Z",
-            "id": "671bb7239874cd49c505a47b",
-            "productId": "670482e59874cd49c59d34ad",
-            "attributeCode": "width"
-        },
-        {
-            "value": "9.79 in",
-            "createdAt": "2024-10-25T15:20:03.579Z",
-            "updatedAt": "2024-10-25T15:20:03.579Z",
-            "id": "671bb7239874cd49c505a47f",
-            "productId": "670482e59874cd49c59d34ad",
-            "attributeCode": "height"
-        },
-        {
-            "value": "0.28 in",
-            "createdAt": "2024-10-25T15:20:03.579Z",
-            "updatedAt": "2024-10-25T15:20:03.579Z",
-            "id": "671bb7239874cd49c505a486",
-            "productId": "670482e59874cd49c59d34ad",
-            "attributeCode": "length"
-        },
-        {
-            "value": "32 oz",
-            "createdAt": "2024-10-25T15:20:03.579Z",
-            "updatedAt": "2024-10-25T15:20:03.579Z",
-            "id": "671bb7239874cd49c505a48b",
-            "productId": "670482e59874cd49c59d34ad",
-            "attributeCode": "weight"
-        },
-        {
-            "value": "Apple",
-            "createdAt": "2024-10-25T15:20:03.579Z",
-            "updatedAt": "2024-10-25T15:20:03.579Z",
-            "id": "671bb7239874cd49c505a491",
-            "productId": "670482e59874cd49c59d34ad",
-            "attributeCode": "brand"
-        },
-        {
-            "value": "New",
-            "createdAt": "2024-10-25T15:20:03.579Z",
-            "updatedAt": "2024-10-25T15:20:03.579Z",
-            "id": "671bb7239874cd49c505a494",
-            "productId": "670482e59874cd49c59d34ad",
-            "attributeCode": "condition"
-        }
-    ],
-    "attributes": [
-        {
-            "code": "brand",
-            "name": "Brand",
-            "filterableFlag": true,
-            "createdAt": "2024-10-07T15:33:49.762Z",
-            "updatedAt": "2024-10-07T15:33:49.762Z"
-        },
-        {
-            "code": "condition",
-            "name": "Condition",
-            "filterableFlag": true,
-            "createdAt": "2024-10-07T15:33:49.757Z",
-            "updatedAt": "2024-10-07T15:33:49.757Z"
-        },
-        {
-            "code": "height",
-            "name": "Height",
-            "filterableFlag": true,
-            "createdAt": "2024-10-07T15:33:49.771Z",
-            "updatedAt": "2024-10-07T15:33:49.771Z"
-        },
-        {
-            "code": "length",
-            "name": "Length",
-            "filterableFlag": true,
-            "createdAt": "2024-10-07T15:33:49.766Z",
-            "updatedAt": "2024-10-07T15:33:49.766Z"
-        },
-        {
-            "code": "model_number",
-            "name": "Model Number",
-            "filterableFlag": false,
-            "createdAt": "2024-10-07T15:33:49.750Z",
-            "updatedAt": "2024-10-07T15:33:49.750Z"
-        },
-        {
-            "code": "weight",
-            "name": "Weight",
-            "filterableFlag": true,
-            "createdAt": "2024-10-07T15:33:49.780Z",
-            "updatedAt": "2024-10-07T15:33:49.780Z"
-        },
-        {
-            "code": "width",
-            "name": "Width",
-            "filterableFlag": true,
-            "createdAt": "2024-10-07T15:33:49.776Z",
-            "updatedAt": "2024-10-07T15:33:49.776Z"
-        }
-    ],
-    "brand": {
-        "name": "Apple",
-        "displayName": "Apple",
-        "description": "Apple",
-        "slug": "apple",
-        "id": "670410385c767a31ea0d8e12"
+  mpn: "BB20151320",
+  name: "Apple - 10.9-Inch iPad - Latest Model - (10th Generation) with Wi-Fi - 64GB - Yellow",
+  description:
+    "Colorfully reimagined and more versatile than ever. With an all-screen design10.9-inch Liquid Retina display and four gorgeous colors. iPad delivers a powerful way to create stay connected and get things done.",
+  weight: 2,
+  slug: "apple-109-inch-ipad-latest-model-10th-generation-with-wi-fi-64gb-yellow-apple-bb20151320",
+  features:
+    "<ul><li><p>Striking 10.9-inch Liquid Retina display with True Tone</p><br><p>A14 Bionic chip with 6-core CPU and 4-core GPU</p><br><p>12MP Wide back camera</p><br><p>Landscape 12MP Ultra Wide front camera with Center Stage</p><br><p>Touch ID for secure authentication and Apple Pay</p><br><p>Stay connected with ultrafast Wi-Fi 6</p><br><p>USB-C connector for charging and accessories</p><br><p>Go far with all-day battery life</p><br><p>Works with Apple Pencil (USB-C) Apple Pencil (1st generation) and Magic Keyboard Folio4</p><br><p>iPadOS 17 makes your iPad even more capable with powerful new productivity and collaboration features</p><br><p>The display has rounded corners. When measured diagonally as a rectangle the iPad 10.9-inch screen is 10.9 inches. Actual viewable area is less.</p><br><p>Battery life varies by use and configuration. See apple.com/batteries for more information.</p><br><p>USB-C to Apple Pencil Adapter required to work with iPad (10th generation). Subject to availability.</p><br><p>4Accessories sold separately and subject to availability. Compatibility varies by generation. Apps are available on the App Store. Title availability is subject to change. Third-party software sold separately.</p><br></li></ul>",
+  specs:
+    '<table><tbody><tr><td>UPC</td><td>194253387985</td></tr><tr><td>Color</td><td>Yellow</td></tr><tr><td>Total Shipping Weight in Lbs</td><td>1.8</td></tr><tr><td>Carton Length (in)</td><td>2</td></tr><tr><td>Carton Width (in)</td><td>7.5</td></tr><tr><td>Carton Height (in)</td><td>10.3</td></tr><tr><td>Carton Weight (lbs)</td><td>2</td></tr><tr><td>Delivery Type</td><td>Small Parcel</td></tr><tr id="prop65Row"><td>California residents</td><td><a href="#" class="js-prop65PageBtn"><strong>Click here</strong></a> for Proposition 65 warning.</td></tr></tbody></table>',
+  condition: "new",
+  importProductUpdate: false,
+  tagsUpdate: true,
+  attributesUpdate: true,
+  useCnetGalleryFlag: true,
+  source: "bestbuy",
+  rank: 0,
+  sales: 0,
+  createdAt: "2024-10-08T00:55:01.179Z",
+  updatedAt: "2024-10-25T15:20:03.536Z",
+  id: "670482e59874cd49c59d34ad",
+  brandId: "670410385c767a31ea0d8e12",
+  feedId: "648a02c0-d34a-4adb-95c7-79a0cb8a8488",
+  supplier: 100815,
+  upc: "194253387985",
+  breadcrumbs: [
+    {
+      id: "6704102d5c767a31ea0d8b73",
+      name: "Computers & Tablets",
+      metaKeywords: "computers, and, tablets, flexshopper.com",
+      metaDescription:
+        "FlexShopper makes lease to own simple and affordable. Our marketplace has your favorite products in Computers & Tablets, available at low weekly prices.",
+      slug: "computers-and-tablets",
+      path: "6704102d5c767a31ea0d8b73",
     },
-    "images": [
+    {
+      id: "670417a980c774a7ebe2fcf4",
+      name: "Tablets & eBooks",
+      metaKeywords: "tablets, and, ebooks, flexshopper.com",
+      metaDescription:
+        "Lease to own products from top brands in Tablets & eBooks and enjoy fast shipping and easy weekly payments from the comfort of your home. Learn More",
+      slug: "tablets-and-ebooks",
+      path: "6704102d5c767a31ea0d8b73/670417a980c774a7ebe2fcf4",
+    },
+  ],
+  attributeList: [
+    {
+      code: "model_number",
+      value: "MPQ23LL/A",
+      name: "Model Number",
+      filterableFlag: false,
+    },
+    {
+      code: "width",
+      value: "7.07 in",
+      name: "Width",
+      filterableFlag: true,
+    },
+    {
+      code: "height",
+      value: "9.79 in",
+      name: "Height",
+      filterableFlag: true,
+    },
+    {
+      code: "length",
+      value: "0.28 in",
+      name: "Length",
+      filterableFlag: true,
+    },
+    {
+      code: "weight",
+      value: "32 oz",
+      name: "Weight",
+      filterableFlag: true,
+    },
+    {
+      code: "brand",
+      value: "Apple",
+      name: "Brand",
+      filterableFlag: true,
+    },
+    {
+      code: "condition",
+      value: "New",
+      name: "Condition",
+      filterableFlag: true,
+    },
+  ],
+  inventories: [
+    {
+      enabledFlag: true,
+      qty: 1419,
+      sku: "bb20151320-bestbuy",
+      primaryFlag: false,
+      stockOutThreshold: 0,
+      salePrice: 34126,
+      markedUpPrice: 40999,
+      itemCost: 34126,
+      wholesaleCost: 0,
+      retailPrice: 34126,
+      markedUpRetailPrice: 40999,
+      sale: 100,
+      markupData: {
+        applyMarkup: true,
+        stateMarkup: {
+          AZ: {},
+          HI: {
+            salePrice: 37599,
+            retailPrice: 37599,
+          },
+          IN: {},
+        },
+        vendorMarkup: {
+          salePrice: 40999,
+          retailPrice: 40999,
+        },
+        vendorStateMarkup: {
+          AZ: {
+            salePrice: 40999,
+            retailPrice: 40999,
+          },
+          HI: {
+            salePrice: 44399,
+            retailPrice: 44399,
+          },
+          IN: {
+            salePrice: 40999,
+            retailPrice: 40999,
+          },
+        },
+      },
+      vendorProductId: "BB20151320",
+      freeShippingFlag: false,
+      condition: "new",
+      holdDeliveryFlag: false,
+      bundleInventories: null,
+      id: "6706a7b49874cd49c57ff055",
+      productId: "670482e59874cd49c59d34ad",
+      vendorId: "5760425b9c73c4ff6c0f09f8",
+      vendor: {
+        code: "bestbuy",
+        name: "BestBuy",
+        displayName: "BestBuy",
+        markupMultiplier: 1.2,
+        nonMarkupItems: [
+          "6000888505cd2c0948f4b9ad",
+          "62a373084411c5cadba055db",
+        ],
+        message: "Vendor auto created by fixture job",
+        type: "retail",
+        id: "5760425b9c73c4ff6c0f09f8",
+        _logo: {
+          caption: "Best Buy",
+          description: "Best Buy",
+          source:
+            "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/bestbuy.png",
+          sourceCdn:
+            "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/bestbuy.png",
+          primaryFlag: true,
+          createdAt: null,
+          updatedAt: "2016-07-26T15:03:22.074Z",
+          id: null,
+          productId: null,
+        },
+        _secondaryLogo: {
+          caption: "Best Buy",
+          description: "Best Buy",
+          source:
+            "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
+          sourceCdn:
+            "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
+          primaryFlag: true,
+          createdAt: null,
+          updatedAt: null,
+          id: null,
+          productId: null,
+        },
+      },
+      shippingStrategies: [
         {
-            "caption": "Apple - 10.9-Inch iPad - Latest Model - (10th Generation) with Wi-Fi - 64GB - Yellow",
-            "description": "",
-            "source": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5200/5200906_sd.jpg",
-            "sourceCdn": "http://cdn.flexshopper.xyz/marketplace-production-lb/98c02b2d-cf33-5b14-a0b3-c8c8c7dbc7b5.jpg",
-            "primaryFlag": false,
-            "productId": "670482e59874cd49c59d34ad"
+          code: "bestbuy-nationwide-store-FIXED_PRICE_X_ITEM",
+          id: "5835c7beeb87d299058f2899",
+          shippingMethodId: "5835c7bceb87d299058f2897",
+          shippingMethod: {
+            code: "store",
+            label: "Store Pick Up",
+            transportMode: "pick up",
+            id: "5835c7bceb87d299058f2897",
+          },
         },
         {
-            "caption": "Apple - 10.9-Inch iPad - Latest Model - (10th Generation) with Wi-Fi - 64GB - Yellow",
-            "description": "",
-            "source": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5200/5200906cv1d.jpg",
-            "sourceCdn": "http://cdn.flexshopper.xyz/marketplace-production-lb/81054894-d103-5044-add5-e7fc56f75951.jpg",
-            "primaryFlag": false,
-            "productId": "670482e59874cd49c59d34ad"
+          code: "bestbuy-nationwide-standard-FIXED_PRICE_X_ITEM",
+          id: "665e17f400000000006e9b3e",
+          shippingMethodId: "5760425a9c73c4ff6c0f09e7",
+          shippingMethod: {
+            code: "ground",
+            label: "Ground",
+            transportMode: "ground",
+            id: "5760425a9c73c4ff6c0f09e7",
+          },
         },
-        {
-            "caption": "Apple - 10.9-Inch iPad - Latest Model - (10th Generation) with Wi-Fi - 64GB - Yellow",
-            "description": "",
-            "source": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5200/5200906_bd.jpg",
-            "sourceCdn": "http://cdn.flexshopper.xyz/marketplace-production-lb/369d80e3-fd76-5b97-bc43-a2da39dd7e60.jpg",
-            "primaryFlag": false,
-            "productId": "670482e59874cd49c59d34ad"
-        },
-        {
-            "caption": "Apple - 10.9-Inch iPad - Latest Model - (10th Generation) with Wi-Fi - 64GB - Yellow",
-            "description": "",
-            "source": "https://cdn.cs.1worldsync.com/b6/34/b6343a15-38fe-44ce-90d8-4661fb6d38aa.jpg",
-            "sourceCdn": "http://cdn.flexshopper.xyz/marketplace-production-lb/59101ce5-74d0-52f6-81d7-70211189eeaa.jpg",
-            "primaryFlag": false,
-            "productId": "670482e59874cd49c59d34ad"
-        },
-        {
-            "caption": "Apple - 10.9-Inch iPad - Latest Model - (10th Generation) with Wi-Fi - 64GB - Yellow",
-            "description": "",
-            "source": "https://cdn.cs.1worldsync.com/5b/ca/5bca4548-229d-4b5c-9f00-a698bbf72a18.jpg",
-            "sourceCdn": "http://cdn.flexshopper.xyz/marketplace-production-lb/ba37600e-e782-55ca-ad66-cbe9f2112675.jpg",
-            "primaryFlag": false,
-            "productId": "670482e59874cd49c59d34ad"
-        }
+      ],
+    },
+  ],
+  attributevalues: [
+    {
+      value: "MPQ23LL/A",
+      createdAt: "2024-10-25T15:20:03.579Z",
+      updatedAt: "2024-10-25T15:20:03.579Z",
+      id: "671bb7239874cd49c505a478",
+      productId: "670482e59874cd49c59d34ad",
+      attributeCode: "model_number",
+    },
+    {
+      value: "7.07 in",
+      createdAt: "2024-10-25T15:20:03.579Z",
+      updatedAt: "2024-10-25T15:20:03.579Z",
+      id: "671bb7239874cd49c505a47b",
+      productId: "670482e59874cd49c59d34ad",
+      attributeCode: "width",
+    },
+    {
+      value: "9.79 in",
+      createdAt: "2024-10-25T15:20:03.579Z",
+      updatedAt: "2024-10-25T15:20:03.579Z",
+      id: "671bb7239874cd49c505a47f",
+      productId: "670482e59874cd49c59d34ad",
+      attributeCode: "height",
+    },
+    {
+      value: "0.28 in",
+      createdAt: "2024-10-25T15:20:03.579Z",
+      updatedAt: "2024-10-25T15:20:03.579Z",
+      id: "671bb7239874cd49c505a486",
+      productId: "670482e59874cd49c59d34ad",
+      attributeCode: "length",
+    },
+    {
+      value: "32 oz",
+      createdAt: "2024-10-25T15:20:03.579Z",
+      updatedAt: "2024-10-25T15:20:03.579Z",
+      id: "671bb7239874cd49c505a48b",
+      productId: "670482e59874cd49c59d34ad",
+      attributeCode: "weight",
+    },
+    {
+      value: "Apple",
+      createdAt: "2024-10-25T15:20:03.579Z",
+      updatedAt: "2024-10-25T15:20:03.579Z",
+      id: "671bb7239874cd49c505a491",
+      productId: "670482e59874cd49c59d34ad",
+      attributeCode: "brand",
+    },
+    {
+      value: "New",
+      createdAt: "2024-10-25T15:20:03.579Z",
+      updatedAt: "2024-10-25T15:20:03.579Z",
+      id: "671bb7239874cd49c505a494",
+      productId: "670482e59874cd49c59d34ad",
+      attributeCode: "condition",
+    },
+  ],
+  attributes: [
+    {
+      code: "brand",
+      name: "Brand",
+      filterableFlag: true,
+      createdAt: "2024-10-07T15:33:49.762Z",
+      updatedAt: "2024-10-07T15:33:49.762Z",
+    },
+    {
+      code: "condition",
+      name: "Condition",
+      filterableFlag: true,
+      createdAt: "2024-10-07T15:33:49.757Z",
+      updatedAt: "2024-10-07T15:33:49.757Z",
+    },
+    {
+      code: "height",
+      name: "Height",
+      filterableFlag: true,
+      createdAt: "2024-10-07T15:33:49.771Z",
+      updatedAt: "2024-10-07T15:33:49.771Z",
+    },
+    {
+      code: "length",
+      name: "Length",
+      filterableFlag: true,
+      createdAt: "2024-10-07T15:33:49.766Z",
+      updatedAt: "2024-10-07T15:33:49.766Z",
+    },
+    {
+      code: "model_number",
+      name: "Model Number",
+      filterableFlag: false,
+      createdAt: "2024-10-07T15:33:49.750Z",
+      updatedAt: "2024-10-07T15:33:49.750Z",
+    },
+    {
+      code: "weight",
+      name: "Weight",
+      filterableFlag: true,
+      createdAt: "2024-10-07T15:33:49.780Z",
+      updatedAt: "2024-10-07T15:33:49.780Z",
+    },
+    {
+      code: "width",
+      name: "Width",
+      filterableFlag: true,
+      createdAt: "2024-10-07T15:33:49.776Z",
+      updatedAt: "2024-10-07T15:33:49.776Z",
+    },
+  ],
+  brand: {
+    name: "Apple",
+    displayName: "Apple",
+    description: "Apple",
+    slug: "apple",
+    id: "670410385c767a31ea0d8e12",
+  },
+  images: [
+    {
+      caption:
+        "Apple - 10.9-Inch iPad - Latest Model - (10th Generation) with Wi-Fi - 64GB - Yellow",
+      description: "",
+      source:
+        "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5200/5200906_sd.jpg",
+      sourceCdn:
+        "http://cdn.flexshopper.xyz/marketplace-production-lb/98c02b2d-cf33-5b14-a0b3-c8c8c7dbc7b5.jpg",
+      primaryFlag: false,
+      productId: "670482e59874cd49c59d34ad",
+    },
+    {
+      caption:
+        "Apple - 10.9-Inch iPad - Latest Model - (10th Generation) with Wi-Fi - 64GB - Yellow",
+      description: "",
+      source:
+        "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5200/5200906cv1d.jpg",
+      sourceCdn:
+        "http://cdn.flexshopper.xyz/marketplace-production-lb/81054894-d103-5044-add5-e7fc56f75951.jpg",
+      primaryFlag: false,
+      productId: "670482e59874cd49c59d34ad",
+    },
+    {
+      caption:
+        "Apple - 10.9-Inch iPad - Latest Model - (10th Generation) with Wi-Fi - 64GB - Yellow",
+      description: "",
+      source:
+        "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5200/5200906_bd.jpg",
+      sourceCdn:
+        "http://cdn.flexshopper.xyz/marketplace-production-lb/369d80e3-fd76-5b97-bc43-a2da39dd7e60.jpg",
+      primaryFlag: false,
+      productId: "670482e59874cd49c59d34ad",
+    },
+    {
+      caption:
+        "Apple - 10.9-Inch iPad - Latest Model - (10th Generation) with Wi-Fi - 64GB - Yellow",
+      description: "",
+      source:
+        "https://cdn.cs.1worldsync.com/b6/34/b6343a15-38fe-44ce-90d8-4661fb6d38aa.jpg",
+      sourceCdn:
+        "http://cdn.flexshopper.xyz/marketplace-production-lb/59101ce5-74d0-52f6-81d7-70211189eeaa.jpg",
+      primaryFlag: false,
+      productId: "670482e59874cd49c59d34ad",
+    },
+    {
+      caption:
+        "Apple - 10.9-Inch iPad - Latest Model - (10th Generation) with Wi-Fi - 64GB - Yellow",
+      description: "",
+      source:
+        "https://cdn.cs.1worldsync.com/5b/ca/5bca4548-229d-4b5c-9f00-a698bbf72a18.jpg",
+      sourceCdn:
+        "http://cdn.flexshopper.xyz/marketplace-production-lb/ba37600e-e782-55ca-ad66-cbe9f2112675.jpg",
+      primaryFlag: false,
+      productId: "670482e59874cd49c59d34ad",
+    },
+  ],
+  reviews: [],
+};
+
+export const mockProductList: ProductInfo[] = [
+  {
+    mpn: "CAM78WMEF-2WHT",
+    name: "78-In. Wall-Mount Electric Fireplace in White with Multi-Color Flames and Driftwood Log Display",
+    description:
+      "Treat yourself to an evening by the fire with Cambridge electric fireplaces. Stunning displays of flames and driftwood logs will light up the room in an instant, creating a warm setting in your home. These fireplaces can be installed right into the wall, saving the smallest of rooms much needed floor space. The display is made up of ten LED colors in addition to 10 flame effects. These flames can be set to display your favorite color or transition through all colors continuously. Simply pick up the remote control provided and choose your most comfortable settings. A Cambridge fireplace will look like an elegant work of art on your wall. What sets it apart is that it can also make you feel warm and comfortable at home.",
+    weight: 62.2,
+    slug: "78-in-wall-mount-electric-fireplace-in-white-with-multi-color-flames-and-driftwood-log-display-cambridge-cam78wmef-2wht",
+    features:
+      "<ul><li>78 in. wall-mount fireplace</li><li>Smooth white and tempered glass surface</li><li>Multi-color LED flames over a driftwood log display</li><li>Adjustable color settings</li><li>Dual heat settings: 700W (low) / 1350W (high)</li></ul>",
+    specs:
+      '<table><tbody><tr><td>UPC</td><td>819430022274</td></tr><tr><td>Assembly Required?</td><td>Y</td></tr><tr><td>Assembly Instructions Included?</td><td>Y</td></tr><tr><td>Assembly Type</td><td>Some Assembly Required</td></tr><tr><td>Indoor or Outdoor?</td><td>Indoor</td></tr><tr><td>Condition</td><td>new</td></tr><tr><td>Carton Length (in)</td><td>8.9</td></tr><tr><td>Carton Width (in)</td><td>82.2</td></tr><tr><td>Carton Height (in)</td><td>24.3</td></tr><tr><td>Carton Weight (lbs)</td><td>73.9</td></tr><tr><td>Delivery Type</td><td>Small Parcel</td></tr><tr><td>Warranty Details</td><td>1-year limited</td></tr><tr><td>Warranty Phone</td><td>1-855-727-4659</td></tr><tr id="prop65Row"><td>California residents</td><td><a href="#" class="js-prop65PageBtn"><strong>Click here</strong></a> for Proposition 65 warning.</td></tr></tbody></table>',
+    condition: "new",
+    importProductUpdate: false,
+    tagsUpdate: true,
+    attributesUpdate: true,
+    useCnetGalleryFlag: true,
+    source: "almo",
+    rank: 0,
+    sales: 0,
+    createdAt: "2024-10-07T15:59:15.518Z",
+    updatedAt: "2024-10-21T19:45:50.646Z",
+    id: "670405539874cd49c53f8649",
+    brandId: "6703ff5ea0e8b6e45fc74369",
+    feedId: "21f9a21d-704c-4d9f-86f7-b3134eceb8ed",
+    supplier: 100819,
+    upc: "819430022274",
+    breadcrumbs: [
+      {
+        id: "6703ff60a0e8b6e45fc743a6",
+        name: "Furniture",
+        metaKeywords: "furniture, flexshopper.com",
+        metaDescription:
+          "Lease to own products from top brands in Furniture with easy weekly payments and fast shipping. Learn how FlexShopper can help you shop and save.",
+        slug: "furniture",
+        path: "6703ff60a0e8b6e45fc743a6",
+      },
+      {
+        id: "6703ff60a0e8b6e45fc743ac",
+        name: "Living Room Furniture",
+        metaKeywords: "living, room, furniture, flexshopper.com",
+        metaDescription:
+          "Lease to own products from top brands in Living Room Furniture with easy weekly payments and fast shipping. Learn how FlexShopper can help you shop and save.",
+        slug: "living-room-furniture",
+        path: "6703ff60a0e8b6e45fc743a6/6703ff60a0e8b6e45fc743ac",
+      },
+      {
+        id: "6703ff60a0e8b6e45fc743b1",
+        name: "Indoor Fireplaces",
+        metaKeywords: "indoor, fireplaces, flexshopper.com",
+        metaDescription:
+          "FlexShopper makes it easy to lease to own your favorite products in Indoor Fireplaces. Shop online today and enjoy fast shipping directly to your door.",
+        slug: "indoor-fireplaces",
+        path: "6703ff60a0e8b6e45fc743a6/6703ff60a0e8b6e45fc743ac/6703ff60a0e8b6e45fc743b1",
+      },
     ],
-    "reviews": []
-}
+    attributeList: [
+      {
+        code: "length",
+        value: "78 in",
+        name: "Length",
+        filterableFlag: true,
+      },
+      {
+        code: "material",
+        value: "MDF",
+        name: "Material",
+        filterableFlag: true,
+      },
+      {
+        code: "brand",
+        value: "Cambridge",
+        name: "Brand",
+        filterableFlag: true,
+      },
+      {
+        code: "style",
+        value: "Modern",
+        name: "Style",
+        filterableFlag: true,
+      },
+      {
+        code: "color",
+        value: "White",
+        name: "Color",
+        filterableFlag: true,
+      },
+      {
+        code: "height",
+        value: "19.8 in",
+        name: "Height",
+        filterableFlag: true,
+      },
+      {
+        code: "width",
+        value: "4.7 in",
+        name: "Width",
+        filterableFlag: true,
+      },
+      {
+        code: "condition",
+        value: "new",
+        name: "Condition",
+        filterableFlag: true,
+      },
+      {
+        code: "model_number",
+        value: "CAM78WMEF-2WHT",
+        name: "Model Number",
+        filterableFlag: false,
+      },
+      {
+        code: "weight",
+        value: "62.2 lbs",
+        name: "Weight",
+        filterableFlag: true,
+      },
+    ],
+    inventories: [
+      {
+        enabledFlag: true,
+        qty: 53,
+        sku: "cam78wmef-2wht-almo",
+        primaryFlag: false,
+        stockOutThreshold: 0,
+        salePrice: 99999,
+        itemCost: 99999,
+        wholesaleCost: 40000,
+        retailPrice: 59900,
+        sale: 100,
+        markupData: {
+          applyMarkup: true,
+          stateMarkup: {
+            AZ: {},
+            HI: {
+              salePrice: 109999,
+              retailPrice: 65899,
+            },
+            IN: {},
+          },
+          vendorMarkup: {},
+          vendorStateMarkup: {},
+        },
+        vendorProductId: "CAM78WMEF-2WHT",
+        freeShippingFlag: false,
+        condition: "new",
+        holdDeliveryFlag: false,
+        bundleInventories: null,
+        id: "670fe6a89874cd49c51fa420",
+        productId: "670405539874cd49c53f8649",
+        vendorId: "632c582dcb101295c91c32bd",
+        vendor: {
+          code: "almo",
+          name: "FlexChoice",
+          displayName: "FlexChoice",
+          markupMultiplier: 1,
+          nonMarkupItems: [],
+          message: "Flex Choice",
+          type: "retail",
+          id: "632c582dcb101295c91c32bd",
+          _logo: {
+            caption: "samsung",
+            description: "samsung",
+            source:
+              "https://s3.amazonaws.com/flexshopper-assets/misc/2023/02/01/ryXdgIdni-2058d5cb4ae4b430d6b11e16cbe0574b",
+            sourceCdn:
+              "https://s3.amazonaws.com/flexshopper-assets/misc/2023/02/01/ryXdgIdni-2058d5cb4ae4b430d6b11e16cbe0574b",
+            primaryFlag: false,
+          },
+          _secondaryLogo: {
+            caption: "FPP",
+            description: "FPP",
+            source:
+              "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
+            sourceCdn:
+              "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
+            primaryFlag: false,
+          },
+        },
+        shippingStrategies: [
+          {
+            code: "almo-nationwide-ground-DYNAMIC_PRICE_X_ITEM",
+            id: "66faab5b9db20aed9f34afeb",
+            shippingMethodId: "5760425a9c73c4ff6c0f09e7",
+            shippingMethod: {
+              code: "ground",
+              label: "Ground",
+              transportMode: "ground",
+              id: "5760425a9c73c4ff6c0f09e7",
+            },
+          },
+        ],
+      },
+    ],
+    attributevalues: [
+      {
+        value: "78 in",
+        createdAt: "2024-10-21T19:45:50.665Z",
+        updatedAt: "2024-10-21T19:45:50.665Z",
+        id: "6716af6e9874cd49c571030c",
+        productId: "670405539874cd49c53f8649",
+        attributeCode: "length",
+      },
+      {
+        value: "MDF",
+        createdAt: "2024-10-21T19:45:50.665Z",
+        updatedAt: "2024-10-21T19:45:50.665Z",
+        id: "6716af6e9874cd49c571030e",
+        productId: "670405539874cd49c53f8649",
+        attributeCode: "material",
+      },
+      {
+        value: "Cambridge",
+        createdAt: "2024-10-21T19:45:50.665Z",
+        updatedAt: "2024-10-21T19:45:50.665Z",
+        id: "6716af6e9874cd49c571030f",
+        productId: "670405539874cd49c53f8649",
+        attributeCode: "brand",
+      },
+      {
+        value: "Modern",
+        createdAt: "2024-10-21T19:45:50.665Z",
+        updatedAt: "2024-10-21T19:45:50.665Z",
+        id: "6716af6e9874cd49c5710310",
+        productId: "670405539874cd49c53f8649",
+        attributeCode: "style",
+      },
+      {
+        value: "White",
+        createdAt: "2024-10-21T19:45:50.665Z",
+        updatedAt: "2024-10-21T19:45:50.665Z",
+        id: "6716af6e9874cd49c5710314",
+        productId: "670405539874cd49c53f8649",
+        attributeCode: "color",
+      },
+      {
+        value: "19.8 in",
+        createdAt: "2024-10-21T19:45:50.665Z",
+        updatedAt: "2024-10-21T19:45:50.665Z",
+        id: "6716af6e9874cd49c5710315",
+        productId: "670405539874cd49c53f8649",
+        attributeCode: "height",
+      },
+      {
+        value: "4.7 in",
+        createdAt: "2024-10-21T19:45:50.665Z",
+        updatedAt: "2024-10-21T19:45:50.665Z",
+        id: "6716af6e9874cd49c5710316",
+        productId: "670405539874cd49c53f8649",
+        attributeCode: "width",
+      },
+      {
+        value: "new",
+        createdAt: "2024-10-21T19:45:50.665Z",
+        updatedAt: "2024-10-21T19:45:50.665Z",
+        id: "6716af6e9874cd49c571031c",
+        productId: "670405539874cd49c53f8649",
+        attributeCode: "condition",
+      },
+      {
+        value: "CAM78WMEF-2WHT",
+        createdAt: "2024-10-21T19:45:50.665Z",
+        updatedAt: "2024-10-21T19:45:50.665Z",
+        id: "6716af6e9874cd49c571031f",
+        productId: "670405539874cd49c53f8649",
+        attributeCode: "model_number",
+      },
+      {
+        value: "62.2 lbs",
+        createdAt: "2024-10-21T19:45:50.665Z",
+        updatedAt: "2024-10-21T19:45:50.665Z",
+        id: "6716af6e9874cd49c5710322",
+        productId: "670405539874cd49c53f8649",
+        attributeCode: "weight",
+      },
+    ],
+    attributes: [
+      {
+        code: "brand",
+        name: "Brand",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:49.762Z",
+        updatedAt: "2024-10-07T15:33:49.762Z",
+      },
+      {
+        code: "color",
+        name: "Color",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:52.224Z",
+        updatedAt: "2024-10-07T15:33:52.224Z",
+      },
+      {
+        code: "condition",
+        name: "Condition",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:49.757Z",
+        updatedAt: "2024-10-07T15:33:49.757Z",
+      },
+      {
+        code: "height",
+        name: "Height",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:49.771Z",
+        updatedAt: "2024-10-07T15:33:49.771Z",
+      },
+      {
+        code: "length",
+        name: "Length",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:49.766Z",
+        updatedAt: "2024-10-07T15:33:49.766Z",
+      },
+      {
+        code: "material",
+        name: "Material",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:52.235Z",
+        updatedAt: "2024-10-07T15:33:52.235Z",
+      },
+      {
+        code: "model_number",
+        name: "Model Number",
+        filterableFlag: false,
+        createdAt: "2024-10-07T15:33:49.750Z",
+        updatedAt: "2024-10-07T15:33:49.750Z",
+      },
+      {
+        code: "style",
+        name: "Style",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:52.230Z",
+        updatedAt: "2024-10-07T15:33:52.230Z",
+      },
+      {
+        code: "weight",
+        name: "Weight",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:49.780Z",
+        updatedAt: "2024-10-07T15:33:49.780Z",
+      },
+      {
+        code: "width",
+        name: "Width",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:49.776Z",
+        updatedAt: "2024-10-07T15:33:49.776Z",
+      },
+    ],
+    brand: {
+      name: "Cambridge",
+      displayName: "Cambridge",
+      description: "Cambridge",
+      slug: "cambridge",
+      id: "6703ff5ea0e8b6e45fc74369",
+    },
+    images: [
+      {
+        caption:
+          "78-In. Wall-Mount Electric Fireplace in White with Multi-Color Flames and Driftwood Log Display",
+        description: "",
+        source:
+          "https://assetserver.net/_assets/cambridge/print%20quality%20-%20jpg/cam78wmef2wht-alt2.jpg",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/99ad43ed-d5da-5bef-a95d-9d2742dc3668.jpg",
+        primaryFlag: false,
+        productId: "670405539874cd49c53f8649",
+      },
+      {
+        caption:
+          "78-In. Wall-Mount Electric Fireplace in White with Multi-Color Flames and Driftwood Log Display",
+        description: "",
+        source:
+          "https://assetserver.net/_assets/cambridge/print%20quality%20-%20jpg/cam78wmef2wht-alt3.jpg",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/d7da4efb-9a5c-51f1-a5c2-f599d3c2d979.jpg",
+        primaryFlag: false,
+        productId: "670405539874cd49c53f8649",
+      },
+      {
+        caption:
+          "78-In. Wall-Mount Electric Fireplace in White with Multi-Color Flames and Driftwood Log Display",
+        description: "",
+        source:
+          "https://assetserver.net/_assets/cambridge/print%20quality%20-%20jpg/cam78wmef2wht-alt1.jpg",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/4873b182-8967-5d7d-8574-74586731ae93.jpg",
+        primaryFlag: false,
+        productId: "670405539874cd49c53f8649",
+      },
+      {
+        caption:
+          "78-In. Wall-Mount Electric Fireplace in White with Multi-Color Flames and Driftwood Log Display",
+        description: "",
+        source:
+          "https://assetserver.net/_assets/cambridge/print%20quality%20-%20jpg/cam78wmef2wht-alt4.jpg",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/f9fcb407-0a21-53eb-b836-a28a8ecebd8d.jpg",
+        primaryFlag: false,
+        productId: "670405539874cd49c53f8649",
+      },
+      {
+        caption:
+          "78-In. Wall-Mount Electric Fireplace in White with Multi-Color Flames and Driftwood Log Display",
+        description: "",
+        source:
+          "https://assetserver.net/_assets/cambridge/print%20quality%20-%20jpg/cam78wmef2wht-alt5.jpg",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/4b80a607-78e6-5363-b098-b918acf6244e.jpg",
+        primaryFlag: false,
+        productId: "670405539874cd49c53f8649",
+      },
+    ],
+    reviews: [],
+  },
+  {
+    mpn: "W633-68",
+    name: "Starmore Extra Large TV Stand w/Fireplace Option",
+    description:
+      "For fans of urban industrial design, this XL TV stand clearly steals the show. Its blend of acacia veneer and wood is beautified with an oiled walnut-tone finish for a highly contemporary aesthetic with grainy, earthy character. Infusion of dark bronze-tone metal takes the cool character to another level. And for your added viewing pleasure, this entertainment center is compatible with our electric fireplace inserts (sold separately).",
+    weight: 166,
+    slug: "starmore-extra-large-tv-stand-wfireplace-option-ashley-furniture-w633-68",
+    features:
+      "<ul><li>Made of acacia veneers, wood and engineered wood</li><li>Oiled walnut-tone finish</li><li>Dark bronze-tone metal hardware</li><li>2 glass-front cabinets, each with an adjustable shelf; adjustable/removable center shelf, open cubby and cutouts for wire management</li><li>Compatible with W100-02 and W100-101 electric fireplace inserts (sold separately)</li><li>Assembly required</li><li>Delivery Details: This item includes threshold delivery, which includes call ahead appointment and delivery of the product inside the main doorway of the house/apartment. It does not include set up, debris removal or unpacking of any kind, room of choice, and also does not include any stairs.</li></ul>",
+    specs:
+      '<table><tbody><tr><td>UPC</td><td>24052584592</td></tr><tr><td>Assembly Required?</td><td>Y</td></tr><tr><td>Assembly Instructions Included?</td><td>Y</td></tr><tr><td>Assembly Type</td><td>Assembly Required</td></tr><tr><td>Indoor or Outdoor?</td><td>Indoor</td></tr><tr><td>Condition</td><td>new</td></tr><tr><td>Carton Length (in)</td><td>35.50</td></tr><tr><td>Carton Width (in)</td><td>73.50</td></tr><tr><td>Carton Height (in)</td><td>10.75</td></tr><tr><td>Carton Weight (lbs)</td><td>178</td></tr><tr><td>Delivery Type</td><td>LTL</td></tr><tr><td>Warranty Details</td><td>No Warranty</td></tr><tr id="prop65Row"><td>California residents</td><td><a href="#" class="js-prop65PageBtn"><strong>Click here</strong></a> for Proposition 65 warning.</td></tr></tbody></table>',
+    condition: "new",
+    importProductUpdate: false,
+    tagsUpdate: true,
+    attributesUpdate: true,
+    useCnetGalleryFlag: true,
+    source: "ashley",
+    rank: 0,
+    sales: 0,
+    createdAt: "2024-10-08T02:37:05.748Z",
+    updatedAt: "2024-10-20T17:43:21.752Z",
+    id: "67049ad19874cd49c5ece7ad",
+    brandId: "670498ecb584804d2566e9c5",
+    feedId: "205a58c7-a3bf-4275-b5a1-e4a8ca5b2fe5",
+    supplier: 101325,
+    upc: "24052584592",
+    breadcrumbs: [
+      {
+        id: "6703ff60a0e8b6e45fc743a6",
+        name: "Furniture",
+        metaKeywords: "furniture, flexshopper.com",
+        metaDescription:
+          "Lease to own products from top brands in Furniture with easy weekly payments and fast shipping. Learn how FlexShopper can help you shop and save.",
+        slug: "furniture",
+        path: "6703ff60a0e8b6e45fc743a6",
+      },
+      {
+        id: "6703ff60a0e8b6e45fc743ac",
+        name: "Living Room Furniture",
+        metaKeywords: "living, room, furniture, flexshopper.com",
+        metaDescription:
+          "Lease to own products from top brands in Living Room Furniture with easy weekly payments and fast shipping. Learn how FlexShopper can help you shop and save.",
+        slug: "living-room-furniture",
+        path: "6703ff60a0e8b6e45fc743a6/6703ff60a0e8b6e45fc743ac",
+      },
+      {
+        id: "67042f08f94fba67d3682eb3",
+        name: "TV Stands & Entertainment Centers",
+        metaKeywords:
+          "tv, stands, and, entertainment, centers, flexshopper.com",
+        metaDescription:
+          "Lease to own products from top brands in TV Stands & Entertainment Centers with easy weekly payments and fast shipping. Learn how FlexShopper can help you shop and save.",
+        slug: "tv-stands-and-entertainment-centers",
+        path: "6703ff60a0e8b6e45fc743a6/6703ff60a0e8b6e45fc743ac/67042f08f94fba67d3682eb3",
+      },
+    ],
+    attributeList: [
+      {
+        code: "height",
+        value: "35.13 in",
+        name: "Height",
+        filterableFlag: true,
+      },
+      {
+        code: "brand",
+        value: "Ashley Furniture",
+        name: "Brand",
+        filterableFlag: true,
+      },
+      {
+        code: "color",
+        value: "Brown",
+        name: "Color",
+        filterableFlag: true,
+      },
+      {
+        code: "length",
+        value: "19.13 in",
+        name: "Length",
+        filterableFlag: true,
+      },
+      {
+        code: "condition",
+        value: "new",
+        name: "Condition",
+        filterableFlag: true,
+      },
+      {
+        code: "material",
+        value: "Wood",
+        name: "Material",
+        filterableFlag: true,
+      },
+      {
+        code: "width",
+        value: "70.13 in",
+        name: "Width",
+        filterableFlag: true,
+      },
+      {
+        code: "weight",
+        value: "166 lbs",
+        name: "Weight",
+        filterableFlag: true,
+      },
+      {
+        code: "model_number",
+        value: "W633-68",
+        name: "Model Number",
+        filterableFlag: false,
+      },
+      {
+        code: "style",
+        value: "Contemporary",
+        name: "Style",
+        filterableFlag: true,
+      },
+    ],
+    inventories: [
+      {
+        enabledFlag: true,
+        qty: 38,
+        sku: "w633-68-ashley",
+        primaryFlag: false,
+        stockOutThreshold: 0,
+        salePrice: 76999,
+        itemCost: 76999,
+        wholesaleCost: 40000,
+        retailPrice: 76999,
+        sale: 100,
+        markupData: {
+          applyMarkup: true,
+          stateMarkup: {
+            AZ: {},
+            HI: {
+              salePrice: 84699,
+              retailPrice: 84699,
+            },
+            IN: {},
+          },
+          vendorMarkup: {},
+          vendorStateMarkup: {},
+        },
+        vendorProductId: "W633-68",
+        freeShippingFlag: false,
+        condition: "new",
+        holdDeliveryFlag: false,
+        bundleInventories: null,
+        id: "67049ad39874cd49c5ecea72",
+        productId: "67049ad19874cd49c5ece7ad",
+        vendorId: "5760425a9c73c4ff6c0f09f2",
+        vendor: {
+          code: "ashley",
+          name: "AshleyFurniture",
+          displayName: "AshleyFurniture",
+          markupMultiplier: 1,
+          nonMarkupItems: [],
+          message: "Vendor auto created by fixture job",
+          type: "retail",
+          id: "5760425a9c73c4ff6c0f09f2",
+          _logo: {
+            caption: "Ashley Furniture",
+            description: "Ashley Furniture",
+            source: "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/logo-ashley-signature.png",
+            sourceCdn: "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/logo-ashley-signature.png",
+            primaryFlag: true,
+            createdAt: null,
+            updatedAt: "2016-07-26T15:13:58.336Z",
+            id: null,
+            productId: null,
+          },
+          _secondaryLogo: {
+            caption: "Ashley Furniture",
+            description: "Ashley Furniture",
+            source: "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
+            sourceCdn: "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
+            primaryFlag: true,
+            createdAt: null,
+            updatedAt: null,
+            id: null,
+            productId: null,
+          },
+        },
+        shippingStrategies: [
+          {
+            code: "ashley-nationwide-flexshopper-ltl-DYNAMIC_PRICE_X_ITEM",
+            id: "66f83567e113816f27e2d844",
+            shippingMethodId: "66f055cadf1fd8928f022138",
+            shippingMethod: {
+              code: "flexshopper-ltl",
+              label: "Freight",
+              transportMode: "ground",
+              id: "66f055cadf1fd8928f022138",
+            },
+          },
+        ],
+      },
+    ],
+    attributevalues: [
+      {
+        value: "35.13 in",
+        createdAt: "2024-10-20T17:43:21.762Z",
+        updatedAt: "2024-10-20T17:43:21.762Z",
+        id: "671541399874cd49c594045a",
+        productId: "67049ad19874cd49c5ece7ad",
+        attributeCode: "height",
+      },
+      {
+        value: "Ashley Furniture",
+        createdAt: "2024-10-20T17:43:21.762Z",
+        updatedAt: "2024-10-20T17:43:21.762Z",
+        id: "671541399874cd49c594045c",
+        productId: "67049ad19874cd49c5ece7ad",
+        attributeCode: "brand",
+      },
+      {
+        value: "Brown",
+        createdAt: "2024-10-20T17:43:21.762Z",
+        updatedAt: "2024-10-20T17:43:21.762Z",
+        id: "671541399874cd49c594045d",
+        productId: "67049ad19874cd49c5ece7ad",
+        attributeCode: "color",
+      },
+      {
+        value: "19.13 in",
+        createdAt: "2024-10-20T17:43:21.762Z",
+        updatedAt: "2024-10-20T17:43:21.762Z",
+        id: "671541399874cd49c594045f",
+        productId: "67049ad19874cd49c5ece7ad",
+        attributeCode: "length",
+      },
+      {
+        value: "new",
+        createdAt: "2024-10-20T17:43:21.762Z",
+        updatedAt: "2024-10-20T17:43:21.762Z",
+        id: "671541399874cd49c5940461",
+        productId: "67049ad19874cd49c5ece7ad",
+        attributeCode: "condition",
+      },
+      {
+        value: "Wood",
+        createdAt: "2024-10-20T17:43:21.762Z",
+        updatedAt: "2024-10-20T17:43:21.762Z",
+        id: "671541399874cd49c5940462",
+        productId: "67049ad19874cd49c5ece7ad",
+        attributeCode: "material",
+      },
+      {
+        value: "70.13 in",
+        createdAt: "2024-10-20T17:43:21.762Z",
+        updatedAt: "2024-10-20T17:43:21.762Z",
+        id: "671541399874cd49c5940464",
+        productId: "67049ad19874cd49c5ece7ad",
+        attributeCode: "width",
+      },
+      {
+        value: "166 lbs",
+        createdAt: "2024-10-20T17:43:21.762Z",
+        updatedAt: "2024-10-20T17:43:21.762Z",
+        id: "671541399874cd49c5940467",
+        productId: "67049ad19874cd49c5ece7ad",
+        attributeCode: "weight",
+      },
+      {
+        value: "W633-68",
+        createdAt: "2024-10-20T17:43:21.762Z",
+        updatedAt: "2024-10-20T17:43:21.762Z",
+        id: "671541399874cd49c594046a",
+        productId: "67049ad19874cd49c5ece7ad",
+        attributeCode: "model_number",
+      },
+      {
+        value: "Contemporary",
+        createdAt: "2024-10-20T17:43:21.762Z",
+        updatedAt: "2024-10-20T17:43:21.762Z",
+        id: "671541399874cd49c594046d",
+        productId: "67049ad19874cd49c5ece7ad",
+        attributeCode: "style",
+      },
+    ],
+    attributes: [
+      {
+        code: "brand",
+        name: "Brand",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:49.762Z",
+        updatedAt: "2024-10-07T15:33:49.762Z",
+      },
+      {
+        code: "color",
+        name: "Color",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:52.224Z",
+        updatedAt: "2024-10-07T15:33:52.224Z",
+      },
+      {
+        code: "condition",
+        name: "Condition",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:49.757Z",
+        updatedAt: "2024-10-07T15:33:49.757Z",
+      },
+      {
+        code: "height",
+        name: "Height",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:49.771Z",
+        updatedAt: "2024-10-07T15:33:49.771Z",
+      },
+      {
+        code: "length",
+        name: "Length",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:49.766Z",
+        updatedAt: "2024-10-07T15:33:49.766Z",
+      },
+      {
+        code: "material",
+        name: "Material",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:52.235Z",
+        updatedAt: "2024-10-07T15:33:52.235Z",
+      },
+      {
+        code: "model_number",
+        name: "Model Number",
+        filterableFlag: false,
+        createdAt: "2024-10-07T15:33:49.750Z",
+        updatedAt: "2024-10-07T15:33:49.750Z",
+      },
+      {
+        code: "style",
+        name: "Style",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:52.230Z",
+        updatedAt: "2024-10-07T15:33:52.230Z",
+      },
+      {
+        code: "weight",
+        name: "Weight",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:49.780Z",
+        updatedAt: "2024-10-07T15:33:49.780Z",
+      },
+      {
+        code: "width",
+        name: "Width",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:49.776Z",
+        updatedAt: "2024-10-07T15:33:49.776Z",
+      },
+    ],
+    brand: {
+      name: "Ashley Furniture",
+      displayName: "Ashley Furniture",
+      description: "Ashley Furniture",
+      slug: "ashley-furniture",
+      id: "670498ecb584804d2566e9c5",
+    },
+    images: [
+      {
+        caption: "Starmore Extra Large TV Stand w/Fireplace Option",
+        description: "",
+        source:
+          "https://s7d3.scene7.com/is/image/AshleyFurniture/W633-68-SIDE-SW-P1-KO?$huge$",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/5a97077c-1f6d-515a-b39f-a0271a1e6255.jpg",
+        primaryFlag: false,
+        productId: "67049ad19874cd49c5ece7ad",
+      },
+      {
+        caption: "Starmore Extra Large TV Stand w/Fireplace Option",
+        description: "",
+        source:
+          "https://s7d3.scene7.com/is/image/AshleyFurniture/W633-68-10X8-CROP?$huge$",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/78a67237-04b8-546f-8555-f3a28f70076e.jpg",
+        primaryFlag: false,
+        productId: "67049ad19874cd49c5ece7ad",
+      },
+      {
+        caption: "Starmore Extra Large TV Stand w/Fireplace Option",
+        description: "",
+        source:
+          "https://s7d3.scene7.com/is/image/AshleyFurniture/W633-68-ANGLE-SW-P1-KO?$huge$",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/33f69a33-c9ca-50b8-b284-122f9e51cb85.jpg",
+        primaryFlag: false,
+        productId: "67049ad19874cd49c5ece7ad",
+      },
+      {
+        caption: "Starmore Extra Large TV Stand w/Fireplace Option",
+        description: "",
+        source:
+          "https://s7d3.scene7.com/is/image/AshleyFurniture/W633-68-OPEN-ANGLE-SW-P1-KO?$huge$",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/3db7a7d5-945b-5441-80c4-72379d756637.jpg",
+        primaryFlag: false,
+        productId: "67049ad19874cd49c5ece7ad",
+      },
+      {
+        caption: "Starmore Extra Large TV Stand w/Fireplace Option",
+        description: "",
+        source:
+          "https://s7d3.scene7.com/is/image/AshleyFurniture/W633-68-Starmore-DIM?$huge$",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/9a1007fb-a3d7-52dd-b611-ce142654124c.jpg",
+        primaryFlag: false,
+        productId: "67049ad19874cd49c5ece7ad",
+      },
+      {
+        caption: "Starmore Extra Large TV Stand w/Fireplace Option",
+        description: "",
+        source:
+          "https://s7d3.scene7.com/is/image/AshleyFurniture/W633-68-HEAD-ON-SW-P1-KO?$huge$",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/1dbceb0f-8ba7-5689-ae03-e7dbd1f3da46.jpg",
+        primaryFlag: false,
+        productId: "67049ad19874cd49c5ece7ad",
+      },
+      {
+        caption: "Starmore Extra Large TV Stand w/Fireplace Option",
+        description: "",
+        source:
+          "https://s7d3.scene7.com/is/image/AshleyFurniture/W633-68-TOP-SW-P1-KO?$huge$",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/1b278356-f336-591a-998c-735f4d64d65d.jpg",
+        primaryFlag: false,
+        productId: "67049ad19874cd49c5ece7ad",
+      },
+      {
+        caption: "Starmore Extra Large TV Stand w/Fireplace Option",
+        description: "",
+        source:
+          "https://s7d3.scene7.com/is/image/AshleyFurniture/W633-68-FINISH-10X8-CROP?$huge$",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/71a000ea-c3d3-57e3-8ca3-fb64e70daa98.jpg",
+        primaryFlag: false,
+        productId: "67049ad19874cd49c5ece7ad",
+      },
+      {
+        caption: "Starmore Extra Large TV Stand w/Fireplace Option",
+        description: "",
+        source:
+          "https://s7d3.scene7.com/is/image/AshleyFurniture/W633-68-HDWR-DETAIL?$huge$",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/2eefb24c-41f4-5484-bf8b-32b698d0be91.jpg",
+        primaryFlag: false,
+        productId: "67049ad19874cd49c5ece7ad",
+      },
+    ],
+    reviews: [],
+  },
+  {
+    mpn: "D35795758-24",
+    name: "14k Yellow Gold Polished Miami Cuban Chain Necklace",
+    description:
+      "Highly polished 14k yellow gold meets the luxury and timeless design of wide chain links in this exquisite Miami Cuban chain Necklace. Necklace is 24 inches long 13.5mm wide and closes with a box clasp.",
+    weight: 56.5,
+    slug: "14k-yellow-gold-polished-miami-cuban-chain-necklace-regala-d35795758-24",
+    features: "<ul><li>Yellow Gold</li><li>Fancy</li><li>24</li></ul>",
+    specs:
+      '<table><tbody><tr><td>Stock No.</td><td>D35795758-24</td></tr><tr><td>UPC</td><td>3579575824</td></tr><tr><td>Weight</td><td>56.5 gms</td></tr><tr><td>Width</td><td>0.53 in</td></tr><tr><td>Metal Content</td><td>14k</td></tr><tr><td>Carton Weight (lbs)</td><td>1</td></tr><tr><td>Carton Height (in)</td><td>1</td></tr><tr><td>Carton Length (in)</td><td>1</td></tr><tr><td>Carton Width (in)</td><td>1</td></tr><tr><td>Delivery Type</td><td>Small Parcel</td></tr><tr><td>Warranty Details</td><td>No Warranty</td></tr><tr id="prop65Row"><td>California residents</td><td><a href="#" class="js-prop65PageBtn"><strong>Click here</strong></a> for Proposition 65 warning.</td></tr></tbody></table>',
+    condition: "new",
+    importProductUpdate: false,
+    tagsUpdate: true,
+    attributesUpdate: true,
+    useCnetGalleryFlag: true,
+    source: "rcj",
+    rank: 0,
+    sales: 0,
+    createdAt: "2024-10-08T02:15:49.002Z",
+    updatedAt: "2024-10-20T07:54:51.025Z",
+    id: "670495d59874cd49c5db87e9",
+    brandId: "670490b82ecf1f2eb1119f91",
+    feedId: "0733eb23-8b80-454c-bfa3-f1f5fed8eac9",
+    supplier: 100832,
+    upc: "3579575824",
+    breadcrumbs: [
+      {
+        id: "67042ad6c0ab1a2860de8fb7",
+        name: "Jewelry & Watches",
+        metaKeywords: "jewelry, and, watches, flexshopper.com",
+        metaDescription:
+          "Lease to own products from top brands in Jewelry & Watches and enjoy fast shipping and easy weekly payments from the comfort of your home. Learn More",
+        slug: "jewelry-and-watches",
+        path: "67042ad6c0ab1a2860de8fb7",
+      },
+      {
+        id: "67042ad8c0ab1a2860de9004",
+        name: "Jewelry",
+        metaKeywords: "jewelry, flexshopper.com",
+        metaDescription:
+          "FlexShopper has the latest in Jewelry, with the best lease-to-own options that fit your lifestyle. Find exclusive deals on brand names daily.",
+        slug: "jewelry",
+        path: "67042ad6c0ab1a2860de8fb7/67042ad8c0ab1a2860de9004",
+      },
+      {
+        id: "67042ad9c0ab1a2860de9051",
+        name: "Necklaces & Chains",
+        metaKeywords: "necklaces, and, chains, flexshopper.com",
+        metaDescription:
+          "FlexShopper makes lease to own simple and affordable. Our marketplace has your favorite products in Necklaces & Chains, available at low weekly prices.",
+        slug: "necklaces-and-chains",
+        path: "67042ad6c0ab1a2860de8fb7/67042ad8c0ab1a2860de9004/67042ad9c0ab1a2860de9051",
+      },
+    ],
+    attributeList: [
+      {
+        code: "gender",
+        value: "Unisex",
+        name: "Gender",
+        filterableFlag: true,
+      },
+      {
+        code: "model_number",
+        value: "D35795758-24",
+        name: "Model Number",
+        filterableFlag: false,
+      },
+      {
+        code: "material",
+        value: "Gold",
+        name: "Material",
+        filterableFlag: true,
+      },
+      {
+        code: "size",
+        value: "24 in",
+        name: "Size",
+        filterableFlag: true,
+      },
+      {
+        code: "jewelry_style",
+        value: "Classic",
+        name: "Jewelry Style",
+        filterableFlag: true,
+      },
+      {
+        code: "brand",
+        value: "Regala",
+        name: "Brand",
+        filterableFlag: true,
+      },
+      {
+        code: "condition",
+        value: "new",
+        name: "Condition",
+        filterableFlag: true,
+      },
+      {
+        code: "clasp",
+        value: "Box Clasp",
+        name: "Clasp",
+        filterableFlag: true,
+      },
+    ],
+    inventories: [
+      {
+        enabledFlag: true,
+        qty: 100,
+        sku: "d35795758-24-rcj",
+        primaryFlag: false,
+        stockOutThreshold: 0,
+        salePrice: 1398999,
+        itemCost: 1398999,
+        wholesaleCost: 423899,
+        retailPrice: 1398999,
+        sale: 100,
+        markupData: {
+          applyMarkup: true,
+          stateMarkup: {
+            AZ: {},
+            HI: {
+              salePrice: 1538899,
+              retailPrice: 1538899,
+            },
+            IN: {},
+          },
+          vendorMarkup: {},
+          vendorStateMarkup: {},
+        },
+        vendorProductId: "D35795758-24",
+        freeShippingFlag: false,
+        condition: "new",
+        holdDeliveryFlag: false,
+        bundleInventories: null,
+        id: "670495d59874cd49c5db8810",
+        productId: "670495d59874cd49c5db87e9",
+        vendorId: "60c20efa65a4d0a52fc2d0d8",
+        vendor: {
+          code: "rcj",
+          name: "Regala",
+          displayName: "Regala",
+          markupMultiplier: 1,
+          nonMarkupItems: [],
+          message: "Regala",
+          type: "retail",
+          id: "60c20efa65a4d0a52fc2d0d8",
+          _logo: {
+            caption: "Regala",
+            description: "Regala",
+            source: "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/regala.png",
+            sourceCdn: "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/regala.png",
+            primaryFlag: true,
+          },
+        },
+        shippingStrategies: [
+          {
+            code: "rcj-nationwide-fedex-2day-FIXED_PRICE_X_ORDER",
+            id: "66f83567e113816f27e2d87b",
+            shippingMethodId: "66f05550df1fd8928f022136",
+            shippingMethod: {
+              code: "fedex-2day",
+              label: "2-Day Air",
+              transportMode: "air",
+              id: "66f05550df1fd8928f022136",
+            },
+          },
+          {
+            code: "rcj-nationwide-ground-DYNAMIC_PRICE_X_ITEM",
+            id: "6704df598ccb34575d475bde",
+            shippingMethodId: "5760425a9c73c4ff6c0f09e7",
+            shippingMethod: {
+              code: "ground",
+              label: "Ground",
+              transportMode: "ground",
+              id: "5760425a9c73c4ff6c0f09e7",
+            },
+          },
+        ],
+      },
+    ],
+    attributevalues: [
+      {
+        value: "Unisex",
+        createdAt: "2024-10-20T07:54:51.038Z",
+        updatedAt: "2024-10-20T07:54:51.038Z",
+        id: "6714b74b9874cd49c5cded39",
+        productId: "670495d59874cd49c5db87e9",
+        attributeCode: "gender",
+      },
+      {
+        value: "D35795758-24",
+        createdAt: "2024-10-20T07:54:51.038Z",
+        updatedAt: "2024-10-20T07:54:51.038Z",
+        id: "6714b74b9874cd49c5cded3d",
+        productId: "670495d59874cd49c5db87e9",
+        attributeCode: "model_number",
+      },
+      {
+        value: "Gold",
+        createdAt: "2024-10-20T07:54:51.038Z",
+        updatedAt: "2024-10-20T07:54:51.038Z",
+        id: "6714b74b9874cd49c5cded3e",
+        productId: "670495d59874cd49c5db87e9",
+        attributeCode: "material",
+      },
+      {
+        value: "24 in",
+        createdAt: "2024-10-20T07:54:51.038Z",
+        updatedAt: "2024-10-20T07:54:51.038Z",
+        id: "6714b74b9874cd49c5cded40",
+        productId: "670495d59874cd49c5db87e9",
+        attributeCode: "size",
+      },
+      {
+        value: "Classic",
+        createdAt: "2024-10-20T07:54:51.038Z",
+        updatedAt: "2024-10-20T07:54:51.038Z",
+        id: "6714b74b9874cd49c5cded42",
+        productId: "670495d59874cd49c5db87e9",
+        attributeCode: "jewelry_style",
+      },
+      {
+        value: "Regala",
+        createdAt: "2024-10-20T07:54:51.038Z",
+        updatedAt: "2024-10-20T07:54:51.038Z",
+        id: "6714b74b9874cd49c5cded44",
+        productId: "670495d59874cd49c5db87e9",
+        attributeCode: "brand",
+      },
+      {
+        value: "new",
+        createdAt: "2024-10-20T07:54:51.038Z",
+        updatedAt: "2024-10-20T07:54:51.038Z",
+        id: "6714b74b9874cd49c5cded45",
+        productId: "670495d59874cd49c5db87e9",
+        attributeCode: "condition",
+      },
+      {
+        value: "Box Clasp",
+        createdAt: "2024-10-20T07:54:51.038Z",
+        updatedAt: "2024-10-20T07:54:51.038Z",
+        id: "6714b74b9874cd49c5cded49",
+        productId: "670495d59874cd49c5db87e9",
+        attributeCode: "clasp",
+      },
+    ],
+    attributes: [
+      {
+        code: "brand",
+        name: "Brand",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:49.762Z",
+        updatedAt: "2024-10-07T15:33:49.762Z",
+      },
+      {
+        code: "clasp",
+        name: "Clasp",
+        filterableFlag: true,
+        createdAt: "2024-10-08T02:01:19.859Z",
+        updatedAt: "2024-10-08T02:01:19.859Z",
+      },
+      {
+        code: "condition",
+        name: "Condition",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:49.757Z",
+        updatedAt: "2024-10-07T15:33:49.757Z",
+      },
+      {
+        code: "gender",
+        name: "Gender",
+        filterableFlag: true,
+        createdAt: "2024-10-07T18:43:01.117Z",
+        updatedAt: "2024-10-07T18:43:01.117Z",
+      },
+      {
+        code: "jewelry_style",
+        name: "Jewelry Style",
+        filterableFlag: true,
+        createdAt: "2024-10-07T18:39:23.674Z",
+        updatedAt: "2024-10-07T18:39:23.674Z",
+      },
+      {
+        code: "material",
+        name: "Material",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:33:52.235Z",
+        updatedAt: "2024-10-07T15:33:52.235Z",
+      },
+      {
+        code: "model_number",
+        name: "Model Number",
+        filterableFlag: false,
+        createdAt: "2024-10-07T15:33:49.750Z",
+        updatedAt: "2024-10-07T15:33:49.750Z",
+      },
+      {
+        code: "size",
+        name: "Size",
+        filterableFlag: true,
+        createdAt: "2024-10-07T15:42:52.609Z",
+        updatedAt: "2024-10-07T15:42:52.609Z",
+      },
+    ],
+    brand: {
+      name: "Regala",
+      displayName: "Regala",
+      description: "Regala",
+      slug: "regala",
+      id: "670490b82ecf1f2eb1119f91",
+    },
+    images: [
+      {
+        caption: "14k Yellow Gold Polished Miami Cuban Chain Necklace",
+        description: "",
+        source:
+          "https://www.jewelryimg.com/productimages/original/D35795758_1.jpg",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/d7f512c2-ff2d-5638-8928-a4833f3b0f1e.jpg",
+        primaryFlag: false,
+        productId: "670495d59874cd49c5db87e9",
+      },
+      {
+        caption: "14k Yellow Gold Polished Miami Cuban Chain Necklace",
+        description: "",
+        source: "https://www.jewelryimg.com/productimages/original/0080802.jpg",
+        sourceCdn:
+          "http://cdn.flexshopper.xyz/marketplace-production-lb/b6d5af29-6f1b-5117-aab7-95794e22056f.jpg",
+        primaryFlag: false,
+        productId: "670495d59874cd49c5db87e9",
+      },
+    ],
+    reviews: [],
+  },
+];

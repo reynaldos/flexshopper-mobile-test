@@ -54,11 +54,11 @@ interface Inventory {
   primaryFlag: boolean;
   stockOutThreshold: number;
   salePrice: number;
-  markedUpPrice: number;
+  markedUpPrice?: number | undefined;
   itemCost: number;
   wholesaleCost: number;
   retailPrice: number;
-  markedUpRetailPrice: number;
+  markedUpRetailPrice?: number | undefined;
   sale: number;
   markupData: MarkupData;
   vendorProductId: string;
@@ -76,7 +76,7 @@ interface Inventory {
 interface MarkupData {
   applyMarkup: boolean;
   stateMarkup: Record<string, PriceInfo> | {};
-  vendorMarkup: PriceInfo;
+  vendorMarkup: PriceInfo | {};
   vendorStateMarkup: Record<string, PriceInfo>;
 }
 
@@ -94,8 +94,8 @@ interface Vendor {
   message: string;
   type: string;
   id: string;
-  _logo: Logo;
-  _secondaryLogo: Logo;
+  _logo?: Logo;
+  _secondaryLogo?: Logo;
 }
 
 interface Logo {
@@ -104,10 +104,10 @@ interface Logo {
   source: string;
   sourceCdn: string;
   primaryFlag: boolean;
-  createdAt: string | null;
-  updatedAt: string | null;
-  id: string | null;
-  productId: string | null;
+  createdAt?: string | null;
+  updatedAt?: string | null;
+  id?: string | null;
+  productId?: string | null;
 }
 
 interface ShippingStrategy {
