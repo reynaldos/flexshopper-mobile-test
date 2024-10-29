@@ -20,9 +20,17 @@ export async function GET(
 
   try {
     // Fetch product data from the API
-    const response = await fetch(`/api/v1/fetchProduct/${productId}`, {
-      next: { revalidate: 300 },
-    }); // Caching for 5 minutes at the CDN level);
+    const response = await fetch(
+      `https://apis.flexshopper.com/synthetics-fmcore/marketplace/Products/${productId}/overview`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `${process.env.FMCORE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        next: { revalidate: 300 }, // Caching for 5 minutes at the CDN level
+      }
+    );
 
     const data = await response.json();
 
