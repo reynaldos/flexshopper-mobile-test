@@ -92,8 +92,6 @@ const ProductSwiper = ({ productId }: { productId: string | undefined }) => {
                   width={150}
                   height={150}
                   className="object-contain mb-4 max-h-52 min-h-52"
-                  loading="eager"
-                  priority
                 />
                 <h2 className="text-md font-semibold text-center text-gray-800 leading-6 mb-2">
                   {product.name}
