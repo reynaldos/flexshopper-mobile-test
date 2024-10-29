@@ -4,6 +4,9 @@ import "@/styles/globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
+import "swiper/css";
+import "swiper/css/navigation";
+
 import { GoogleTagManager } from "@next/third-parties/google";
 
 const openSans = localFont({

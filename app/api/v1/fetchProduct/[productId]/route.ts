@@ -1,6 +1,6 @@
 // app/api/v1/fetchProduct/[productId]/route.ts
 
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
   request: NextRequest,
@@ -9,14 +9,17 @@ export async function GET(
   const productId = params.productId;
 
   if (!productId) {
-    return new NextResponse(JSON.stringify({ message: "Product Id required" }), {
-      status: 401,
-      headers: { "Content-Type": "application/json" },
-    });
+    return new NextResponse(
+      JSON.stringify({ message: "Product Id required" }),
+      {
+        status: 401,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   }
 
   try {
-    // Replace with your actual data source or API endpoint
+    // Fetch product data from the API
     const response = await fetch(
       `https://apis.flexshopper.com/synthetics-fmcore/marketplace/Products/${productId}/overview`,
       {
@@ -25,8 +28,10 @@ export async function GET(
           Authorization: `${process.env.FMCORE_API_KEY}`,
           "Content-Type": "application/json",
         },
+        next: { revalidate: 300 }, // Caching for 5 minutes at the CDN level
       }
     );
+
     const data = await response.json();
 
     if (data.error) {
@@ -41,7 +46,10 @@ export async function GET(
 
     return new NextResponse(JSON.stringify(data), {
       status: 200,
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "s-maxage=300, stale-while-revalidate=60", // Cache for 5 minutes, revalidate for 1 minute
+      },
     });
   } catch (error) {
     const errorMessage =

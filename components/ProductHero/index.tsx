@@ -3,51 +3,18 @@
 import { ProductInfo } from "@/types/index";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
 import LoadingSkeleton from "./loading";
 
 const FLEXSHOPPER_SIGNIN = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL;
 
 const ProductHero = ({ product }: { product: ProductInfo | null }) => {
-  const markedUpPrice = product
-    ? (
-        (product!.inventories[0]?.markedUpRetailPrice ||
-          product!.inventories[0]?.markedUpPrice ||
-          product!.inventories[0]?.itemCost) / 100
-      )
-        .toFixed(2)
-        .split(".")
-    : [0, 0];
-
-  const salePrice = product
-    ? (
-        ((product!.inventories[0]?.salePrice ||
-          product!.inventories[0]?.itemCost) /
-          100 /
-          52) *
-        2
-      )
-        .toFixed(2)
-        .split(".")
-    : [0, 0];
-
-  const inStock = product ? product!.inventories[0]?.qty > 0 : false;
-
-  const handleClick = () => {
-    window.location.href = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL || "";
-  };
-
   const [productLoaded, setProductLoaded] = useState(false);
 
   useEffect(() => {
     if (product) {
-      setTimeout(() => {
-        setProductLoaded(true);
-      }, 100);
+      setTimeout(() => setProductLoaded(true), 100);
     }
   }, [product]);
 
@@ -55,14 +22,25 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
     return <LoadingSkeleton />;
   }
 
+  const { markedUpPrice, salePrice, inStock } = {
+    markedUpPrice:
+      product.inventories[0]?.markedUpRetailPrice ||
+      product.inventories[0]?.markedUpPrice ||
+      product.inventories[0]?.itemCost,
+    salePrice:
+      ((product.inventories[0]?.salePrice || product.inventories[0]?.itemCost) /
+        52) *
+      2,
+    inStock: product.inventories[0]?.qty > 0,
+  };
+
   return (
     <>
-      {/* Product Image and Stock Info */}
-      <div className={`bg-white p-4 pb-1 mb-3 rounded-sm shadow-sm`}>
+      <div className="bg-white p-4 pb-1 mb-3 rounded-sm shadow-sm">
         <div className="flex items-center justify-center">
           {product.images.length > 1 && (
             <button
-              aria-label={`Show previous product`}
+              aria-label="Show previous product"
               className="prev"
               style={{ backgroundColor: "white" }}
             >
@@ -83,20 +61,16 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             </button>
           )}
 
-          {/* Swiper for Product Images */}
           <Swiper
             spaceBetween={10}
             slidesPerView={1}
-            navigation={{
-              prevEl: ".prev",
-              nextEl: ".next",
-            }}
+            navigation={{ prevEl: ".prev", nextEl: ".next" }}
             pagination={{ clickable: true }}
             modules={[Navigation, Pagination]}
             className={`w-64 h-64 mx-auto mb-6 transition-opacity duration-700 ${
               productLoaded ? "opacity-100" : "opacity-0"
             }`}
-            loop={true}
+            loop
           >
             {product.images.map((image, index) => (
               <SwiperSlide key={index}>
@@ -106,6 +80,8 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
                   width={256}
                   height={256}
                   className="w-full h-full object-contain"
+                  loading="eager"
+                  priority
                 />
               </SwiperSlide>
             ))}
@@ -113,7 +89,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
 
           {product.images.length > 1 && (
             <button
-              aria-label={`Show next product`}
+              aria-label="Show next product"
               className="next"
               style={{ backgroundColor: "white" }}
             >
@@ -134,6 +110,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             </button>
           )}
         </div>
+
         <span
           className={`block mt-6 text-center ${
             inStock ? "text-green-600" : "text-red-600"
@@ -144,45 +121,40 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
           {inStock ? "In Stock" : "Out of Stock"}
         </span>
 
-        {/* Pricing Section */}
         <div
           className={`grid grid-cols-2 gap-4 mb-3 transition-opacity duration-700 ${
             productLoaded ? "opacity-100" : "opacity-0"
           }`}
         >
-          {/* weekly price */}
           <button
-            onClick={handleClick}
+            onClick={() => (window.location.href = FLEXSHOPPER_SIGNIN || "")}
             className="flex flex-col items-center justify-start p-4 border border-gray-200"
           >
             <span className="text-gray-500 text-sm">
-              As Low as<sup> 9</sup>
+              As Low as<sup>9</sup>
             </span>
             <strong className="text-3xl font-semibold text-gray-900">
-              ${salePrice[0]}
+              ${salePrice.toFixed(2).split(".")[0]}
               <sup>00</sup>
             </strong>
-
             <span className="text-gray-500 text-sm">Per Week</span>
           </button>
 
-          {/* total price */}
           <button
-            onClick={handleClick}
+            onClick={() => (window.location.href = FLEXSHOPPER_SIGNIN || "")}
             className="flex flex-col items-center justify-start p-4 border border-gray-200"
           >
             <span className="text-gray-500 text-sm">
-              As Low as<sup> 9</sup>
+              As Low as<sup>9</sup>
             </span>
             <strong className="text-3xl font-semibold text-gray-900">
-              ${markedUpPrice[0]}
-              <sup>{markedUpPrice[1]}</sup>
+              ${markedUpPrice.toFixed(2).split(".")[0]}
+              <sup>{markedUpPrice.toFixed(2).split(".")[1]}</sup>
             </strong>
           </button>
         </div>
       </div>
 
-      {/* Unlock My Price Button */}
       <a href={FLEXSHOPPER_SIGNIN}>
         <button className="w-full bg-[var(--accent400)] text-white font-semibold py-3 rounded-sm">
           Unlock My Price
