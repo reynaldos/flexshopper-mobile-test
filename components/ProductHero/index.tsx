@@ -14,14 +14,14 @@ const FLEXSHOPPER_SIGNIN = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL;
 
 const ProductHero = ({ product }: { product: ProductInfo | null }) => {
   const salePrice = product
-    ? ((product!.inventories[0]?.salePrice / 100 / 52) * 2)
+    ? ((product!.inventories[0]?.retailPrice / 100 / 52) * 2)
         .toFixed(2)
         .split(".")
     : [0, 0];
 
   const markedUpPrice = product
     ? (
-        (product!.inventories[0]?.markedUpPrice ||
+        (product!.inventories[0]?.retailPrice ||
           product!.inventories[0]?.markedUpRetailPrice) / 100
       )
         .toFixed(2)
