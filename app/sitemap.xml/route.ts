@@ -15,7 +15,7 @@ export async function GET() {
 
   // Map product IDs to URLs
   const dynamicUrls = productData.map((productId: string) => ({
-    url: `${baseUrl}/productId`,
+    url: `${baseUrl}/${productId}`,
     priority: "1.0",
   }));
 
