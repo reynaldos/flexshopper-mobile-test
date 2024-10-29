@@ -1,36 +1,57 @@
+"use client";
+
 import { ProductInfo } from "@/types/index";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import LoadingSkeleton from "./loading";
 
 const FLEXSHOPPER_SIGNIN = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL;
 
-const ProductHero = ({ product }: { product: ProductInfo }) => {
-  const salePrice = ((product.inventories[0]?.salePrice / 100 / 52) * 2)
-    .toFixed(2)
-    .split(".");
+const ProductHero = ({ product }: { product: ProductInfo | null }) => {
+  const salePrice = product
+    ? ((product!.inventories[0]?.salePrice / 100 / 52) * 2)
+        .toFixed(2)
+        .split(".")
+    : [0, 0];
 
-  const markedUpPrice = (
-    (product.inventories[0]?.markedUpPrice ||
-      product.inventories[0]?.markedUpRetailPrice) / 100
-  )
-    .toFixed(2)
-    .split(".");
+  const markedUpPrice = product
+    ? (
+        (product!.inventories[0]?.markedUpPrice ||
+          product!.inventories[0]?.markedUpRetailPrice) / 100
+      )
+        .toFixed(2)
+        .split(".")
+    : [0, 0];
 
-  const inStock = product.inventories[0]?.qty > 0;
+  const inStock = product ? product!.inventories[0]?.qty > 0 : false;
 
   const handleClick = () => {
     window.location.href = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL || "";
   };
 
+  const [productLoaded, setProductLoaded] = useState(false);
+
+  useEffect(() => {
+    if (product) {
+      setTimeout(() => {
+        setProductLoaded(true);
+      }, 100);
+    }
+  }, [product]);
+
+  if (!product) {
+    return <LoadingSkeleton />;
+  }
+
   return (
     <>
       {/* Product Image and Stock Info */}
-      <div className="bg-white p-4 pb-1 mb-3 rounded-sm shadow-sm">
+      <div className={`bg-white p-4 pb-1 mb-3 rounded-sm shadow-sm`}>
         <div className="flex items-center justify-center">
           {product.images.length > 1 && (
             <button
@@ -65,7 +86,9 @@ const ProductHero = ({ product }: { product: ProductInfo }) => {
             }}
             pagination={{ clickable: true }}
             modules={[Navigation, Pagination]}
-            className="w-64 h-64 mx-auto mb-6"
+            className={`w-64 h-64 mx-auto mb-6 transition-opacity duration-700 ${
+              productLoaded ? "opacity-100" : "opacity-0"
+            }`}
             loop={true}
           >
             {product.images.map((image, index) => (
@@ -107,13 +130,19 @@ const ProductHero = ({ product }: { product: ProductInfo }) => {
         <span
           className={`block mt-6 text-center ${
             inStock ? "text-green-600" : "text-red-600"
-          } font-bold mb-2`}
+          } font-bold mb-2 transition-opacity duration-700 ${
+            productLoaded ? "opacity-100" : "opacity-0"
+          }`}
         >
           {inStock ? "In Stock" : "Out of Stock"}
         </span>
 
         {/* Pricing Section */}
-        <div className="grid grid-cols-2 gap-4 mb-3">
+        <div
+          className={`grid grid-cols-2 gap-4 mb-3 transition-opacity duration-700 ${
+            productLoaded ? "opacity-100" : "opacity-0"
+          }`}
+        >
           {/* weekly price */}
           <button
             onClick={handleClick}

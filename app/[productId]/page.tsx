@@ -20,12 +20,15 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+
+
+    console.log('process.env.NEXT_PUBLIC_USE_MOCK: ',process.env.NEXT_PUBLIC_USE_MOCK)
     const fetchProduct = async () => {
       try {
         if (process.env.NEXT_PUBLIC_USE_MOCK) {
           const data = await fetchMockProductInfo();
           setProduct(data);
-          return
+          return;
         }
 
         const response = await fetch(`/api/v1/fetchProduct/${productId}`);
@@ -67,22 +70,18 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
     );
   }
 
-  if (!product) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
-        Loading....
-      </div>
-    );
-  }
-
   return (
     <>
       <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
         {/* Product Details Section */}
         <section className={`${styles.hero} p-6 w-full bg-gray-100 shadow-md`}>
-          <h1 className="text-xl font-bold text-center text-gray-900 mb-4 px-4">
-            {product.name}
-          </h1>
+          {product ? (
+            <h1 className="text-xl font-bold text-center text-gray-900 mb-4 px-4">
+              {product.name}
+            </h1>
+          ) : (
+            <div className="w-1/2 h-8 bg-gray-300 rounded mx-auto mb-4 animate-pulse"></div>
+          )}
 
           <ProductHero product={product} />
         </section>
@@ -107,7 +106,7 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
             Customers Also Viewed
           </h1>
 
-          <ProductSwiper productId={product.id} />
+          <ProductSwiper productId={product?.id} />
         </section>
       </div>
 

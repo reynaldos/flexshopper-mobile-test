@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ProductInfo } from "@/types/index";
 import { fetchMockProductList } from "@/mock/mockAPI";
+import ProductSwiperSkeleton from "./loading";
 
 interface Product {
   id: number;
@@ -19,7 +20,7 @@ interface Product {
   increment: string;
 }
 
-const ProductSwiper = ({ productId }: { productId: string }) => {
+const ProductSwiper = ({ productId }: { productId: string | undefined }) => {
   const [productList, setProductList] = useState<ProductInfo[] | null>(null);
   const [error, setError] = useState(false);
 
@@ -52,6 +53,10 @@ const ProductSwiper = ({ productId }: { productId: string }) => {
   const handleClick = () => {
     window.location.href = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL || "";
   };
+
+  if (!productList || !productId) {
+    return <ProductSwiperSkeleton />;
+  }
 
   return (
     <div className="flex justify-between items-center gap-2">
