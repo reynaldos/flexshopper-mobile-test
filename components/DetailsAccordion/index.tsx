@@ -37,17 +37,14 @@ const DetailsAccordion = ({
     }
   };
 
-  // Attach event listener to the "Click here" link inside the specs content
+  // Event listener for Prop 65 modal link
   useEffect(() => {
     const prop65Link = contentRef.current?.querySelector(".js-prop65PageBtn");
-
-    // Define a click handler for the link
     const handleClick = (e: Event) => {
       e.preventDefault();
       openModal();
     };
 
-    // Attach the event listener if the link exists
     if (prop65Link) {
       prop65Link.classList.add(
         "no-underline",
@@ -57,19 +54,14 @@ const DetailsAccordion = ({
       prop65Link.addEventListener("click", handleClick);
     }
 
-    // Clean up the event listener on component unmount or when dependencies change
     return () => {
-      if (prop65Link) {
-        prop65Link.removeEventListener("click", handleClick);
-      }
+      prop65Link?.removeEventListener("click", handleClick);
     };
   }, [product, activeIndex, openModal]);
 
   useEffect(() => {
     if (product) {
-      setTimeout(() => {
-        setActiveIndex(0);
-      }, 100);
+      setTimeout(() => setActiveIndex(0), 100);
     }
   }, [product]);
 
@@ -123,6 +115,8 @@ const DetailsAccordion = ({
                   height={192}
                   src={product.images[0]?.source || "/placeholder.png"}
                   alt={product.name}
+                  loading="eager"
+                  priority
                 />
               )}
               {/* Render the content dynamically */}

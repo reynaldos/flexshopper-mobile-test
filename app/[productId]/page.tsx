@@ -2,21 +2,22 @@
 
 // ProductPage Component
 import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import styles from "./product.module.css";
 
 import ProductHero from "@/components/ProductHero";
-import DetailsAccordion from "@/components/DetailsAccordion";
-import ProductSwiper from "@/components/ProductSwiper";
 import Proposition65Modal from "@/components/Proposition65Modal";
-
 import { fetchMockProductInfo } from "@/mock/mockAPI";
 import { ProductInfo } from "@/types/index";
+
+// Dynamically import components for better performance
+const DetailsAccordion = dynamic(() => import("@/components/DetailsAccordion"));
+const ProductSwiper = dynamic(() => import("@/components/ProductSwiper"));
 
 const ProductPage = ({ params }: { params: { productId: string } }) => {
   const [product, setProduct] = useState<ProductInfo | null>(null);
   const { productId } = params;
   const [showModal, setShowModal] = useState(false);
-
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -58,14 +59,14 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
       document.body.classList.remove("overflow-hidden");
     };
   }, [showModal]);
-
+  
   useEffect(() => {
     const FLEXSHOPPER_URL = process.env.NEXT_PUBLIC_FLEXSHOPPER_URL || "";
 
     if (error) {
       setTimeout(() => {
         window.location.href = FLEXSHOPPER_URL;
-      }, 100);
+      }, 500); // Slightly longer delay for smoother experience
     }
   }, [error]);
 
@@ -105,7 +106,7 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
             Customers Also Viewed
           </h1>
 
-          <ProductSwiper productId={product?.id} />
+          {product && <ProductSwiper productId={product.id} />}
         </section>
       </div>
 

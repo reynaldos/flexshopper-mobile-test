@@ -49,7 +49,7 @@ export async function GET(
   } catch (error) {
     console.error("Error fetching random products:", error);
     return NextResponse.json(
-      { error: "Failed to process CSV" },
+      { error: "Failed to process product ids" },
       { status: 500 }
     );
   }
