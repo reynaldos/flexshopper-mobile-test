@@ -112,7 +112,7 @@ const ProductSwiper = ({ productId }: { productId: string | undefined }) => {
                   alt={product.name}
                   width={150}
                   height={150}
-                  className="object-cover mb-4"
+                  className="object-contain mb-4 max-h-52 min-h-52"
                   loading="eager"
                   priority={true}
                 />

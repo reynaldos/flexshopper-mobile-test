@@ -13,16 +13,22 @@ import LoadingSkeleton from "./loading";
 const FLEXSHOPPER_SIGNIN = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL;
 
 const ProductHero = ({ product }: { product: ProductInfo | null }) => {
-  const salePrice = product
-    ? ((product!.inventories[0]?.retailPrice / 100 / 52) * 2)
+  const markedUpPrice = product
+    ? (
+        (product!.inventories[0]?.markedUpRetailPrice ||
+          product!.inventories[0]?.markedUpPrice) / 100
+      )
         .toFixed(2)
         .split(".")
     : [0, 0];
 
-  const markedUpPrice = product
+  const salePrice = product
     ? (
-        (product!.inventories[0]?.retailPrice ||
-          product!.inventories[0]?.markedUpRetailPrice) / 100
+        ((product!.inventories[0]?.salePrice ||
+          product!.inventories[0]?.itemCost) /
+          100 /
+          52) *
+        2
       )
         .toFixed(2)
         .split(".")
