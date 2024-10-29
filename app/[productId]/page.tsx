@@ -25,7 +25,7 @@ async function fetchProduct(productId: string): Promise<ProductInfo | null> {
     throw new Error("Missing FMCORE_API_KEY");
   }
 
-  const response = await fetch(`/api/v1/fetchProduct/${productId}`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/fetchProduct/${productId}`);
 
   if (!response.ok) {
     throw new Error(`Failed to fetch product data: ${response.statusText}`);
