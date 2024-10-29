@@ -16,7 +16,8 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
   const markedUpPrice = product
     ? (
         (product!.inventories[0]?.markedUpRetailPrice ||
-          product!.inventories[0]?.markedUpPrice) / 100
+          product!.inventories[0]?.markedUpPrice ||
+          product!.inventories[0]?.itemCost) / 100
       )
         .toFixed(2)
         .split(".")
