@@ -9,7 +9,7 @@ import DetailsAccordion from "@/components/DetailsAccordion";
 import ProductSwiper from "@/components/ProductSwiper";
 import Proposition65Modal from "@/components/Proposition65Modal";
 
-// import { fetchMockProductInfo } from "@/mock/mockAPI";
+import { fetchMockProductInfo } from "@/mock/mockAPI";
 import { ProductInfo } from "@/types/index";
 
 const ProductPage = ({ params }: { params: { productId: string } }) => {
@@ -22,15 +22,15 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`/api/v1/fetchProduct/${productId}`);
-        if (!response.ok) {
-          setError(true);
-          throw new Error("Failed to fetch product");
-        }
+        // const response = await fetch(`/api/v1/fetchProduct/${productId}`);
+        // if (!response.ok) {
+        //   setError(true);
+        //   throw new Error("Failed to fetch product");
+        // }
 
-        // const data = await fetchMockProductInfo(Number(productId));
+        const data = await fetchMockProductInfo();
 
-        const data = await response.json();
+        // const data = await response.json();
         setProduct(data);
       } catch (error) {
         console.error("Failed to fetch product data:", error);
@@ -104,7 +104,7 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
             Customers Also Viewed
           </h1>
 
-          <ProductSwiper />
+          <ProductSwiper productId={product.id} />
         </section>
       </div>
 

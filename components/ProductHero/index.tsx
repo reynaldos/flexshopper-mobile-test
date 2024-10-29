@@ -118,9 +118,6 @@ const ProductHero = ({ product }: { product: ProductInfo }) => {
                 <sup>00</sup>
               </strong>
 
-              {/* <strong className="text-3xl font-semibold text-gray-900">
-              ${(product.inventories[0]?.salePrice / 100).toFixed(2)}
-            </strong> */}
               <span className="text-gray-500 text-sm">Per Week</span>
             </button>
 
