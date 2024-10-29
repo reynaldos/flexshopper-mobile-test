@@ -24,11 +24,14 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
 
   const { markedUpPrice, salePrice, inStock } = {
     markedUpPrice:
-      product.inventories[0]?.markedUpRetailPrice ||
-      product.inventories[0]?.markedUpPrice ||
-      product.inventories[0]?.itemCost,
+      (product.inventories[0]?.markedUpRetailPrice ||
+        product.inventories[0]?.markedUpPrice ||
+        product.inventories[0]?.itemCost) / 100,
     salePrice:
-      ((product.inventories[0]?.salePrice || product.inventories[0]?.itemCost) /
+      ((product.inventories[0]?.markedUpRetailPrice ||
+        product.inventories[0]?.markedUpPrice ||
+        product.inventories[0]?.itemCost) /
+        100 /
         52) *
       2,
     inStock: product.inventories[0]?.qty > 0,
