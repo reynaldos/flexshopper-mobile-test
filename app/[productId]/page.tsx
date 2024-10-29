@@ -22,15 +22,19 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        // const response = await fetch(`/api/v1/fetchProduct/${productId}`);
-        // if (!response.ok) {
-        //   setError(true);
-        //   throw new Error("Failed to fetch product");
-        // }
+        if (process.env.NEXT_PUBLIC_USE_MOCK) {
+          const data = await fetchMockProductInfo();
+          setProduct(data);
+          return
+        }
 
-        const data = await fetchMockProductInfo();
+        const response = await fetch(`/api/v1/fetchProduct/${productId}`);
+        if (!response.ok) {
+          setError(true);
+          throw new Error("Failed to fetch product");
+        }
 
-        // const data = await response.json();
+        const data = await response.json();
         setProduct(data);
       } catch (error) {
         console.error("Failed to fetch product data:", error);
@@ -54,7 +58,6 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
       document.body.classList.remove("overflow-hidden");
     };
   }, [showModal]);
-
 
   if (error) {
     return (

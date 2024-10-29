@@ -24,22 +24,23 @@ const ProductSwiper = ({ productId }: { productId: string }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    console.log("productId: ", productId);
 
     const fetchProducts = async () => {
       try {
-        // const response = await fetch(`/api/v1/getRandomIds/${productId}`);
-        // if (!response.ok) {
-        //   setError(true);
-        //   throw new Error("Failed to fetch products");
-        // }
+        if (process.env.NEXT_PUBLIC_USE_MOCK) {
+          const data = await fetchMockProductList();
+          setProductList(data);
+          return;
+        }
 
-        const data = await fetchMockProductList();
+        const response = await fetch(`/api/v1/getRandomIds/${productId}`);
+        if (!response.ok) {
+          setError(true);
+          throw new Error("Failed to fetch products");
+        }
 
-        // const data = await response.json();
+        const data = await response.json();
         setProductList(data);
-        // console.log("data: ", data.products);
-        // setProduct(data);
       } catch (error) {
         console.error("Failed to fetch products data:", error);
       }
