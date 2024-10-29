@@ -1,5 +1,6 @@
 "use client";
 
+import Head from "next/head";
 import { ProductInfo } from "@/types/index";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
@@ -39,6 +40,17 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
 
   return (
     <>
+    <Head>
+        {product && (
+          <link
+            rel="preload"
+            as="image"
+            href={product.images[0].source || "/placeholder.png"}
+          />
+        )}
+      </Head>
+
+
       <div className="bg-white p-4 pb-1 mb-3 rounded-sm shadow-sm">
         <div className="flex items-center justify-center">
           {product.images.length > 1 && (
@@ -84,7 +96,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
                   height={256}
                   className="w-full h-full object-contain"
                   loading="eager"
-                  priority
+                  priority={index === 0} // Preload the first image only
                 />
               </SwiperSlide>
             ))}
@@ -131,12 +143,12 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
         >
           <button
             onClick={() => (window.location.href = FLEXSHOPPER_SIGNIN || "")}
-            className="flex flex-col items-center justify-start p-4 border border-gray-200"
+            className="flex flex-col items-center justify-start p-4 border border-gray-200 bg-[var(--main100)]"
           >
             <span className="text-gray-500 text-sm">
               As Low as<sup>9</sup>
             </span>
-            <strong className="text-3xl font-semibold text-gray-900">
+            <strong className="text-3xl font-semibold text-[var(--main500)]">
               ${salePrice.toFixed(2).split(".")[0]}
               <sup>00</sup>
             </strong>
@@ -145,12 +157,12 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
 
           <button
             onClick={() => (window.location.href = FLEXSHOPPER_SIGNIN || "")}
-            className="flex flex-col items-center justify-start p-4 border border-gray-200"
+            className="flex flex-col items-center justify-start p-4 border border-gray-200 bg-[var(--main100)]"
           >
             <span className="text-gray-500 text-sm">
               As Low as<sup>9</sup>
             </span>
-            <strong className="text-3xl font-semibold text-gray-900">
+            <strong className="text-3xl font-semibold text-[var(--main500)]">
               ${markedUpPrice.toFixed(2).split(".")[0]}
               <sup>{markedUpPrice.toFixed(2).split(".")[1]}</sup>
             </strong>

@@ -42,7 +42,7 @@ const ProductSwiper = ({ productId }: { productId: string | undefined }) => {
       `${process.env.NEXT_PUBLIC_BASE_URL}/${productId}` || "";
   };
 
-  if (error || !productList) {
+  if (error || !productList || !productId) {
     return <ProductSwiperSkeleton />;
   }
 
