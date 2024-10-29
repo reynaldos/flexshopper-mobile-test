@@ -28,19 +28,18 @@ export async function GET(
   try {
     const randomIds = getRandomIds(productId, productList);
 
-    console.log('randomIds: ', randomIds)
-
     // Use Promise.all to fetch data for each ID in parallel
     const products = await Promise.all(
       randomIds.map(async (id) =>
-        fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/fetchProduct/${id}`).then(async (response) => {
+        fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/fetchProduct/${id}`
+        ).then(async (response) => {
           if (!response.ok) {
             throw new Error(`Failed to fetch data for ID: ${id}`);
           }
 
-          const data = await response.json()
+          const data = await response.json();
 
-          console.log("id: ", id, "-", data)
           return data;
         })
       )
