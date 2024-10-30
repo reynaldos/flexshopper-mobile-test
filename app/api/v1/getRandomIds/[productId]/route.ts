@@ -50,7 +50,9 @@ export async function GET(
     const products = await Promise.all(
       randomIds.map(async (id) =>
         fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/fetchProduct/${id}`
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/fetchProduct/${id}`, {
+            next: { revalidate: 300 },
+          }
         ).then(async (response) => {
           if (!response.ok) {
             throw new Error(`Failed to fetch data for ID: ${id}`);
