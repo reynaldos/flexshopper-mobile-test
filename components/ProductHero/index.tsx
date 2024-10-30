@@ -165,7 +165,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             className="flex flex-col items-center justify-start p-4 border border-gray-200 bg-[var(--main100)]"
           >
             <span className="text-gray-500 text-sm">Total Price</span>
-            <strong className="text-3xl font-semibold text-[var(--main500)]">
+            <strong className={`${styles.strikeout} text-3xl font-semibold text-[var(--main500)]`}>
               ${markedUpPrice.toFixed(2).split(".")[0]}
               <sup>{markedUpPrice.toFixed(2).split(".")[1]}</sup>
             </strong>
