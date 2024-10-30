@@ -8,7 +8,9 @@ import { ProductInfo } from "@/types/index";
 import { fetchMockProductList } from "@/mock/mockAPI";
 import ProductSwiperSkeleton from "./loading";
 
-const ProductSwiper = ({ product }: {  product: ProductInfo }) => {
+import "./styles.css"
+
+const ProductSwiper = ({ product }: { product: ProductInfo }) => {
   const [productList, setProductList] = useState<ProductInfo[] | null>(null);
   const [error, setError] = useState(false);
 
@@ -22,9 +24,14 @@ const ProductSwiper = ({ product }: {  product: ProductInfo }) => {
         }
 
         if (product.id) {
-          const response = await fetch(`/api/v1/getRandomIds/${product.id}?category=${product.breadcrumbs[0].slug || ''}`, {
-            next: { revalidate: 300 },
-          });
+          const response = await fetch(
+            `/api/v1/getRandomIds/${product.id}?category=${
+              product.breadcrumbs[0].slug || ""
+            }`,
+            {
+              next: { revalidate: 300 },
+            }
+          );
           if (!response.ok) throw new Error("Failed to fetch products");
 
           const data = await response.json();
