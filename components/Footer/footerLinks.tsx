@@ -141,78 +141,33 @@ export const socialLinks: {
   },
 ];
 
-export const footerLinks: {
-  title: string;
-  url: string;
-}[] = [
-  {
-    title: "Apply Today",
-    url: "https://pay.flexshopper.com/?itm_medium=footer-link&amp;itm_content=apply",
-  },
-  {
-    title: "My Account",
-    url: "https://central.flexshopper.com/?itm_medium=footer-link&amp;itm_content=account",
-  },
-  {
-    title: "How it Works",
-    url: "https://flexshopper.com/page/how-it-works?itm_medium=footer-link&amp;itm_content=how-it-works",
-  },
-  {
-    title: "FAQs",
-    url: "https://flexshopper.com/page/faqs?itm_medium=footer-link&amp;itm_content=faq",
-  },
-  { title: "Reviews", url: "https://flexshopper.com/page/reviews" },
-  {
-    title: "FlexBlog",
-    url: "https://blog.flexshopper.com",
-  },
-  {
-    title: "Investor Relations",
-    url: "https://investors.flexshopper.com?itm_medium=footer-link&amp;itm_content=investors",
-  },
-  { title: "Privacy Policy", url: "https://flexshopper.com/page/privacy" },
-  { title: "Terms of Use", url: "https://flexshopper.com/page/terms-of-use" },
-  {
-    title: "Referral Program Terms",
-    url: "https://flexshopper.com/page/referral-program",
-  },
-  {
-    title: "ESIGN Disclosure",
-    url: "https://flexshopper.com/page/electronic-communication",
-  },
-  {
-    title: "Contact Us",
-    url: "https://flexshopper.com/page/contact-us?itm_medium=footer-link&amp;itm_content=contact-us",
-  },
-  {
-    title: "Become an Affiliate",
-    url: "https://business.flexshopper.com/apply",
-  },
-  {
-    title: "Accessibility",
-    url: "https://flexshopper.com/page/accessibility",
-  },
-  {
-    title: "WhistleBlower Policy",
-    url: "https://flexshopper.com/page/whistleblower-policy",
-  },
-  {
-    title: "Financial Resources",
-    url: "https://www.myfinancialresourcecenter.com",
-  },
-  {
-    title: "FlexAdvantage",
-    url: "https://flexshopper.com/page/flex-advantage",
-  },
-  {
-    title: "FlexWallet",
-    url: "https://www.flex-wallet.com/?itm_medium=footer-link&amp;itm_content=flexwallet",
-  },
-  {
-    title: "FlexTires",
-    url: "https://www.flextires.com/?itm_medium=footer-link&amp;itm_content=flextires",
-  },
-];
+export const footerLinks = {
+  flexShopper: [
+    { title: "Apply Today", url: "https://pay.flexshopper.com/?itm_medium=footer-link&amp;itm_content=apply" },
+    { title: "My Account", url: "https://central.flexshopper.com/?itm_medium=footer-link&amp;itm_content=account" },
+    { title: "Investor Relations", url: "https://investors.flexshopper.com?itm_medium=footer-link&amp;itm_content=investors" },
+    { title: "Why Flexshopper", url: "https://www.flexshopper.com/page/why-flex" },
+    { title: "Careers", url: "https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey=2E4C10185BD683487935200A6A868A36#" },
+    { title: "FlexWallet", url: "https://www.flex-wallet.com/?itm_medium=footer-link&amp;itm_content=flexwallet" },
+    { title: "FlexTires", url: "https://www.flextires.com/?itm_medium=footer-link&amp;itm_content=flextires" },
+    { title: "Become a Merchant", url: "https://business.flexshopper.com/apply" }
+  ],
+  help: [
+    { title: "How it Works", url: "https://flexshopper.com/page/how-it-works?itm_medium=footer-link&amp;itm_content=how-it-works" },
+    { title: "FAQs", url: "https://flexshopper.com/page/faqs?itm_medium=footer-link&amp;itm_content=faq" },
+    { title: "Contact Us", url: "https://flexshopper.com/page/contact-us?itm_medium=footer-link&amp;itm_content=contact-us" },
+    { title: "FlexBlog", url: "https://blog.flexshopper.com" },
+    { title: "Financial Resources", url: "https://www.myfinancialresourcecenter.com" }
+  ],
+  policies: [
+    { title: "Privacy Policy", url: "https://flexshopper.com/page/privacy" },
+    { title: "Terms of Use", url: "https://flexshopper.com/page/terms-of-use" },
+    { title: "Referral Program Terms", url: "https://flexshopper.com/page/referral-program" },
+    { title: "ESIGN Disclosure", url: "https://flexshopper.com/page/electronic-communication" },
+    { title: "Accessibility", url: "https://flexshopper.com/page/accessibility" },
+    { title: "WhistleBlower Policy", url: "https://flexshopper.com/page/whistleblower-policy" }
+  ]
+};
 
 export const disclaimers: {
   superscript: string;
