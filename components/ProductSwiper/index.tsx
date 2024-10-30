@@ -8,14 +8,15 @@ import { ProductInfo } from "@/types/index";
 import { fetchMockProductList } from "@/mock/mockAPI";
 import ProductSwiperSkeleton from "./loading";
 
-import "./styles.css"
+import "./styles.css";
 
-const ProductSwiper = ({ product }: { product: ProductInfo }) => {
+const ProductSwiper = ({ product }: { product: ProductInfo | null }) => {
   const [productList, setProductList] = useState<ProductInfo[] | null>(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
+      if (!product) return;
       try {
         if (process.env.NEXT_PUBLIC_USE_MOCK === "true") {
           const data = await fetchMockProductList();
@@ -43,8 +44,10 @@ const ProductSwiper = ({ product }: { product: ProductInfo }) => {
       }
     };
 
-    fetchProducts();
-  }, [product.id]);
+    if (product) {
+      fetchProducts();
+    }
+  }, [product]);
 
   const handleClick = (productId: string | number) => {
     window.location.href =
