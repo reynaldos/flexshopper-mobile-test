@@ -2,22 +2,20 @@
 
 import dynamic from "next/dynamic";
 import { ProductInfo } from "@/types/index";
-
-import { mockProductList } from "@/mock/mockData";
+// import { mockProductList } from "@/mock/mockData";
 import { fetchMockProductInfo } from "@/mock/mockAPI";
+import { notFound } from "next/navigation";
 
 const ProductHero = dynamic(() => import("@/components/ProductHero"));
 const DetailsAccordion = dynamic(() => import("@/components/DetailsAccordion"));
 const ProductSwiper = dynamic(() => import("@/components/ProductSwiper"));
 
-import "./styles.css"
+import "./styles.css";
 
 // Fetch product data server-side
 async function fetchProduct(productId: string): Promise<ProductInfo | null> {
-
   if (process.env.NEXT_PUBLIC_USE_MOCK === "true") {
-    const data = await fetchMockProductInfo();
-    return data
+    return await fetchMockProductInfo();
   }
 
   const apiKey = process.env.FMCORE_API_KEY;
@@ -25,7 +23,13 @@ async function fetchProduct(productId: string): Promise<ProductInfo | null> {
     throw new Error("Missing FMCORE_API_KEY");
   }
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/fetchProduct/${productId}`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/fetchProduct/${productId}`,
+    {
+      headers: { Authorization: `Bearer ${apiKey}` },
+      cache: "no-store", // Ensures fresh data for each request
+    }
+  );
 
   if (!response.ok) {
     throw new Error(`Failed to fetch product data: ${response.statusText}`);
@@ -34,25 +38,19 @@ async function fetchProduct(productId: string): Promise<ProductInfo | null> {
   return response.json();
 }
 
-// Revalidate this page every 5 minutes
-export const revalidate = 300;
-
-export async function generateStaticParams() {
-  const productIds = mockProductList; // Replace with real product IDs
-  return productIds.map((id) => ({ productId: String(id) }));
-}
-
+// Main Product Page Component
 export default async function ProductPage({ params }: { params: { productId: string } }) {
   const product = await fetchProduct(params.productId);
 
+  // If no product data is returned, render a 404 page
   if (!product) {
-    throw new Error("Product not found");
+    notFound();
   }
- 
+
   return (
     <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
       <section className="p-6 w-full bg-gray-100 shadow-md">
-        <h1 className="text-xl font-bold text-center  mb-4 px-4 leading-tight text-[var(--main500)]">
+        <h1 className="text-xl font-bold text-center mb-4 px-4 leading-tight text-[var(--main500)]">
           {product.name}
         </h1>
         <ProductHero product={product} />
