@@ -1,12 +1,24 @@
-.hero>h1{
-    line-height: 1.2;
-    color: var(--main500);
+.hero > h1 {
+  line-height: 1.2;
+  color: var(--main500);
 }
 
-.hero strong{
-    color: var(--main500);
+.hero strong {
+  color: var(--main500);
 }
 
-.hero>div>div button{
-    background-color: var(--main100);
+.hero > div > div button {
+  background-color: var(--main100);
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100svh - 42px);
+}
+
+@media screen and (min-width: 430px) {
+  .hero {
+    min-height: unset;
+  }
 }
