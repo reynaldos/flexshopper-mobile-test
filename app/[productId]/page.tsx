@@ -29,7 +29,9 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
           return;
         }
 
-        const response = await fetch(`/api/v1/fetchProduct/${productId}`);
+        const response = await fetch(`/api/v1/fetchProduct/${productId}`, {
+          next: { revalidate: 300 },
+        });
         if (!response.ok) {
           setError(true);
           throw new Error("Failed to fetch product");

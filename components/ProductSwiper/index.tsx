@@ -22,7 +22,9 @@ const ProductSwiper = ({ product }: {  product: ProductInfo }) => {
         }
 
         if (product.id) {
-          const response = await fetch(`/api/v1/getRandomIds/${product.id}?category=${product.breadcrumbs[0].slug || ''}`);
+          const response = await fetch(`/api/v1/getRandomIds/${product.id}?category=${product.breadcrumbs[0].slug || ''}`, {
+            next: { revalidate: 300 },
+          });
           if (!response.ok) throw new Error("Failed to fetch products");
 
           const data = await response.json();
