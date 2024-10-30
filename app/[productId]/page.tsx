@@ -1,86 +1,125 @@
-import React from "react";
+"use client";
+
+// ProductPage Component
+import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import styles from "./product.module.css";
-import Accordion from "@/components/Accordion";
-import Image from "next/image";
 
-// Main ProductPage Component
-const ProductPage = ({}: { params: { productId: string } }) => {
+import ProductHero from "@/components/ProductHero";
+import Proposition65Modal from "@/components/Proposition65Modal";
+import { fetchMockProductInfo } from "@/mock/mockAPI";
+import { ProductInfo } from "@/types/index";
+
+// Dynamically import components for better performance
+const DetailsAccordion = dynamic(() => import("@/components/DetailsAccordion"));
+const ProductSwiper = dynamic(() => import("@/components/ProductSwiper"));
+
+const ProductPage = ({ params }: { params: { productId: string } }) => {
+  const [product, setProduct] = useState<ProductInfo | null>(null);
+  const { productId } = params;
+  const [showModal, setShowModal] = useState(false);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        if (process.env.NEXT_PUBLIC_USE_MOCK === "true") {
+          const data = await fetchMockProductInfo();
+          setProduct(data);
+          return;
+        }
+
+        const response = await fetch(`/api/v1/fetchProduct/${productId}`, {
+          next: { revalidate: 300 },
+        });
+        if (!response.ok) {
+          setError(true);
+          throw new Error("Failed to fetch product");
+        }
+
+        const data = await response.json();
+        setProduct(data);
+      } catch (error) {
+        console.error("Failed to fetch product data:", error);
+      }
+    };
+
+    fetchProduct();
+  }, [productId]);
+
+  useEffect(() => {
+    if (showModal) {
+      // Add class to body to prevent scrolling
+      document.body.classList.add("overflow-hidden");
+    } else {
+      // Remove class when modal is closed
+      document.body.classList.remove("overflow-hidden");
+    }
+
+    // Cleanup function to remove the class if the component unmounts
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [showModal]);
+
+  useEffect(() => {
+    const FLEXSHOPPER_URL = process.env.NEXT_PUBLIC_FLEXSHOPPER_URL || "";
+
+    if (error) {
+      setTimeout(() => {
+        window.location.href = FLEXSHOPPER_URL;
+      }, 500); // Slightly longer delay for smoother experience
+    }
+  }, [error]);
+
   return (
-    <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-16">
-      {/* Product Details Section */}
-      <ProductDetails />
+    <>
+      <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-10">
+        {/* Product Details Section */}
+        <section className={`${styles.hero} p-6 w-full bg-gray-100 shadow-md`}>
+          {product ? (
+            <h1 className="text-xl font-bold text-center text-gray-900 mb-4 px-4">
+              {product.name}
+            </h1>
+          ) : (
+            <div className="w-1/2 h-8 bg-gray-300 rounded mx-auto mb-4 animate-pulse"></div>
+          )}
 
-      {/* Accordion Section */}
-      <section
-        className={`${styles.detailsAccordion} bg-white w-full sm:shadow-md`}
-      >
-        <Accordion />
-      </section>
+          <ProductHero product={product} />
+        </section>
 
-      {/* Customers Also Viewed Section */}
-      <CustomersAlsoViewed />
-    </div>
-  );
-};
+        {/* Accordion Section */}
+        <section
+          className={`${styles.detailsAccordion} bg-white w-full shadow-md`}
+        >
+          <DetailsAccordion
+            product={product}
+            openModal={() => {
+              setShowModal(true);
+            }}
+          />
+        </section>
 
-// ProductDetails Section
-const ProductDetails = () => {
-  return (
-    <section className={`${styles.hero} p-6 w-full bg-gray-100 sm:shadow-md`}>
-      <h1 className="text-xl font-bold text-center text-gray-900 mb-4 px-4">
-        Microsoft - Xbox Series X 1TB Console - Carbon Black
-      </h1>
+        {/* Customers Also Viewed Section */}
+        <section
+          className={`${styles.alsoViewedSwiper} p-6 w-full bg-gray-100 shadow-md`}
+        >
+          <h1 className="text-xl font-bold text-center text-gray-900 mb-4 px-4">
+            Customers Also Viewed
+          </h1>
 
-      {/* Product Image and Stock Info */}
-      <div className="bg-white p-4 pb-1 mb-3 rounded-sm shadow-sm">
-        <Image
-          className="w-48 h-48 object-cover m-auto" width={192} height={192}
-          src={
-            "https://images.flexshopper.xyz/800x800/product-beta-images/6b066782-7376-435a-9602-57688e7b855d.jpeg"
-          }
-          alt={"Xbox Series X"}
-        />
-
-        <span className="block mt-6 text-center text-green-600 font-bold mb-2">
-          In Stock
-        </span>
-
-        {/* Pricing Section */}
-        <div className="grid grid-cols-2 gap-4 mb-3">
-          <button className="flex flex-col items-center justify-center p-4 border border-gray-200">
-            <span className="text-gray-500 text-sm">As Low as</span>
-            <strong className="text-2xl text-gray-900">
-              $21<sup>00</sup>
-            </strong>
-            <span className="text-gray-500 text-sm">Per Week</span>
-          </button>
-          <button className="flex flex-col items-center justify-center p-4 border border-gray-200">
-            <span className="text-gray-500 text-sm">As Low as</span>
-            <strong className="text-2xl text-gray-900">
-              $679<sup>99</sup>
-            </strong>
-          </button>
-        </div>
+          {product && <ProductSwiper product={product} />}
+        </section>
       </div>
 
-      {/* Unlock My Price Button */}
-      <button className="w-full bg-orange-500 text-white font-semibold py-3 rounded-sm">
-        Unlock My Price
-      </button>
-    </section>
-  );
-};
-
-// CustomersAlsoViewed Section
-const CustomersAlsoViewed = () => {
-  return (
-    <section
-      className={`${styles.alsoViewedSwiper} p-6 w-full bg-gray-100 sm:shadow-md`}
-    >
-      <h1 className="text-xl font-bold text-center text-gray-900 mb-4 px-4">
-        Customers Also Viewed
-      </h1>
-    </section>
+      {showModal && (
+        <Proposition65Modal
+          closeModal={() => {
+            setShowModal(false);
+          }}
+        />
+      )}
+    </>
   );
 };
 
