@@ -1,4 +1,4 @@
-import { redirect } from 'next/navigation';
+// app/products/[productId]/page.tsx
 
 import dynamic from "next/dynamic";
 
@@ -6,14 +6,9 @@ const ProductHero = dynamic(() => import("@/components/ProductHero"));
 const DetailsAccordion = dynamic(() => import("@/components/DetailsAccordion"));
 const ProductSwiper = dynamic(() => import("@/components/ProductSwiper"));
 
-export default function Home() {
+export default async function Loading() {
 
-const FLEXSHOPPER_URL = process.env.NEXT_PUBLIC_FLEXSHOPPER_URL || "";
-
-// Server-side redirect
-redirect(FLEXSHOPPER_URL);
-
-return (
+  return (
     <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
       <section className="p-6 w-full bg-gray-100 shadow-md">
       <div className="w-1/2 h-8 bg-gray-300 rounded mx-auto mb-4 animate-pulse"></div>
@@ -32,5 +27,4 @@ return (
       </section>
     </div>
   );
-
 }

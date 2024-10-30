@@ -8,14 +8,15 @@ import { ProductInfo } from "@/types/index";
 import { fetchMockProductList } from "@/mock/mockAPI";
 import ProductSwiperSkeleton from "./loading";
 
-import "./styles.css"
+import "./styles.css";
 
-const ProductSwiper = ({ product }: { product: ProductInfo }) => {
+const ProductSwiper = ({ product }: { product: ProductInfo | null }) => {
   const [productList, setProductList] = useState<ProductInfo[] | null>(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
+      if (!product) return;
       try {
         if (process.env.NEXT_PUBLIC_USE_MOCK === "true") {
           const data = await fetchMockProductList();
@@ -43,15 +44,17 @@ const ProductSwiper = ({ product }: { product: ProductInfo }) => {
       }
     };
 
-    fetchProducts();
-  }, [product.id]);
+    if (product) {
+      fetchProducts();
+    }
+  }, [product]);
 
   const handleClick = (productId: string | number) => {
     window.location.href =
       `${process.env.NEXT_PUBLIC_BASE_URL}/${productId}` || "";
   };
 
-  if (error || !productList) {
+  if (error || !productList || !product) {
     return <ProductSwiperSkeleton />;
   }
 
@@ -101,8 +104,6 @@ const ProductSwiper = ({ product }: { product: ProductInfo }) => {
                   width={150}
                   height={150}
                   className="object-contain mb-4 max-h-52 min-h-52"
-                  loading="eager"
-                  priority
                 />
                 <h2 className="text-md font-semibold text-center text-gray-800 leading-6 mb-2">
                   {product.name}
