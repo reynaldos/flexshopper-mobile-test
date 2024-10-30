@@ -50,7 +50,7 @@ export default async function ProductPage({ params }: { params: { productId: str
   return (
     <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
       <section className="p-6 w-full bg-gray-100 shadow-md">
-        <h1 className="text-xl font-bold text-center mb-4 px-4 leading-tight text-[var(--main500)]">
+        <h1 className="text-lg font-bold text-center mb-4 px-4 leading-tight text-[var(--main500)]">
           {product.name}
         </h1>
         <ProductHero product={product} />
