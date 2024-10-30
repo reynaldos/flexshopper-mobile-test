@@ -19,10 +19,12 @@ export async function GET() {
     const productData = await response.json();
 
     // Map product IDs to URLs
-    const dynamicUrls = productData.map((productId: string) => ({
-      url: `${baseUrl}/${productId}`,
-      priority: "1.0",
-    }));
+    const dynamicUrls = productData.map(
+      (product: { id: string; category: string }) => ({
+        url: `${baseUrl}/${product.id}`,
+        priority: "1.0",
+      })
+    );
 
     // Combine static and dynamic URLs
     const urls = [...staticUrls, ...dynamicUrls];

@@ -1,18 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import productList from "@/mock/productList";
+import productList from "@/mock/categorizedProductList";
+function getRandomIds(
+  productId: string,
+  category: string,
+  productList: {
+    id: string;
+    category: string;
+  }[]
+): string[] {
+  // Filter the productList to exclude the productId and only include the given category
+  const filteredProducts = productList.filter(
+    (product) => product.id !== productId && product.category === category
+  );
 
-function getRandomIds(excludeId: string, ids: string[]): string[] {
-  const uniqueIds = new Set<string>();
-
-  while (uniqueIds.size < 3) {
-    const randomId = ids[Math.floor(Math.random() * ids.length)];
-    if (randomId !== excludeId) {
-      uniqueIds.add(randomId);
-    }
+  // If there are fewer than 3 products in the filtered list, return all of their IDs
+  if (filteredProducts.length <= 3) {
+    return filteredProducts.map((product) => product.id);
   }
 
-  return Array.from(uniqueIds);
+  const randomIds = new Set<string>();
+  while (randomIds.size < 3) {
+    // Select a random product from the filtered list
+    const randomProduct =
+      filteredProducts[Math.floor(Math.random() * filteredProducts.length)];
+    randomIds.add(randomProduct.id);
+  }
+
+  return Array.from(randomIds);
 }
 
 export async function GET(
@@ -25,8 +40,11 @@ export async function GET(
     return NextResponse.json({ error: "Invalid productId" }, { status: 400 });
   }
 
+  // Get the category from the query parameters
+  const category = request.nextUrl.searchParams.get("category") || "";
+
   try {
-    const randomIds = getRandomIds(productId, productList);
+    const randomIds = getRandomIds(productId, category, productList);
 
     // Use Promise.all to fetch data for each ID in parallel
     const products = await Promise.all(

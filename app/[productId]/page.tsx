@@ -106,7 +106,7 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
             Customers Also Viewed
           </h1>
 
-          {product && <ProductSwiper productId={product.id} />}
+          {product && <ProductSwiper product={product} />}
         </section>
       </div>
 
