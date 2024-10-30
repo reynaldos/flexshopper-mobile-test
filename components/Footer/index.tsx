@@ -52,7 +52,7 @@ const Footer = () => {
             {index > 0 && <hr className="w-100 mb-2" />}
             <button
               onClick={() => toggleSection(section)}
-              className="text-xl font-medium focus:outline-none"
+              className="text-xl text-left font-medium focus:outline-none w-full "
             >
               {section.charAt(0).toUpperCase() + section.slice(1)}
             </button>
