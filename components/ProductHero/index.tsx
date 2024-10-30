@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import LoadingSkeleton from "./loading";
 
-import styles from "./ProductHero.module.css";
+import "./styles.css";
 
 const FLEXSHOPPER_SIGNIN = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL;
 
@@ -53,9 +53,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
       </Head>
 
       <div className="flex-shrink flex flex-col bg-white p-4 pb-1 mb-3 rounded-sm shadow-sm">
-        <div
-          className="flex-shrink flex items-center justify-center"
-        >
+        <div className="flex-shrink flex items-center justify-center">
           {product.images.length > 1 && (
             <button
               aria-label="Show previous product"
@@ -152,7 +150,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
               As Low as<sup>9</sup>
             </span>
             <strong
-              className={`${styles.strikeout} text-3xl font-semibold text-[var(--main500)]`}
+              className={`strikeout text-3xl font-semibold text-[var(--main500)]`}
             >
               ${salePrice.toFixed(2).split(".")[0]}
               <sup>00</sup>
@@ -165,7 +163,9 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             className="flex flex-col items-center justify-start p-4 border border-gray-200 bg-[var(--main100)]"
           >
             <span className="text-gray-500 text-sm">Total Price</span>
-            <strong className={`${styles.strikeout} text-3xl font-semibold text-[var(--main500)]`}>
+            <strong
+              className={`strikeout text-3xl font-semibold text-[var(--main500)]`}
+            >
               ${markedUpPrice.toFixed(2).split(".")[0]}
               <sup>{markedUpPrice.toFixed(2).split(".")[1]}</sup>
             </strong>
