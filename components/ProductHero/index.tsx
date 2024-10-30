@@ -8,6 +8,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import LoadingSkeleton from "./loading";
 
+import styles from "./ProductHero.module.css";
+
 const FLEXSHOPPER_SIGNIN = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL;
 
 const ProductHero = ({ product }: { product: ProductInfo | null }) => {
@@ -40,7 +42,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
 
   return (
     <>
-    <Head>
+      <Head>
         {product && (
           <link
             rel="preload"
@@ -50,9 +52,10 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
         )}
       </Head>
 
-
-      <div className="bg-white p-4 pb-1 mb-3 rounded-sm shadow-sm">
-        <div className="flex items-center justify-center">
+      <div className="flex-shrink flex flex-col bg-white p-4 pb-1 mb-3 rounded-sm shadow-sm">
+        <div
+          className="flex-shrink flex items-center justify-center"
+        >
           {product.images.length > 1 && (
             <button
               aria-label="Show previous product"
@@ -82,7 +85,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             navigation={{ prevEl: ".prev", nextEl: ".next" }}
             pagination={{ clickable: true }}
             modules={[Navigation, Pagination]}
-            className={`w-64 h-64 mx-auto mb-6 transition-opacity duration-700 ${
+            className={`w-64  mx-auto transition-opacity duration-700 ${
               productLoaded ? "opacity-100" : "opacity-0"
             }`}
             loop
@@ -94,7 +97,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
                   alt={product.name}
                   width={256}
                   height={256}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full max-h-[35svh] object-contain object-center"
                   loading="eager"
                   priority={index === 0} // Preload the first image only
                 />
@@ -127,9 +130,9 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
         </div>
 
         <span
-          className={`block mt-6 text-center ${
+          className={`block text-center ${
             inStock ? "text-green-600" : "text-red-600"
-          } font-bold mb-2 transition-opacity duration-700 ${
+          } font-bold mt-2 mb-1 transition-opacity duration-700 ${
             productLoaded ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -148,7 +151,9 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             <span className="text-gray-500 text-sm">
               As Low as<sup>9</sup>
             </span>
-            <strong className="text-3xl font-semibold text-[var(--main500)]">
+            <strong
+              className={`${styles.strikeout} text-3xl font-semibold text-[var(--main500)]`}
+            >
               ${salePrice.toFixed(2).split(".")[0]}
               <sup>00</sup>
             </strong>
@@ -159,10 +164,8 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             onClick={() => (window.location.href = FLEXSHOPPER_SIGNIN || "")}
             className="flex flex-col items-center justify-start p-4 border border-gray-200 bg-[var(--main100)]"
           >
-            <span className="text-gray-500 text-sm">
-              As Low as<sup>9</sup>
-            </span>
-            <strong className="text-3xl font-semibold text-[var(--main500)]">
+            <span className="text-gray-500 text-sm">Total Price</span>
+            <strong className={`${styles.strikeout} text-3xl font-semibold text-[var(--main500)]`}>
               ${markedUpPrice.toFixed(2).split(".")[0]}
               <sup>{markedUpPrice.toFixed(2).split(".")[1]}</sup>
             </strong>

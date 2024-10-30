@@ -59,7 +59,7 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
       document.body.classList.remove("overflow-hidden");
     };
   }, [showModal]);
-  
+
   useEffect(() => {
     const FLEXSHOPPER_URL = process.env.NEXT_PUBLIC_FLEXSHOPPER_URL || "";
 
@@ -72,7 +72,7 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
+      <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-10">
         {/* Product Details Section */}
         <section className={`${styles.hero} p-6 w-full bg-gray-100 shadow-md`}>
           {product ? (
@@ -106,7 +106,7 @@ const ProductPage = ({ params }: { params: { productId: string } }) => {
             Customers Also Viewed
           </h1>
 
-          {product && <ProductSwiper productId={product.id} />}
+          {product && <ProductSwiper product={product} />}
         </section>
       </div>
 

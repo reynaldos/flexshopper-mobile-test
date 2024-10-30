@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import productList from "@/mock/productList";
+import productList from "@/mock/categorizedProductList";
 
 export async function GET() {
   try {
