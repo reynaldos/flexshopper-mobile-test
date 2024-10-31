@@ -1,3 +1,21 @@
 .swiper-wrapper{
     align-items: center;
 }
+
+.strikeout-product{
+    position: relative;
+}
+
+
+.strikeout-product::after{
+    content: '';
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 0%;
+    border-top: 2px solid rgb(220 38 38);
+    width: 140px;
+    height: 2px;
+    background-color: rgb(220 38 38);
+    transform: rotate(-5deg);
+}

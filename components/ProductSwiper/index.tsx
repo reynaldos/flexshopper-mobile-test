@@ -109,9 +109,9 @@ const ProductSwiper = ({ product }: { product: ProductInfo | null }) => {
                   {product.name}
                 </h2>
                 <div className="w-full">
-                  <div className="flex">
+                  <div className="flex strikeout-product">
                     <p className="text-blue-600 text-md my-2">
-                      As low as<sup> 9</sup>
+                      As low as<sup> *</sup>
                       <span className="text-3xl font-normal ml-1">
                         {salePrice[0]}
                       </span>

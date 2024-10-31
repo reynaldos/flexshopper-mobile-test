@@ -147,7 +147,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             className="flex flex-col items-center justify-start p-4 border border-gray-200 bg-[var(--main100)]"
           >
             <span className="text-gray-500 text-sm">
-              As Low as<sup>9</sup>
+              As Low as<sup>*</sup>
             </span>
             <strong
               className={`strikeout text-3xl font-semibold text-[var(--main500)]`}
