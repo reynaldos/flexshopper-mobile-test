@@ -91,12 +91,14 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             {product.images.map((image, index) => (
               <SwiperSlide key={index}>
                 <Image
+  
                   src={image.source || "/placeholder.png"}
                   alt={product.name}
-                  width={256}
-                  height={256}
-                  className="w-full h-full max-h-[35svh] object-contain object-center"
+                  width={248}
+                  height={248}
+                  className="w-full h-full max-h-[35svh] object-contain object-center productImg"
                   loading="eager"
+                  sizes="(max-width: 430px ) 248px, 248px"
                   priority={index === 0} // Preload the first image only
                 />
               </SwiperSlide>
