@@ -15,3 +15,7 @@
     background-color: rgb(220 38 38);
     transform: rotate(-25deg);
 }
+
+.productImg{
+    width: 256px;
+}
