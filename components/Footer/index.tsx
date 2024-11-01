@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { disclaimers, footerLinks, socialLinks } from "./footerLinks";
 import Image from "next/image";
 
@@ -14,6 +14,54 @@ const Footer = () => {
   const toggleSection = (section: any) => {
     setActiveSection(activeSection === section ? null : section);
   };
+
+  useEffect(() => {
+    if (!document.getElementById("ADA")) {
+      const s = document.createElement("script");
+      const h = document.querySelector("head") || document.body;
+      s.id = "ADA";
+      s.src = "https://acsbapp.com/apps/app/dist/js/app.js";
+      s.async = true;
+
+      let acsbJS: any;
+      s.onload = function () {
+
+        acsbJS.init({
+          statementLink: "",
+          footerHtml: "",
+          hideMobile: false,
+          hideTrigger: false,
+          disableBgProcess: false,
+          language: "en",
+          position: "right",
+          leadColor: "#146FF8",
+          triggerColor: "#146FF8",
+          triggerRadius: "50%",
+          triggerPositionX: "right",
+          triggerPositionY: "bottom",
+          triggerIcon: "people",
+          triggerSize: "bottom",
+          triggerOffsetX: 20,
+          triggerOffsetY: 20,
+          mobile: {
+            triggerSize: "small",
+            triggerPositionX: "right",
+            triggerPositionY: "bottom",
+            triggerOffsetX: 10,
+            triggerOffsetY: 10,
+            triggerRadius: "20",
+          },
+        });
+      };
+
+      // onerror callback for debugging
+      s.onerror = () => {
+        console.error("Failed to load ADA script.");
+      };
+
+      h.appendChild(s);
+    }
+  }, []);
 
   return (
     <footer className="w-full bg-main700 p-6 py-12 flex flex-col items-start gap-4 justify-between shadow-md max-w-md mx-auto text-white">
