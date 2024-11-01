@@ -17,8 +17,8 @@ const Footer = () => {
 
   useEffect(() => {
     if (!document.getElementById("ADA")) {
-      var s = document.createElement("script");
-      var h = document.querySelector("head") || document.body;
+      const s = document.createElement("script");
+      const h = document.querySelector("head") || document.body;
       s.id = "ADA";
       s.src = "https://acsbapp.com/apps/app/dist/js/app.js";
       s.async = true;
