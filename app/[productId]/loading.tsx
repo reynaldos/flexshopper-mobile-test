@@ -6,7 +6,7 @@ const ProductHero = dynamic(() => import("@/components/ProductHero"));
 const DetailsAccordion = dynamic(() => import("@/components/DetailsAccordion"));
 const ProductSwiper = dynamic(() => import("@/components/ProductSwiper"));
 
-export default async function Loading() {
+export default function Loading() {
 
   return (
     <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
