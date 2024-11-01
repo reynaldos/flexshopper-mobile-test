@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import { GoogleTagManager } from "@next/third-parties/google";
+import Script from "next/script";
 
 const openSans = localFont({
   src: [
@@ -86,10 +87,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       {GOOGLE_ANALYTICS_ID && <GoogleTagManager gtmId={GOOGLE_ANALYTICS_ID} />}
+      <Script
+        src="https://cmp.osano.com/AzywK3Ti3o6od5H43/1ea433bc-e651-48f0-b2dd-429bf80459bf/osano.js"
+        strategy="lazyOnload"
+      />
       <body className={openSans.className}>
         <Navigation />
         {children}
         <Footer />
+
+        <Script
+          src="https://acsbapp.com/apps/app/dist/js/app.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
