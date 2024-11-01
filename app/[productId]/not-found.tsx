@@ -1,14 +1,24 @@
 // app/products/[productId]/page.tsx
-
 "use client"
-
 import dynamic from "next/dynamic";
+import { useEffect } from "react";
 
 const ProductHero = dynamic(() => import("@/components/ProductHero"));
 const DetailsAccordion = dynamic(() => import("@/components/DetailsAccordion"));
 const ProductSwiper = dynamic(() => import("@/components/ProductSwiper"));
 
-export default function Error() {
+export default function NotFound({
+  error,
+}: {
+  error: Error & { digest?: string }
+  reset: () => void
+}) {
+
+  useEffect(() => {
+    // Log the error to an error reporting service
+    console.error(error)
+  }, [error])
+
 
   return (
     <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
