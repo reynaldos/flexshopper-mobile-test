@@ -32,7 +32,7 @@ async function fetchProduct(productId: string): Promise<ProductInfo | null> {
   );
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch product data: ${response.statusText}`);
+    notFound();
   }
 
   return response.json();
