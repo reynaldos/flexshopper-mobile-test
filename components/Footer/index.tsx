@@ -23,7 +23,9 @@ const Footer = () => {
       s.src = "https://acsbapp.com/apps/app/dist/js/app.js";
       s.async = true;
 
+      let acsbJS: any;
       s.onload = function () {
+
         acsbJS.init({
           statementLink: "",
           footerHtml: "",
