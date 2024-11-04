@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import "swiper/css";
 import "swiper/css/navigation";
 
+import { cookies } from "next/headers";
 import { GoogleTagManager } from "@next/third-parties/google";
 import Script from "next/script";
 
@@ -84,21 +85,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = cookies();
+  const noScript = cookieStore.get("noScripts")?.value === "true";
+
   return (
     <html lang="en">
       {GOOGLE_ANALYTICS_ID && <GoogleTagManager gtmId={GOOGLE_ANALYTICS_ID} />}
-      <Script
-        src="https://cmp.osano.com/AzywK3Ti3o6od5H43/1ea433bc-e651-48f0-b2dd-429bf80459bf/osano.js"
-        strategy="lazyOnload"
-      />
+
+      {!noScript && (
+        <Script
+          src="https://cmp.osano.com/AzywK3Ti3o6od5H43/1ea433bc-e651-48f0-b2dd-429bf80459bf/osano.js"
+          strategy="lazyOnload"
+        />
+      )}
+
       <body className={openSans.className}>
         <Navigation />
         {children}
         <Footer />
 
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){ 
+        {!noScript && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(){ 
                 var s = document.createElement('script'); 
                 var h = document.querySelector('head') || document.body; 
                 s.src = 'https://acsbapp.com/apps/app/dist/js/app.js'; 
@@ -133,8 +142,9 @@ export default function RootLayout({
                 }; 
                 h.appendChild(s); 
             })();`,
-          }}
-        />
+            }}
+          />
+        )}
       </body>
     </html>
   );
