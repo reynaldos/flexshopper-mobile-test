@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { disclaimers, footerLinks, socialLinks } from "./footerLinks";
 import Image from "next/image";
 
