@@ -10,6 +10,7 @@ import "swiper/css/navigation";
 import { cookies } from "next/headers";
 import { GoogleTagManager } from "@next/third-parties/google";
 import Script from "next/script";
+import ClientScript from "@/components/ClientScript";
 
 const openSans = localFont({
   src: [
@@ -92,12 +93,14 @@ export default function RootLayout({
     <html lang="en">
       {GOOGLE_ANALYTICS_ID && <GoogleTagManager gtmId={GOOGLE_ANALYTICS_ID} />}
 
+      {/* use client */}
+      <>
       {!noScript && (
-        <Script
+        <ClientScript
           src="https://cmp.osano.com/AzywK3Ti3o6od5H43/1ea433bc-e651-48f0-b2dd-429bf80459bf/osano.js"
-          strategy="lazyOnload"
         />
       )}
+      </>
 
       <body className={openSans.className}>
         <Navigation />
@@ -106,6 +109,7 @@ export default function RootLayout({
 
         {!noScript && (
           <script
+            async={true}
             dangerouslySetInnerHTML={{
               __html: `(function(){ 
                 var s = document.createElement('script'); 
