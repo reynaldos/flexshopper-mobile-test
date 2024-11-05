@@ -109,15 +109,15 @@ const ProductSwiper = ({ product }: { product: ProductInfo | null }) => {
                   {product.name}
                 </h2>
                 <div className="w-full">
-                  <div className="flex strikeout-product">
+                  <div className="flex">
                     <p className="text-blue-600 text-md my-2">
                       As low as<sup> *</sup>
                       <span className="text-3xl font-normal ml-1">
-                        ${salePrice[0]}.
+                        ${salePrice[0]}
                       </span>
                     </p>
                     <aside className="flex flex-col justify-center ml-0">
-                      <p className="text-blue-600 text-md leading-4">00</p>
+                      <p className="text-blue-600 text-md leading-4">.00</p>
                       <p className="text-sm leading-5 uppercase text-gray-500 pl-4">
                         per week
                       </p>
