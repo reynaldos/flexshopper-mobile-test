@@ -9,7 +9,6 @@ import "swiper/css/navigation";
 
 import { cookies } from "next/headers";
 import { GoogleTagManager } from "@next/third-parties/google";
-import Script from "next/script";
 import ClientScript from "@/components/ClientScript";
 
 const openSans = localFont({
