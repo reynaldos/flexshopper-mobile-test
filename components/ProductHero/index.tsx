@@ -154,8 +154,8 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             <strong
               className={`strikeout text-3xl font-semibold text-[var(--main500)]`}
             >
-              ${salePrice.toFixed(2).split(".")[0]}.
-              <sup>00</sup>
+              ${salePrice.toFixed(2).split(".")[0]}
+              <sup>.00</sup>
             </strong>
             <span className="text-gray-500 text-sm">Per Week</span>
           </button>
@@ -168,8 +168,8 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             <strong
               className={`strikeout text-3xl font-semibold text-[var(--main500)]`}
             >
-              ${markedUpPrice.toFixed(2).split(".")[0]}.
-              <sup>{markedUpPrice.toFixed(2).split(".")[1]}</sup>
+              ${markedUpPrice.toFixed(2).split(".")[0]}
+              <sup>.{markedUpPrice.toFixed(2).split(".")[1]}</sup>
             </strong>
           </button>
         </div>
