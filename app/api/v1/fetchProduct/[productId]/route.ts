@@ -35,10 +35,13 @@ export async function GET(
     const data = await response.json();
 
     if (!response.ok) {
-      console.error(`API error: ${response.status} - ${response.statusText}`, data);
+      console.error(
+        `API error: ${response.status} - ${response.statusText}`,
+        data
+      );
       throw new Error(`Failed to fetch product data: ${response.statusText}`);
     }
-    
+
     if (data.error) {
       return new NextResponse(
         JSON.stringify({
