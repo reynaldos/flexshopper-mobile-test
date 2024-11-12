@@ -51,7 +51,11 @@ export async function GET(
       randomIds.map(async (id) =>
         fetch(
           `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/fetchProduct/${id}`, {
-            next: { revalidate: 300 },
+            next: { revalidate: 300, },
+            method: 'GET',
+            headers: {
+              'x-api-auth-token': process.env.API_AUTH_TOKEN || '',
+            },
           }
         ).then(async (response) => {
           if (!response.ok) {

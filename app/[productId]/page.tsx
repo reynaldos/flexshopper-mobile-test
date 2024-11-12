@@ -18,16 +18,14 @@ async function fetchProduct(productId: string): Promise<ProductInfo | null> {
     return await fetchMockProductInfo();
   }
 
-  const apiKey = process.env.FMCORE_API_KEY;
-  if (!apiKey) {
-    throw new Error("Missing FMCORE_API_KEY");
-  }
-
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/fetchProduct/${productId}`,
     {
-      headers: { Authorization: `Bearer ${apiKey}` },
-      cache: "no-store", // Ensures fresh data for each request
+      next: { revalidate: 300 }, // Caching for 5 minutes at the CDN level
+      method: "GET",
+      headers: {
+      'x-api-auth-token': process.env.API_AUTH_TOKEN || '', 
+      },
     }
   );
 
@@ -39,7 +37,11 @@ async function fetchProduct(productId: string): Promise<ProductInfo | null> {
 }
 
 // Main Product Page Component
-export default async function ProductPage({ params }: { params: { productId: string } }) {
+export default async function ProductPage({
+  params,
+}: {
+  params: { productId: string };
+}) {
   const product = await fetchProduct(params.productId);
 
   // If no product data is returned, render a 404 page
