@@ -95,8 +95,6 @@ export default function RootLayout({
   const noRedirect = urlParams.get("noRedirect") === "true";
   const noScript = urlParams.get("noScripts") === "true";
 
-  console.log('noRedirect: ', noRedirect, "noScript: ", noScript)
-
   return (
     <html lang="en">
       {GOOGLE_ANALYTICS_ID && <GoogleTagManager gtmId={GOOGLE_ANALYTICS_ID} />}
