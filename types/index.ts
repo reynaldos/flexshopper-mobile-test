@@ -160,6 +160,28 @@ interface Image {
 
 interface Review {}
 
+
+
+interface CsvProduct {
+  id: string;
+  title: string;
+  description: string;
+  availability: string;
+  condition: string;
+  price: string;
+  link: string;
+  image_link: string;
+  brand: string;
+  quantity_to_sell_on_facebook: string;
+  google_product_category: string;
+  sale_price: string;
+  additional_image_link: string;
+  size: string;
+  color: string;
+  gender: string;
+  material: string;
+}
+
 export type {
   ProductInfo,
   Breadcrumb,
@@ -176,4 +198,5 @@ export type {
   Brand,
   Image,
   Review,
+  CsvProduct
 };
