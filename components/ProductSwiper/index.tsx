@@ -31,6 +31,10 @@ const ProductSwiper = ({ product }: { product: ProductInfo | null }) => {
             }`,
             {
               next: { revalidate: 300 },
+              method: "GET",
+              headers: {
+               'x-api-auth-token': process.env.API_AUTH_TOKEN || '',
+              },
             }
           );
           if (!response.ok) throw new Error("Failed to fetch products");
