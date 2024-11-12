@@ -4,34 +4,22 @@ import { createObjectCsvWriter } from "csv-writer";
 import productList from "@/mock/categorizedProductList";
 import { CsvProduct, ProductInfo } from "@/types/index";
 
-const googleProductCategoryMap: { [key: string]: number } = {
-  appliances: 696, // Home Appliances
-  audio: 233, // Electronics > Audio
-  "cameras-and-camcorders": 152, // Cameras & Optics > Cameras
-  "cell-phones": 267, // Electronics > Communications > Telephony > Mobile Phones
-  "computers-and-tablets": 479, // Computers & Electronics > Computers
-  furniture: 436, // Furniture
-  "garage-and-outdoor": 780, // Home & Garden > Lawn & Garden
-  "health-fitness-sports": 554, // Sporting Goods > Exercise & Fitness
-  "jewelry-and-watches": 188, // Apparel & Accessories > Jewelry
-  "living-room-furniture": 4946, // Furniture > Living Room Furniture Sets
-  mattresses: 3290, // Home & Garden > Furniture > Beds & Accessories > Mattresses
-  "musical-instruments": 353, // Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments
-  "tv-and-home-theater": 229, // Electronics > Video > Televisions
-  "video-games": 566, // Video Games & Consoles > Video Games
-};
-
-function getGoogleProductCategoryID(category: string): number | undefined {
-  return googleProductCategoryMap[category] || undefined;
-}
-
 const PRODUCT_COUNT = parseInt(
   process.env.NEXT_PUBLIC_CRON_PRODUCT_COUNT || "100"
 );
 
 const FLEXSHOPPER_URL = process.env.NEXT_PUBLIC_FLEXSHOPPER_URL;
 
-export async function GET() {
+const CRON_SECRET_KEY = process.env.CRON_SECRET_KEY;
+
+export async function GET(request: Request) {
+  const secretKey = request.headers.get('x-cron-secret');
+
+  if (secretKey !== CRON_SECRET_KEY) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+
   const CSV_PATH = path.join(process.cwd(), "public", "productData.csv");
   const topProducts = productList.slice(0, PRODUCT_COUNT);
 
@@ -151,4 +139,25 @@ export async function GET() {
       { status: 500 }
     );
   }
+}
+
+const googleProductCategoryMap: { [key: string]: number } = {
+  appliances: 696, // Home Appliances
+  audio: 233, // Electronics > Audio
+  "cameras-and-camcorders": 152, // Cameras & Optics > Cameras
+  "cell-phones": 267, // Electronics > Communications > Telephony > Mobile Phones
+  "computers-and-tablets": 479, // Computers & Electronics > Computers
+  furniture: 436, // Furniture
+  "garage-and-outdoor": 780, // Home & Garden > Lawn & Garden
+  "health-fitness-sports": 554, // Sporting Goods > Exercise & Fitness
+  "jewelry-and-watches": 188, // Apparel & Accessories > Jewelry
+  "living-room-furniture": 4946, // Furniture > Living Room Furniture Sets
+  mattresses: 3290, // Home & Garden > Furniture > Beds & Accessories > Mattresses
+  "musical-instruments": 353, // Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments
+  "tv-and-home-theater": 229, // Electronics > Video > Televisions
+  "video-games": 566, // Video Games & Consoles > Video Games
+};
+
+function getGoogleProductCategoryID(category: string): number | undefined {
+  return googleProductCategoryMap[category] || undefined;
 }
