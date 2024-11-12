@@ -36,6 +36,9 @@
       ],
       "@/utils/*": [
         "./utils/*"
+      ],
+      "@/hooks/*": [
+        "./hooks/*"
       ]
     },
     "target": "ES2017"
