@@ -1,7 +1,9 @@
+import Footer from "@/components/Footer";
+import Navigation from "@/components/Navigation";
 import UseTrafficSplitter from "@/hooks/useTrafficSplitter";
 import { headers } from "next/headers";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export default function ProducPageLayout({
   children,
@@ -14,14 +16,19 @@ export default function ProducPageLayout({
 
   // Extract headers to access URL with query parameters
   const headersList = headers();
-  const url = headersList.get("x-forwarded-url") || headersList.get("referer") || "";
+  const url =
+    headersList.get("x-forwarded-url") || headersList.get("referer") || "";
 
   // Parse the URL to extract search parameters
-  const urlParams = new URL(url, baseUrl).searchParams;
+  const urlParams = new URL(url, BASE_URL).searchParams;
   const noRedirect = urlParams.get("noRedirect") === "true";
 
   return noRedirect ? (
-    <>{children}</>
+    <>
+      <Navigation />
+      {children}
+      <Footer />
+    </>
   ) : (
     <UseTrafficSplitter productId={productId}>{children}</UseTrafficSplitter>
   );

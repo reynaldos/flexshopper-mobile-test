@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@/styles/globals.css";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+
+import { headers } from "next/headers";
 
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { cookies } from "next/headers";
 import { GoogleTagManager } from "@next/third-parties/google";
 import ClientScript from "@/components/ClientScript";
 
@@ -79,14 +78,24 @@ export const metadata: Metadata = {
 };
 
 const GOOGLE_ANALYTICS_ID = process.env.GOOGLE_ANALYTICS_ID;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = cookies();
-  const noScript = cookieStore.get("noScripts")?.value === "true";
+  // Extract headers to access URL with query parameters
+  const headersList = headers();
+  const url =
+    headersList.get("x-forwarded-url") || headersList.get("referer") || "";
+
+  // Parse the URL to extract search parameters
+  const urlParams = new URL(url, BASE_URL).searchParams;
+  const noRedirect = urlParams.get("noRedirect") === "true";
+  const noScript = urlParams.get("noScripts") === "true";
+
+  console.log('noRedirect: ', noRedirect, "noScript: ", noScript)
 
   return (
     <html lang="en">
@@ -94,19 +103,15 @@ export default function RootLayout({
 
       {/* use client */}
       <>
-      {!noScript && (
-        <ClientScript
-          src="https://cmp.osano.com/AzywK3Ti3o6od5H43/1ea433bc-e651-48f0-b2dd-429bf80459bf/osano.js"
-        />
-      )}
+        {!noScript && noRedirect && (
+          <ClientScript src="https://cmp.osano.com/AzywK3Ti3o6od5H43/1ea433bc-e651-48f0-b2dd-429bf80459bf/osano.js" />
+        )}
       </>
 
       <body className={openSans.className}>
-        <Navigation />
         {children}
-        <Footer />
 
-        {!noScript && (
+        {!noScript && noRedirect && (
           <script
             async={true}
             dangerouslySetInnerHTML={{
