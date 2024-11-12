@@ -10,15 +10,7 @@ const PRODUCT_COUNT = parseInt(
 
 const FLEXSHOPPER_URL = process.env.NEXT_PUBLIC_FLEXSHOPPER_URL;
 
-const CRON_SECRET_KEY = process.env.CRON_SECRET_KEY;
-
-export async function GET(request: Request) {
-  const secretKey = request.headers.get('x-cron-secret');
-
-  if (secretKey !== CRON_SECRET_KEY) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-
+export async function GET() {
 
   const CSV_PATH = path.join(process.cwd(), "public", "productData.csv");
   const topProducts = productList.slice(0, PRODUCT_COUNT);
@@ -29,7 +21,10 @@ export async function GET(request: Request) {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/fetchProduct/${product.id}`,
           {
-            next: { revalidate: 300 },
+            method: 'GET',
+            headers: {
+              'x-api-auth-token': process.env.API_AUTH_TOKEN || '',
+            },
           }
         );
 
