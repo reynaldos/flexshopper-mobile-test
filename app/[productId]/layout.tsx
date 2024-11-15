@@ -30,6 +30,6 @@ export default function ProducPageLayout({
       <Footer />
     </>
   ) : (
-    <UseTrafficSplitter productId={productId}>{children}</UseTrafficSplitter>
+    <UseTrafficSplitter productId={productId} />
   );
 }
