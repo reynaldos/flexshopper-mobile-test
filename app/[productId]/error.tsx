@@ -25,7 +25,7 @@ export default function Error() {
         <h1 className="text-xl font-bold text-center text-gray-900 mb-4 px-4">
           Customers Also Viewed
         </h1>
-        <ProductSwiper product={null} />
+        <ProductSwiper productList={null} />
       </section>
     </div>
   );
