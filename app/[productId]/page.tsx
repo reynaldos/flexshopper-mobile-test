@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import { ProductInfo } from "@/types/index";
 // import { mockProductList } from "@/mock/mockData";
-import { fetchMockProductInfo } from "@/mock/mockAPI";
+import { fetchMockProductInfo, fetchMockProductList } from "@/mock/mockAPI";
 import { notFound } from "next/navigation";
 
 const ProductHero = dynamic(() => import("@/components/ProductHero"));
@@ -24,7 +24,7 @@ async function fetchProduct(productId: string): Promise<ProductInfo | null> {
       next: { revalidate: 300 }, // Caching for 5 minutes at the CDN level
       method: "GET",
       headers: {
-      'x-api-auth-token': process.env.API_AUTH_TOKEN || '', 
+        "x-api-auth-token": process.env.API_AUTH_TOKEN || "",
       },
     }
   );
@@ -34,6 +34,39 @@ async function fetchProduct(productId: string): Promise<ProductInfo | null> {
   }
 
   return response.json();
+}
+
+async function fetchRandomProducts(product: ProductInfo | null) {
+  if (!product) return;
+
+  try {
+    if (process.env.NEXT_PUBLIC_USE_MOCK === "true") {
+      const data = await fetchMockProductList();
+      return data;
+    }
+
+    if (product.id) {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/getRandomIds/${
+          product.id
+        }?category=${product.breadcrumbs[0].slug || ""}`,
+        {
+          next: { revalidate: 300 },
+          method: "GET",
+          headers: {
+            "x-api-auth-token": process.env.API_AUTH_TOKEN || "",
+          },
+        }
+      );
+      if (!response.ok) throw new Error("Failed to fetch products");
+
+      const data = await response.json();
+      return data.products;
+    }
+  } catch (error) {
+    console.error("Failed to fetch products data:", error);
+    return [];
+  }
 }
 
 // Main Product Page Component
@@ -48,6 +81,8 @@ export default async function ProductPage({
   if (!product) {
     notFound();
   }
+
+  const randomProducts = await fetchRandomProducts(product);
 
   return (
     <div className="flex flex-col items-center justify-start bg-white font-sans max-w-md mx-auto pt-14">
@@ -66,7 +101,7 @@ export default async function ProductPage({
         <h1 className="text-xl font-bold text-center text-gray-900 mb-4 px-4">
           Customers Also Viewed
         </h1>
-        <ProductSwiper product={product} />
+        <ProductSwiper productList={randomProducts} />
       </section>
     </div>
   );

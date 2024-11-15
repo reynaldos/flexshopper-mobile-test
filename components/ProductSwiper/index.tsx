@@ -3,62 +3,22 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Mousewheel, Navigation } from "swiper/modules";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { ProductInfo } from "@/types/index";
-import { fetchMockProductList } from "@/mock/mockAPI";
 import ProductSwiperSkeleton from "./loading";
 
 import "./styles.css";
 
-const ProductSwiper = ({ product }: { product: ProductInfo | null }) => {
-  const [productList, setProductList] = useState<ProductInfo[] | null>(null);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      if (!product) return;
-      try {
-        if (process.env.NEXT_PUBLIC_USE_MOCK === "true") {
-          const data = await fetchMockProductList();
-          setProductList(data);
-          return;
-        }
-
-        if (product.id) {
-          const response = await fetch(
-            `/api/v1/getRandomIds/${product.id}?category=${
-              product.breadcrumbs[0].slug || ""
-            }`,
-            {
-              next: { revalidate: 300 },
-              method: "GET",
-              headers: {
-               'x-api-auth-token': process.env.API_AUTH_TOKEN || '',
-              },
-            }
-          );
-          if (!response.ok) throw new Error("Failed to fetch products");
-
-          const data = await response.json();
-          setProductList(data.products);
-        }
-      } catch (error) {
-        console.error("Failed to fetch products data:", error);
-        setError(true);
-      }
-    };
-
-    if (product) {
-      fetchProducts();
-    }
-  }, [product]);
-
+const ProductSwiper = ({
+  productList,
+}: {
+  productList: ProductInfo[] | null;
+}) => {
   const handleClick = (productId: string | number) => {
     window.location.href =
       `${process.env.NEXT_PUBLIC_BASE_URL}/${productId}` || "";
   };
 
-  if (error || !productList || !product) {
+  if (!productList || productList.length === 0) {
     return <ProductSwiperSkeleton />;
   }
 

@@ -12,7 +12,6 @@ export default function UseTrafficSplitter({
   productId: string;
   children: React.ReactNode;
 }) {
-
   useEffect(() => {
     const urls = [
       `${baseUrl}/${productId}?noRedirect=true`,
@@ -20,9 +19,23 @@ export default function UseTrafficSplitter({
       `${flexshopperUrl}/product/${productId}`,
     ];
 
-    const randomIndex = Math.floor(Math.random() * urls.length);
-    const selectedUrl = urls[randomIndex];
+    // Fisher-Yates Shuffle for unbiased random selection
+    const shuffledUrls = [...urls];
+    for (let i = shuffledUrls.length - 1; i > 0; i--) {
+      const randomIndex = Math.floor(Math.random() * (i + 1));
+      [shuffledUrls[i], shuffledUrls[randomIndex]] = [
+        shuffledUrls[randomIndex],
+        shuffledUrls[i],
+      ];
+    }
 
+    // Pick the first URL from the shuffled list
+    const selectedUrl = shuffledUrls[0];
+
+    // Log for debugging
+    console.log("Redirecting to:", selectedUrl);
+
+    // Redirect
     window.location.href = selectedUrl;
   }, [productId]);
 
