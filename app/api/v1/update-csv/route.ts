@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import path from "path";
+import sharp from "sharp";
+import fs from "fs/promises";
 import { createObjectCsvWriter } from "csv-writer";
 import productList from "@/mock/categorizedProductList";
 import { CsvProduct, ProductInfo } from "@/types/index";
@@ -10,9 +12,61 @@ const PRODUCT_COUNT = parseInt(
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-export async function GET() {
+function getGoogleProductCategoryID(category: string): number | undefined {
+  const googleProductCategoryMap: { [key: string]: number } = {
+    appliances: 696, // Home Appliances
+    audio: 233, // Electronics > Audio
+    "cameras-and-camcorders": 152, // Cameras & Optics > Cameras
+    "cell-phones": 267, // Electronics > Communications > Telephony > Mobile Phones
+    "computers-and-tablets": 479, // Computers & Electronics > Computers
+    furniture: 436, // Furniture
+    "garage-and-outdoor": 780, // Home & Garden > Lawn & Garden
+    "health-fitness-sports": 554, // Sporting Goods > Exercise & Fitness
+    "jewelry-and-watches": 188, // Apparel & Accessories > Jewelry
+    "living-room-furniture": 4946, // Furniture > Living Room Furniture Sets
+    mattresses: 3290, // Home & Garden > Furniture > Beds & Accessories > Mattresses
+    "musical-instruments": 353, // Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments
+    "tv-and-home-theater": 229, // Electronics > Video > Televisions
+    "video-games": 566, // Video Games & Consoles > Video Games
+  };
 
+  return googleProductCategoryMap[category] || undefined;
+}
+
+async function resizeImage(
+  imageUrl: string,
+  outputDir: string,
+  fileName: string
+): Promise<string> {
+  try {
+    const response = await fetch(imageUrl, {
+      method: 'GET',
+      cache: 'no-store', // Prevent caching
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to fetch image: ${imageUrl}`);
+    }
+
+    const buffer = await response.arrayBuffer();
+    const outputPath = path.join(outputDir, fileName);
+
+    await sharp(Buffer.from(buffer))
+      .resize(1200, 628, { fit: "contain", position: "center" })
+      .toFile(outputPath);
+
+    return `${BASE_URL}/resized/${fileName}`;
+  } catch (error) {
+    console.error("Error resizing image:", error);
+    return imageUrl; // Fallback to the original URL
+  }
+}
+
+export async function GET() {
   const CSV_PATH = path.join(process.cwd(), "public", "productData.csv");
+  const IMAGE_OUTPUT_DIR = path.join(process.cwd(), "public", "resized");
+
+  await fs.mkdir(IMAGE_OUTPUT_DIR, { recursive: true }); // Ensure the directory exists
+
   const topProducts = productList.slice(0, PRODUCT_COUNT);
 
   try {
@@ -21,9 +75,9 @@ export async function GET() {
         const response = await fetch(
           `${BASE_URL}/api/v1/fetchProduct/${product.id}`,
           {
-            method: 'GET',
+            method: "GET",
             headers: {
-              'x-api-auth-token': process.env.API_AUTH_TOKEN || '',
+              "x-api-auth-token": process.env.API_AUTH_TOKEN || "",
             },
           }
         );
@@ -40,6 +94,12 @@ export async function GET() {
           data.inventories[0];
         const image =
           data.images.find((img) => img.primaryFlag) || data.images[0];
+
+        const resizedImageUrl = await resizeImage(
+          image?.sourceCdn,
+          IMAGE_OUTPUT_DIR,
+          `${product.id}.jpg`
+        );
 
         const { markedUpPrice, salePrice } = {
           markedUpPrice:
@@ -65,7 +125,7 @@ export async function GET() {
             markedUpPrice.toFixed(2).split(".")[1]
           } USD`,
           link: `${BASE_URL}/${data.slug}`,
-          image_link: image?.sourceCdn || "",
+          image_link: resizedImageUrl || "",
           brand: data.brand.displayName || data.brand.name,
           quantity_to_sell_on_facebook: `${inventory?.qty || 0}`,
           google_product_category: `${
@@ -134,25 +194,4 @@ export async function GET() {
       { status: 500 }
     );
   }
-}
-
-const googleProductCategoryMap: { [key: string]: number } = {
-  appliances: 696, // Home Appliances
-  audio: 233, // Electronics > Audio
-  "cameras-and-camcorders": 152, // Cameras & Optics > Cameras
-  "cell-phones": 267, // Electronics > Communications > Telephony > Mobile Phones
-  "computers-and-tablets": 479, // Computers & Electronics > Computers
-  furniture: 436, // Furniture
-  "garage-and-outdoor": 780, // Home & Garden > Lawn & Garden
-  "health-fitness-sports": 554, // Sporting Goods > Exercise & Fitness
-  "jewelry-and-watches": 188, // Apparel & Accessories > Jewelry
-  "living-room-furniture": 4946, // Furniture > Living Room Furniture Sets
-  mattresses: 3290, // Home & Garden > Furniture > Beds & Accessories > Mattresses
-  "musical-instruments": 353, // Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments
-  "tv-and-home-theater": 229, // Electronics > Video > Televisions
-  "video-games": 566, // Video Games & Consoles > Video Games
-};
-
-function getGoogleProductCategoryID(category: string): number | undefined {
-  return googleProductCategoryMap[category] || undefined;
 }
