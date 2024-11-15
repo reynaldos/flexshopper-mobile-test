@@ -8,7 +8,7 @@ const PRODUCT_COUNT = parseInt(
   process.env.NEXT_PUBLIC_CRON_PRODUCT_COUNT || "100"
 );
 
-const FLEXSHOPPER_URL = process.env.NEXT_PUBLIC_FLEXSHOPPER_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export async function GET() {
 
@@ -19,7 +19,7 @@ export async function GET() {
     const products = await Promise.all(
       topProducts.map(async (product) => {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/fetchProduct/${product.id}`,
+          `${BASE_URL}/api/v1/fetchProduct/${product.id}`,
           {
             method: 'GET',
             headers: {
@@ -64,7 +64,7 @@ export async function GET() {
           price: `${markedUpPrice.toFixed(2).split(".")[0]}.${
             markedUpPrice.toFixed(2).split(".")[1]
           } USD`,
-          link: `${FLEXSHOPPER_URL}/product/${data.slug}`,
+          link: `${BASE_URL}/${data.slug}`,
           image_link: image?.sourceCdn || "",
           brand: data.brand.displayName || data.brand.name,
           quantity_to_sell_on_facebook: `${inventory?.qty || 0}`,
