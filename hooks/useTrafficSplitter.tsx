@@ -6,11 +6,9 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 const flexshopperUrl = process.env.NEXT_PUBLIC_FLEXSHOPPER_URL;
 
 export default function UseTrafficSplitter({
-  children,
   productId,
 }: {
   productId: string;
-  children: React.ReactNode;
 }) {
   useEffect(() => {
     const urls = [
@@ -39,5 +37,5 @@ export default function UseTrafficSplitter({
     window.location.href = selectedUrl;
   }, [productId]);
 
-  return <>{children}</>;
+  return <></>;
 }
