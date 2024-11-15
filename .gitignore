@@ -41,3 +41,7 @@ next-env.d.ts
 /public/resized
 
 /public/productData.csv
+
+
+ecosystem.config.js
+/logs
