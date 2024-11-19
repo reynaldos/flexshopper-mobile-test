@@ -7,7 +7,7 @@ import { headers } from "next/headers";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import ClientScript from "@/components/ClientScript";
 
 const openSans = localFont({
@@ -97,7 +97,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      {GOOGLE_ANALYTICS_ID && <GoogleTagManager gtmId={GOOGLE_ANALYTICS_ID} />}
+      {GOOGLE_ANALYTICS_ID && <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />}
 
       {/* use client */}
       <>
