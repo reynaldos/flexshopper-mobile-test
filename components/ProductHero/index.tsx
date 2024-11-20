@@ -9,6 +9,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import LoadingSkeleton from "./loading";
 
 import "./styles.css";
+import { sendEvent } from "@/utils/functions";
 
 const FLEXSHOPPER_SIGNIN = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL;
 
@@ -24,6 +25,18 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
   if (!product) {
     return <LoadingSkeleton />;
   }
+
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault(); // Prevent the default button behavior
+
+    // Fire the Google Analytics event
+    sendEvent("Button", "Click", "Unlock My Price");
+
+    // Navigate to the external link after a short delay
+    setTimeout(() => {
+      window.location.href = FLEXSHOPPER_SIGNIN || "";
+    }, 200); // 200ms delay to ensure the event is sent
+  };
 
   const { markedUpPrice, salePrice, inStock } = {
     markedUpPrice:
@@ -91,7 +104,6 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             {product.images.map((image, index) => (
               <SwiperSlide key={index}>
                 <Image
-  
                   src={image.source || "/placeholder.png"}
                   alt={product.name}
                   width={248}
@@ -175,11 +187,12 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
         </div>
       </div>
 
-      <a href={FLEXSHOPPER_SIGNIN}>
-        <button className="w-full bg-[var(--accent400)] text-white font-semibold py-3 rounded-sm">
-          Unlock My Price
-        </button>
-      </a>
+      <button
+        onClick={handleButtonClick}
+        className="unlock-my-price w-full bg-[var(--accent400)] text-white font-semibold py-3 rounded-sm"
+      >
+        Unlock My Price
+      </button>
     </>
   );
 };
