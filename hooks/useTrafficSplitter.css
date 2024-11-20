@@ -1,0 +1,17 @@
+.animate-spin {
+  border: 4px solid var(--main500);
+  width: 4rem;
+  height: 4rem;
+  border-top: solid 4px transparent;
+  animation: spin 1.75s linear infinite;
+  margin-top: 50vh;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
