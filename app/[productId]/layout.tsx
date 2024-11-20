@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
+import LogRocketInit from "@/hooks/useLogRocket";
 import UseTrafficSplitter from "@/hooks/useTrafficSplitter";
 import { headers } from "next/headers";
 
@@ -25,6 +26,7 @@ export default function ProducPageLayout({
 
   return noRedirect ? (
     <>
+      <LogRocketInit />
       <Navigation />
       {children}
       <Footer />
