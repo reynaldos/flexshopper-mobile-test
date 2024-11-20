@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; // Example: "https://m.flexshopper.com"
 const flexshopperUrl = process.env.NEXT_PUBLIC_FLEXSHOPPER_URL; // Example: "https://www.flexshopper.com"
+import "./useTrafficSplitter.css";
 
 export default function UseTrafficSplitter({
   productId,
@@ -57,8 +58,12 @@ export default function UseTrafficSplitter({
       } catch (error) {
         console.error("Failed to redirect:", error);
       }
-    }, 200);
+    }, 200000000000000);
   }, [productId]);
 
-  return <div>Redirecting, please wait...</div>;
+  return (
+    <div className="flex items-center justify-center h-screen bg-red-100">
+      <div className="rounded-full animate-spin"></div>
+    </div>
+  );
 }
