@@ -11,15 +11,15 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        main700: 'var(--main700)',
-        main500: 'var(--main500)',
-        main100: 'var(--main100)',
-        accent400:  'var(--accent400)',
-        highlight400:  'var(--highlight400)',
+        main700: "var(--main700)",
+        main500: "var(--main500)",
+        main100: "var(--main100)",
+        accent400: "var(--accent400)",
+        highlight400: "var(--highlight400)",
       },
       fontFamily: {
-        sans: ['Open Sans', 'Arial', 'sans-serif'], 
-      },
+        sans: ["Open Sans", "Arial", "sans-serif"],
+      }
     },
   },
   plugins: [],
