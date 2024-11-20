@@ -58,7 +58,7 @@ export default function UseTrafficSplitter({
       } catch (error) {
         console.error("Failed to redirect:", error);
       }
-    }, 200000000000000);
+    }, 200);
   }, [productId]);
 
   return (
