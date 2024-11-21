@@ -9,7 +9,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import LoadingSkeleton from "./loading";
 
 import "./styles.css";
-import { sendEvent } from "@/utils/functions";
+import { getCookie, sendEvent } from "@/utils/functions";
 
 const FLEXSHOPPER_SIGNIN = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL;
 
@@ -26,15 +26,28 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
     return <LoadingSkeleton />;
   }
 
-  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleButtonClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault(); // Prevent the default button behavior
 
     // Fire the Google Analytics event
     sendEvent("Button", "Click", "Unlock My Price");
 
+    await fetch("/api/v1/log-event", {
+      method: "POST",
+      headers: {
+        "x-api-auth-token": process.env.API_AUTH_TOKEN || "98BAF5FBCCBBD4F6",
+      },
+      body: JSON.stringify({
+        eventType: "button_click",
+        inboundUrl: getCookie("inboundUrl"),
+        redirectRoute: window.location.href,
+        productId: product.id,
+      }),
+    });
+
     // Navigate to the external link after a short delay
     setTimeout(() => {
-      window.location.href = FLEXSHOPPER_SIGNIN || "";
+      // window.location.href = FLEXSHOPPER_SIGNIN || "";
     }, 200); // 200ms delay to ensure the event is sent
   };
 
