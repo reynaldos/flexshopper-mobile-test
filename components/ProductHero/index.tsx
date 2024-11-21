@@ -35,7 +35,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
     await fetch("/api/v1/log-event", {
       method: "POST",
       headers: {
-        "x-api-auth-token": process.env.API_AUTH_TOKEN || "98BAF5FBCCBBD4F6",
+        "x-api-auth-token": process.env.API_AUTH_TOKEN || "",
       },
       body: JSON.stringify({
         eventType: "button_click",
