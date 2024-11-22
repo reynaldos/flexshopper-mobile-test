@@ -47,7 +47,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
 
     // Navigate to the external link after a short delay
     setTimeout(() => {
-      // window.location.href = FLEXSHOPPER_SIGNIN || "";
+      window.location.href = FLEXSHOPPER_SIGNIN || "";
     }, 200); // 200ms delay to ensure the event is sent
   };
 
