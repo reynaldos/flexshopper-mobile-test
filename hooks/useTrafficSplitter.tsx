@@ -57,7 +57,7 @@ export default function UseTrafficSplitter({
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-api-auth-token": process.env.API_AUTH_TOKEN || "",
+          "x-api-auth-token": process.env.API_AUTH_TOKEN || "98BAF5FBCCBBD4F6",
         },
         body: JSON.stringify({
           eventType: "traffic",
