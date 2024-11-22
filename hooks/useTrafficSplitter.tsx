@@ -55,6 +55,24 @@ export default function UseTrafficSplitter({
 
       console.log("Redirecting to:", selectedUrl);
 
+      // log event when going off site
+      if (selectedUrl === urls[2]) {
+        await fetch("/api/v1/log-event", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-auth-token":
+              process.env.API_AUTH_TOKEN || "98BAF5FBCCBBD4F6",
+          },
+          body: JSON.stringify({
+            eventType: "traffic",
+            inboundUrl: window.location.href,
+            redirectRoute: selectedUrl,
+            productId,
+          }),
+        });
+      }
+
       // Redirect with a slight delay for tracking if necessary
       setTimeout(() => {
         try {
