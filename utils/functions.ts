@@ -1,4 +1,3 @@
-
 export function sendEvent(
   eventCategory: string,
   eventAction: string,
@@ -31,11 +30,10 @@ export const getCookie = (name: string): string | null => {
 };
 
 // Save the inbound URL to cookies
-export const saveInboundUrlToCookies = (url: string) => {
+export const saveToCookies = (key: string, value: string) => {
   const expires = new Date();
   expires.setTime(expires.getTime() + 1 * 24 * 60 * 60 * 1000); // 30 days expiry
-  document.cookie = `inboundUrl=${encodeURIComponent(
-    url
+  document.cookie = `${key}=${encodeURIComponent(
+    value
   )}; expires=${expires.toUTCString()}; path=/`;
 };
-
