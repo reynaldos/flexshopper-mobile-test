@@ -58,7 +58,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
       body: JSON.stringify({
         eventType: "button_click",
         inboundUrl: getCookie("inboundUrl"),
-        redirectRoute: window.location.href,
+        redirectRoute:  getCookie("redirectRoute"),
         productId: product.id,
       }),
     });
