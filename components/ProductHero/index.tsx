@@ -17,7 +17,25 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
   const [productLoaded, setProductLoaded] = useState(false);
 
   useEffect(() => {
+    const logEvent = async () => {
+      if (product)
+        await fetch("/api/v1/log-event", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-auth-token":
+              process.env.API_AUTH_TOKEN || "98BAF5FBCCBBD4F6",
+          },
+          body: JSON.stringify({
+            eventType: "traffic",
+            inboundUrl: getCookie("inboundUrl"),
+            redirectRoute: window.location.href,
+            productId: product.id,
+          }),
+        });
+    };
     if (product) {
+      logEvent();
       setTimeout(() => setProductLoaded(true), 100);
     }
   }, [product]);
