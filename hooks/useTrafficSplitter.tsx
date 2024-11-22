@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; // Example: "https://m.flexshopper.com"
 const flexshopperUrl = process.env.NEXT_PUBLIC_FLEXSHOPPER_URL; // Example: "https://www.flexshopper.com"
 import "./useTrafficSplitter.css";
-import { saveInboundUrlToCookies } from "@/utils/functions";
+import { saveToCookies } from "@/utils/functions";
 
 export default function UseTrafficSplitter({
   productId,
@@ -28,16 +28,25 @@ export default function UseTrafficSplitter({
       const campaignName = queryParams.get("utm_campaign") || "defaultCampaign";
       const adsetName = queryParams.get("utm_term") || "defaultAdset";
 
-      saveInboundUrlToCookies(window.location.href);
+      saveToCookies("inboundUrl", window.location.href);
 
       // Define the URLs with dynamic UTM parameters and hardcoded utm_content values
       const urls = [
         // Product page with scripts
-        `${baseUrl}/${productId}?noRedirect=true&fbaid=${adId}&utm_source=${siteSourceName}&utm_medium=social&utm_campaign=${campaignName}&utm_term=${adsetName}&utm_content=AdJuiceMobile`,
+        {
+          link: `${baseUrl}/${productId}?noRedirect=true&fbaid=${adId}&utm_source=${siteSourceName}&utm_medium=social&utm_campaign=${campaignName}&utm_term=${adsetName}&utm_content=AdJuiceMobile`,
+          type: "widgets",
+        },
         // Product page without scripts
-        `${baseUrl}/${productId}?noScripts=true&noRedirect=true&fbaid=${adId}&utm_source=${siteSourceName}&utm_medium=social&utm_campaign=${campaignName}&utm_term=${adsetName}&utm_content=AdJuiceMobileLite`,
+        {
+          link: `${baseUrl}/${productId}?noScripts=true&noRedirect=true&fbaid=${adId}&utm_source=${siteSourceName}&utm_medium=social&utm_campaign=${campaignName}&utm_term=${adsetName}&utm_content=AdJuiceMobileLite`,
+          type: "no-widgets",
+        },
         // Legacy product page
-        `${flexshopperUrl}/product/${productId}?fbaid=${adId}&utm_source=${siteSourceName}&utm_medium=social&utm_campaign=${campaignName}&utm_term=${adsetName}&utm_content=AdJuiceMobileRedirect`,
+        {
+          link: `${flexshopperUrl}/product/${productId}?fbaid=${adId}&utm_source=${siteSourceName}&utm_medium=social&utm_campaign=${campaignName}&utm_term=${adsetName}&utm_content=AdJuiceMobileRedirect`,
+          type: "legacy",
+        },
       ];
 
       // Fisher-Yates Shuffle for unbiased random selection
@@ -54,9 +63,10 @@ export default function UseTrafficSplitter({
       const selectedUrl = shuffledUrls[0];
 
       console.log("Redirecting to:", selectedUrl);
+      saveToCookies("redirectRoute", selectedUrl.type);
 
       // log event when going off site
-      if (selectedUrl === urls[2]) {
+      if (selectedUrl.type === "legacy") {
         await fetch("/api/v1/log-event", {
           method: "POST",
           headers: {
@@ -67,7 +77,7 @@ export default function UseTrafficSplitter({
           body: JSON.stringify({
             eventType: "traffic",
             inboundUrl: window.location.href,
-            redirectRoute: selectedUrl,
+            redirectRoute: selectedUrl.type,
             productId,
           }),
         });
@@ -76,7 +86,7 @@ export default function UseTrafficSplitter({
       // Redirect with a slight delay for tracking if necessary
       setTimeout(() => {
         try {
-          window.location.href = selectedUrl;
+          window.location.href = selectedUrl.link;
         } catch (error) {
           console.error("Failed to redirect:", error);
         }
