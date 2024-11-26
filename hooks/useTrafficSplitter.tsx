@@ -7,11 +7,18 @@ const flexshopperUrl = process.env.NEXT_PUBLIC_FLEXSHOPPER_URL; // Example: "htt
 import "./useTrafficSplitter.css";
 import { saveToCookies } from "@/utils/functions";
 
+// Define URL type with weight property
+type RedirectUrl = {
+  link: string;
+  type: "widgets" | "no-widgets" | "legacy";
+  weight: number;
+};
+
 export default function UseTrafficSplitter({
   productId,
 }: {
   productId: string;
-}) {
+}): JSX.Element {
   useEffect(() => {
     const redirectLogic = async () => {
       if (!productId || !baseUrl || !flexshopperUrl) {
@@ -31,41 +38,46 @@ export default function UseTrafficSplitter({
       saveToCookies("inboundUrl", window.location.href);
 
       // Define the URLs with dynamic UTM parameters and hardcoded utm_content values
-      const urls = [
-        // Product page with scripts
+      const urls: RedirectUrl[] = [
         {
           link: `${baseUrl}/${productId}?noRedirect=true&fbaid=${adId}&utm_source=${siteSourceName}&utm_medium=social&utm_campaign=${campaignName}&utm_term=${adsetName}&utm_content=AdJuiceMobile`,
           type: "widgets",
+          weight: 0.375,
         },
-        // Product page without scripts
         {
           link: `${baseUrl}/${productId}?noScripts=true&noRedirect=true&fbaid=${adId}&utm_source=${siteSourceName}&utm_medium=social&utm_campaign=${campaignName}&utm_term=${adsetName}&utm_content=AdJuiceMobileLite`,
           type: "no-widgets",
+          weight: 0.375,
         },
-        // Legacy product page
         {
           link: `${flexshopperUrl}/product/${productId}?fbaid=${adId}&utm_source=${siteSourceName}&utm_medium=social&utm_campaign=${campaignName}&utm_term=${adsetName}&utm_content=AdJuiceMobileRedirect`,
           type: "legacy",
+          weight: 0.25,
         },
       ];
 
-      // Fisher-Yates Shuffle for unbiased random selection
-      const shuffledUrls = [...urls];
-      for (let i = shuffledUrls.length - 1; i > 0; i--) {
-        const randomIndex = Math.floor(Math.random() * (i + 1));
-        [shuffledUrls[i], shuffledUrls[randomIndex]] = [
-          shuffledUrls[randomIndex],
-          shuffledUrls[i],
-        ];
-      }
+      // Weighted random selection function
+      const weightedRandomSelection = (items: RedirectUrl[]): RedirectUrl => {
+        const totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
+        const randomValue = Math.random() * totalWeight;
+        let cumulativeWeight = 0;
 
-      // Select the first URL
-      const selectedUrl = shuffledUrls[0];
+        for (const item of items) {
+          cumulativeWeight += item.weight;
+          if (randomValue < cumulativeWeight) {
+            return item;
+          }
+        }
+
+        return items[items.length - 1]; // Fallback to the last item
+      };
+
+      const selectedUrl = weightedRandomSelection(urls);
 
       console.log("Redirecting to:", selectedUrl);
       saveToCookies("redirectRoute", selectedUrl.type);
 
-      // log event when going off site
+      // Log event when going off-site
       if (selectedUrl.type === "legacy") {
         await fetch("/api/v1/log-event", {
           method: "POST",
