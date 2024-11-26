@@ -48,7 +48,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
     e.preventDefault(); // Prevent the default button behavior
 
     // Fire the Google Analytics event
-    sendEvent("Button", "Click", "Unlock My Price");
+    sendEvent("Button", "UnlockButton_Clicked", "Unlock My Price");
 
     await fetch("/api/v1/log-event", {
       method: "POST",
