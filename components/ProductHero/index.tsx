@@ -17,7 +17,25 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
   const [productLoaded, setProductLoaded] = useState(false);
 
   useEffect(() => {
+    const logEvent = async () => {
+      if (product)
+        await fetch("/api/v1/log-event", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-auth-token":
+              process.env.API_AUTH_TOKEN || "98BAF5FBCCBBD4F6",
+          },
+          body: JSON.stringify({
+            eventType: "traffic",
+            inboundUrl: getCookie("inboundUrl"),
+            redirectRoute: getCookie("redirectRoute"),
+            productId: product.id,
+          }),
+        });
+    };
     if (product) {
+      logEvent();
       setTimeout(() => setProductLoaded(true), 100);
     }
   }, [product]);
@@ -30,24 +48,24 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
     e.preventDefault(); // Prevent the default button behavior
 
     // Fire the Google Analytics event
-    sendEvent("Button", "Click", "Unlock My Price");
+    sendEvent("Button", "UnlockButton_Clicked", "Unlock My Price");
 
     await fetch("/api/v1/log-event", {
       method: "POST",
       headers: {
-        "x-api-auth-token": process.env.API_AUTH_TOKEN || "",
+        "x-api-auth-token": process.env.API_AUTH_TOKEN || "98BAF5FBCCBBD4F6",
       },
       body: JSON.stringify({
         eventType: "button_click",
         inboundUrl: getCookie("inboundUrl"),
-        redirectRoute: window.location.href,
+        redirectRoute:  getCookie("redirectRoute"),
         productId: product.id,
       }),
     });
 
     // Navigate to the external link after a short delay
     setTimeout(() => {
-      // window.location.href = FLEXSHOPPER_SIGNIN || "";
+      window.location.href = FLEXSHOPPER_SIGNIN || "";
     }, 200); // 200ms delay to ensure the event is sent
   };
 
