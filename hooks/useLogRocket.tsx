@@ -8,6 +8,7 @@ const logRockID = process.env.NEXT_PUBLIC_ROCKET_LOG || "";
 const LogRocketInit = () => {
 
     useEffect(() => {
+      if(logRockID)
         LogRocket.init(logRockID);
     }, [])
     
