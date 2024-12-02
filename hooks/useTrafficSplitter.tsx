@@ -42,17 +42,17 @@ export default function UseTrafficSplitter({
         {
           link: `${baseUrl}/${productId}?noRedirect=true&fbaid=${adId}&utm_source=${siteSourceName}&utm_medium=social&utm_campaign=${campaignName}&utm_term=${adsetName}&utm_content=AdJuiceMobile`,
           type: "widgets",
-          weight: 0.375,
+          weight: 0.4,
         },
         {
           link: `${baseUrl}/${productId}?noScripts=true&noRedirect=true&fbaid=${adId}&utm_source=${siteSourceName}&utm_medium=social&utm_campaign=${campaignName}&utm_term=${adsetName}&utm_content=AdJuiceMobileLite`,
           type: "no-widgets",
-          weight: 0.375,
+          weight: 0.4,
         },
         {
           link: `${flexshopperUrl}/product/${productId}?fbaid=${adId}&utm_source=${siteSourceName}&utm_medium=social&utm_campaign=${campaignName}&utm_term=${adsetName}&utm_content=AdJuiceMobileRedirect`,
           type: "legacy",
-          weight: 0.25,
+          weight: 0.2,
         },
       ];
 
