@@ -37,3 +37,29 @@ export const saveToCookies = (key: string, value: string) => {
     value
   )}; expires=${expires.toUTCString()}; path=/`;
 };
+
+export const generateUniqueId = () => {
+  return 'xxxyxxxxxxxxxxxx'.replace(/[xy]/g, (char) => {
+    const random = (Math.random() * 16) | 0;
+    const value = char === 'x' ? random : (random & 0x3) | 0x8;
+    return value.toString(16);
+  });
+};
+
+export const trackUniqueVisit = () => {
+  // Check if a unique ID already exists in the cookies
+  let userId = getCookie('user_pseudo_id');
+  
+  if (!userId) {
+    // Generate a new unique ID
+    userId = generateUniqueId();
+    console.log(`Generated new unique ID: ${userId}`);
+    
+    // Save it in cookies
+    saveToCookies('user_pseudo_id', userId);
+  } else {
+    console.log(`Existing unique ID found: ${userId}`);
+  }
+
+  return userId; // Return the ID for further use
+};

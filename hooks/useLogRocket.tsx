@@ -1,20 +1,22 @@
-"use client"
+"use client";
 
-import React, { useEffect } from 'react';
-import LogRocket from 'logrocket';
+import React, { useEffect } from "react";
+import LogRocket from "logrocket";
+import { trackUniqueVisit } from "@/utils/functions";
 
 const logRockID = process.env.NEXT_PUBLIC_ROCKET_LOG || "";
 
 const LogRocketInit = () => {
+  useEffect(() => {
+    const userId = trackUniqueVisit();
 
-    useEffect(() => {
-      if(logRockID)
-        LogRocket.init(logRockID);
-    }, [])
-    
-  return (
-    <></>
-  )
-}
+    if (logRockID) {
+      LogRocket.init(logRockID);
+      LogRocket.identify(userId);
+    }
+  }, []);
 
-export default LogRocketInit
+  return <></>;
+};
+
+export default LogRocketInit;

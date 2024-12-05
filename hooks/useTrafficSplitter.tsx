@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; // Example: "https://m.flexshopper.com"
 const flexshopperUrl = process.env.NEXT_PUBLIC_FLEXSHOPPER_URL; // Example: "https://www.flexshopper.com"
 import "./useTrafficSplitter.css";
-import { saveToCookies } from "@/utils/functions";
+import { saveToCookies, trackUniqueVisit } from "@/utils/functions";
 
 // Define URL type with weight property
 type RedirectUrl = {
@@ -20,6 +20,7 @@ export default function UseTrafficSplitter({
   productId: string;
 }): JSX.Element {
   useEffect(() => {
+    
     const redirectLogic = async () => {
       if (!productId || !baseUrl || !flexshopperUrl) {
         console.error("Missing required parameters or environment variables.");
@@ -77,6 +78,8 @@ export default function UseTrafficSplitter({
       console.log("Redirecting to:", selectedUrl);
       saveToCookies("redirectRoute", selectedUrl.type);
 
+      const userId = trackUniqueVisit();
+
       // Log event when going off-site
       if (selectedUrl.type === "legacy") {
         await fetch("/api/v1/log-event", {
@@ -91,6 +94,7 @@ export default function UseTrafficSplitter({
             inboundUrl: window.location.href,
             redirectRoute: selectedUrl.type,
             productId,
+            pseudoId: userId
           }),
         });
       }
@@ -102,7 +106,7 @@ export default function UseTrafficSplitter({
         } catch (error) {
           console.error("Failed to redirect:", error);
         }
-      }, 200);
+      }, 300);
     };
 
     redirectLogic();

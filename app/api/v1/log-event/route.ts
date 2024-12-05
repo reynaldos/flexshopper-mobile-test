@@ -32,6 +32,7 @@ export async function POST(req: Request) {
     traffic: createObjectCsvWriter({
       path: trafficCsvFilePath,
       header: [
+        { id: "event_id", title: "Event ID" },
         { id: "inbound_url", title: "Inbound URL" },
         { id: "redirect_route", title: "Redirect Route" },
         { id: "product_id", title: "Product ID" },
@@ -42,6 +43,7 @@ export async function POST(req: Request) {
     button_click: createObjectCsvWriter({
       path: buttonClicksCsvFilePath,
       header: [
+        { id: "event_id", title: "Event ID" },
         { id: "inbound_url", title: "Inbound URL" },
         { id: "redirect_route", title: "Redirect Route" },
         { id: "product_id", title: "Product ID" },
@@ -53,17 +55,17 @@ export async function POST(req: Request) {
 
   ensureLogsFile(
     trafficCsvFilePath,
-    "Inbound URL,Redirect Route,Product ID,Timestamp\n"
+    "Event ID, Inbound URL,Redirect Route,Product ID,Timestamp\n"
   );
   ensureLogsFile(
     buttonClicksCsvFilePath,
-    "Inbound URL,Redirect Route,Product ID,Timestamp\n"
+    "Event ID,Inbound URL,Redirect Route,Product ID,Timestamp\n"
   );
 
   try {
     const body = await req.json();
 
-    const { eventType, inboundUrl, redirectRoute, productId } = body;
+    const { eventType, inboundUrl, redirectRoute, productId, pseudoId } = body;
 
     // Validate eventType
     if (!eventType || !["traffic", "button_click"].includes(eventType)) {
@@ -74,20 +76,30 @@ export async function POST(req: Request) {
     }
 
     const record = {
+      event_id: `${pseudoId}.${productId}` || "",
       inbound_url: inboundUrl || "",
       redirect_route: redirectRoute || "",
       product_id: productId || "",
       timestamp: `${new Date().toISOString()}`,
     };
 
-    // Write to the appropriate CSV file
-    await csvWriters[eventType as "traffic" | "button_click"].writeRecords([
-      record,
-    ]);
+    if (pseudoId && inboundUrl && redirectRoute && productId) {
+      // Write to the appropriate CSV file
+      await csvWriters[eventType as "traffic" | "button_click"].writeRecords([
+        record,
+      ]);
 
-    return NextResponse.json({
-      message: `${eventType} event logged successfully`,
-    });
+      return NextResponse.json({
+        message: `${eventType} event logged successfully`,
+      });
+    } else {
+      return NextResponse.json(
+        {
+          message: `${eventType} event logged unsuccessfully, missing params: ${record}`,
+        },
+        { status: 500 }
+      );
+    }
   } catch (error) {
     console.error("Failed to log event:", error);
     return NextResponse.json(
