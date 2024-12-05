@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import LogRocketInit from "@/hooks/useLogRocket";
+import PostHogInit from "@/hooks/usePostHog";
 import UseTrafficSplitter from "@/hooks/useTrafficSplitter";
 import { headers } from "next/headers";
 
@@ -26,10 +27,12 @@ export default function ProducPageLayout({
 
   return noRedirect ? (
     <>
-      <LogRocketInit />
-      <Navigation />
-      {children}
-      <Footer />
+      <PostHogInit>
+        <LogRocketInit />
+        <Navigation />
+        {children}
+        <Footer />
+      </PostHogInit>
     </>
   ) : (
     <UseTrafficSplitter productId={productId} />
