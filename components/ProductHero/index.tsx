@@ -7,19 +7,22 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import LoadingSkeleton from "./loading";
+import { usePostHog } from "posthog-js/react";
 
 import "./styles.css";
-import { getCookie, sendEvent, trackUniqueVisit } from "@/utils/functions";
+import { getCookie, sendEvent } from "@/utils/functions";
 
 const FLEXSHOPPER_SIGNIN = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL;
 
 const ProductHero = ({ product }: { product: ProductInfo | null }) => {
   const [productLoaded, setProductLoaded] = useState(false);
+  const posthog = usePostHog();
 
   useEffect(() => {
     const logEvent = async () => {
       if (product) {
-        const userId = trackUniqueVisit();
+      
+        const userId = posthog.get_distinct_id();
 
         await fetch("/api/v1/log-event", {
           method: "POST",
@@ -54,7 +57,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
     // Fire the Google Analytics event
     sendEvent("Button", "UnlockButton_Clicked", "Unlock My Price");
 
-    const userId = trackUniqueVisit();
+    const userId = posthog.get_distinct_id();
 
     await fetch("/api/v1/log-event", {
       method: "POST",
@@ -69,6 +72,8 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
         pseudoId: userId,
       }),
     });
+
+    posthog.capture("$pageleave");
 
     // Navigate to the external link after a short delay
     setTimeout(() => {
@@ -226,6 +231,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
       </div>
 
       <button
+      id="unlock-price-btn"
         onClick={handleButtonClick}
         className="unlock-my-price w-full bg-[var(--accent400)] text-white font-semibold py-3 rounded-sm"
       >

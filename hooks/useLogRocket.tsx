@@ -2,13 +2,15 @@
 
 import React, { useEffect } from "react";
 import LogRocket from "logrocket";
-import { trackUniqueVisit } from "@/utils/functions";
+import { usePostHog } from "posthog-js/react";
 
 const logRockID = process.env.NEXT_PUBLIC_ROCKET_LOG || "";
 
 const LogRocketInit = () => {
+  const posthog = usePostHog();
+
   useEffect(() => {
-    const userId = trackUniqueVisit();
+    const userId = posthog.get_distinct_id();
 
     if (logRockID) {
       LogRocket.init(logRockID);
