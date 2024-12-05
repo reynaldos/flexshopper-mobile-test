@@ -9,7 +9,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import LoadingSkeleton from "./loading";
 
 import "./styles.css";
-import { getCookie, sendEvent } from "@/utils/functions";
+import { getCookie, sendEvent, trackUniqueVisit } from "@/utils/functions";
 
 const FLEXSHOPPER_SIGNIN = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL;
 
@@ -18,7 +18,9 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
 
   useEffect(() => {
     const logEvent = async () => {
-      if (product)
+      if (product) {
+        const userId = trackUniqueVisit();
+
         await fetch("/api/v1/log-event", {
           method: "POST",
           headers: {
@@ -31,8 +33,10 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             inboundUrl: getCookie("inboundUrl"),
             redirectRoute: getCookie("redirectRoute"),
             productId: product.id,
+            pseudoId: userId,
           }),
         });
+      }
     };
     if (product) {
       logEvent();
@@ -50,6 +54,8 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
     // Fire the Google Analytics event
     sendEvent("Button", "UnlockButton_Clicked", "Unlock My Price");
 
+    const userId = trackUniqueVisit();
+
     await fetch("/api/v1/log-event", {
       method: "POST",
       headers: {
@@ -58,15 +64,16 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
       body: JSON.stringify({
         eventType: "button_click",
         inboundUrl: getCookie("inboundUrl"),
-        redirectRoute:  getCookie("redirectRoute"),
+        redirectRoute: getCookie("redirectRoute"),
         productId: product.id,
+        pseudoId: userId,
       }),
     });
 
     // Navigate to the external link after a short delay
     setTimeout(() => {
       window.location.href = FLEXSHOPPER_SIGNIN || "";
-    }, 200); // 200ms delay to ensure the event is sent
+    }, 300); // 300ms delay to ensure the event is sent
   };
 
   const { markedUpPrice, salePrice, inStock } = {
