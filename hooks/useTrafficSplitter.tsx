@@ -18,15 +18,21 @@ export default function UseTrafficSplitter({
   productId: string;
 }): JSX.Element {
   const posthog = usePostHog();
-  // posthog.featureFlags.override({'redirect-toggle': 'widgets'}) // test
+
   const varient = useFeatureFlagVariantKey("redirect-toggle");
+
+  if (process.env.NEXT_PUBLIC_ENV === "dev") {
+    posthog.featureFlags.override({ "redirect-toggle": "no-widgets" }); // test
+  }
 
   const varientToRedirect = (varient: any) => {
     switch (varient) {
       case "control":
-        return "legacy";
+        return "widgets";
       case "no-widgets":
         return "no-widgets";
+      case "legacy":
+        return "legacy";
       case "widgets":
         return "widgets";
       default:
