@@ -104,8 +104,6 @@ export default function UseTrafficSplitter({
     };
 
     if (varient && productId) {
-      posthog.capture("$pageview");
-
       redirectLogic(varientToRedirect(varient));
     }
   }, [varient, productId]);
