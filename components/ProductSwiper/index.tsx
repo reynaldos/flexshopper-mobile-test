@@ -24,7 +24,7 @@ const ProductSwiper = ({
 
   return (
     <div className="flex justify-between items-center gap-2">
-      <button aria-label="Show previous product" className="prev">
+      <button aria-label="Show previous product" className="prev-product">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -48,7 +48,7 @@ const ProductSwiper = ({
         modules={[Navigation, Mousewheel, Autoplay]}
         lazyPreloadPrevNext={1}
         mousewheel={{ forceToAxis: true }}
-        navigation={{ prevEl: ".prev", nextEl: ".next" }}
+        navigation={{ prevEl: ".prev-product", nextEl: ".next-product" }}
         loop
       >
         {productList.map((product) => {
@@ -103,7 +103,7 @@ const ProductSwiper = ({
         })}
       </Swiper>
 
-      <button aria-label="Show next product" className="next">
+      <button aria-label="Show next product" className="next-product">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
