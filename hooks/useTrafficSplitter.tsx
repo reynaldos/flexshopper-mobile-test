@@ -47,9 +47,18 @@ export default function UseTrafficSplitter({
     const campaign = queryParams.get("utm_campaign") || "defaultCampaign";
     const term = queryParams.get("utm_term") || "defaultAdset";
 
+    const appendCampaignSuffix = (campaign:string, suffix:string) =>
+    campaign.includes(suffix) ? campaign : `${campaign}${suffix}`;
+
     const urlTemplates = {
-      widgets: `${BASE_URL}/${productId}?noRedirect=true&fbaid=${adId}&utm_source=${source}&utm_medium=social&utm_campaign=${campaign}-widgets&utm_term=${term}&utm_content=AdJuiceMobile`,
-      "no-widgets": `${BASE_URL}/${productId}?noScripts=true&noRedirect=true&fbaid=${adId}&utm_source=${source}&utm_medium=social&utm_campaign=${campaign}-no-widgets&utm_term=${term}&utm_content=AdJuiceMobileLite`,
+      widgets: `${BASE_URL}/${productId}?noRedirect=true&fbaid=${adId}&utm_source=${source}&utm_medium=social&utm_campaign=${appendCampaignSuffix(
+        campaign,
+        "-widgets"
+      )}&utm_term=${term}&utm_content=AdJuiceMobile`,
+      "no-widgets": `${BASE_URL}/${productId}?noScripts=true&noRedirect=true&fbaid=${adId}&utm_source=${source}&utm_medium=social&utm_campaign=${appendCampaignSuffix(
+        campaign,
+        "-no-widgets"
+      )}&utm_term=${term}&utm_content=AdJuiceMobileLite`,
       legacy: `${FLEXSHOPPER_URL}/product/${productId}?fbaid=${adId}&utm_source=${source}&utm_medium=social&utm_campaign=${campaign}&utm_term=${term}&utm_content=AdJuiceMobileRedirect`,
     };
 

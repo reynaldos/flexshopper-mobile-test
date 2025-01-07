@@ -33,14 +33,12 @@ export default function ProducPageLayout({
   const noRedirect = urlParams.get("noRedirect") === "true";
   const noScript = urlParams.get("noScripts") === "true";
 
-  console.log(noScript);
-
   return noRedirect ? (
     <>
       {GOOGLE_ANALYTICS_ID && <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />}
 
       <>
-        {!noScript  && (
+        {!noScript && (
           <ClientScript src="https://cmp.osano.com/AzywK3Ti3o6od5H43/1ea433bc-e651-48f0-b2dd-429bf80459bf/osano.js" />
         )}
       </>
