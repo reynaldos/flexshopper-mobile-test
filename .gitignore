@@ -40,6 +40,8 @@ next-env.d.ts
 
 /public/resized
 /public/productData.csv
+/public/mergedProductData.json
+
 /public/logs/*
 
 ecosystem.config.js

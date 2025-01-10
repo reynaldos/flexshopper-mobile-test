@@ -1,65 +1,16 @@
 import { NextResponse } from "next/server";
 import path from "path";
-import sharp from "sharp";
 import fs from "fs/promises";
 import { createObjectCsvWriter } from "csv-writer";
 import productList from "@/mock/categorizedProductList";
-import { CsvProduct, ProductInfo } from "@/types/index";
+import { CsvProduct, ProductInfo } from "@/types/v1";
+import { resizeImage } from "@/utils/apiHelpers";
 
 const PRODUCT_COUNT = parseInt(
   process.env.NEXT_PUBLIC_CRON_PRODUCT_COUNT || "100"
 );
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
-function getGoogleProductCategoryID(category: string): number | undefined {
-  const googleProductCategoryMap: { [key: string]: number } = {
-    appliances: 696, // Home Appliances
-    audio: 233, // Electronics > Audio
-    "cameras-and-camcorders": 152, // Cameras & Optics > Cameras
-    "cell-phones": 267, // Electronics > Communications > Telephony > Mobile Phones
-    "computers-and-tablets": 479, // Computers & Electronics > Computers
-    furniture: 436, // Furniture
-    "garage-and-outdoor": 780, // Home & Garden > Lawn & Garden
-    "health-fitness-sports": 554, // Sporting Goods > Exercise & Fitness
-    "jewelry-and-watches": 188, // Apparel & Accessories > Jewelry
-    "living-room-furniture": 4946, // Furniture > Living Room Furniture Sets
-    mattresses: 3290, // Home & Garden > Furniture > Beds & Accessories > Mattresses
-    "musical-instruments": 353, // Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments
-    "tv-and-home-theater": 229, // Electronics > Video > Televisions
-    "video-games": 566, // Video Games & Consoles > Video Games
-  };
-
-  return googleProductCategoryMap[category] || undefined;
-}
-
-async function resizeImage(
-  imageUrl: string,
-  outputDir: string,
-  fileName: string
-): Promise<string> {
-  try {
-    const response = await fetch(imageUrl, {
-      method: 'GET',
-      cache: 'no-store', // Prevent caching
-    });
-    if (!response.ok) {
-      throw new Error(`Failed to fetch image: ${imageUrl}`);
-    }
-
-    const buffer = await response.arrayBuffer();
-    const outputPath = path.join(outputDir, fileName);
-
-    await sharp(Buffer.from(buffer))
-      .resize(1200, 628, { fit: "contain", position: "center" })
-      .toFile(outputPath);
-
-    return `${BASE_URL}/resized/${fileName}`;
-  } catch (error) {
-    console.error("Error resizing image:", error);
-    return imageUrl; // Fallback to the original URL
-  }
-}
 
 export async function GET() {
   const CSV_PATH = path.join(process.cwd(), "public", "productData.csv");
@@ -194,4 +145,25 @@ export async function GET() {
       { status: 500 }
     );
   }
+}
+
+function getGoogleProductCategoryID(category: string): number | undefined {
+  const googleProductCategoryMap: { [key: string]: number } = {
+    appliances: 696, // Home Appliances
+    audio: 233, // Electronics > Audio
+    "cameras-and-camcorders": 152, // Cameras & Optics > Cameras
+    "cell-phones": 267, // Electronics > Communications > Telephony > Mobile Phones
+    "computers-and-tablets": 479, // Computers & Electronics > Computers
+    furniture: 436, // Furniture
+    "garage-and-outdoor": 780, // Home & Garden > Lawn & Garden
+    "health-fitness-sports": 554, // Sporting Goods > Exercise & Fitness
+    "jewelry-and-watches": 188, // Apparel & Accessories > Jewelry
+    "living-room-furniture": 4946, // Furniture > Living Room Furniture Sets
+    mattresses: 3290, // Home & Garden > Furniture > Beds & Accessories > Mattresses
+    "musical-instruments": 353, // Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments
+    "tv-and-home-theater": 229, // Electronics > Video > Televisions
+    "video-games": 566, // Video Games & Consoles > Video Games
+  };
+
+  return googleProductCategoryMap[category] || undefined;
 }

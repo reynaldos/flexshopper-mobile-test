@@ -1,7 +1,6 @@
 "use client";
 
 import Head from "next/head";
-import { ProductInfo } from "@/types/index";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,17 +10,17 @@ import { usePostHog } from "posthog-js/react";
 
 import "./styles.css";
 import { getCookie, sendEvent } from "@/utils/functions";
+import { Product } from "@/types/v2";
 
 const FLEXSHOPPER_SIGNIN = process.env.NEXT_PUBLIC_FLEXSHOPPER_SIGNIN_URL;
 
-const ProductHero = ({ product }: { product: ProductInfo | null }) => {
+const ProductHero = ({ product }: { product: Product | null }) => {
   const [productLoaded, setProductLoaded] = useState(false);
   const posthog = usePostHog();
 
   useEffect(() => {
     const logEvent = async () => {
       if (product) {
-      
         const userId = posthog.get_distinct_id();
 
         await fetch("/api/v1/log-event", {
@@ -81,21 +80,6 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
     }, 300); // 300ms delay to ensure the event is sent
   };
 
-  const { markedUpPrice, salePrice, inStock } = {
-    markedUpPrice:
-      (product.inventories[0]?.markedUpRetailPrice ||
-        product.inventories[0]?.markedUpPrice ||
-        product.inventories[0]?.itemCost) / 100,
-    salePrice:
-      ((product.inventories[0]?.markedUpRetailPrice ||
-        product.inventories[0]?.markedUpPrice ||
-        product.inventories[0]?.itemCost) /
-        100 /
-        52) *
-      2,
-    inStock: product.inventories[0]?.qty > 0,
-  };
-
   return (
     <>
       <Head>
@@ -103,7 +87,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
           <link
             rel="preload"
             as="image"
-            href={product.images[0].source || "/placeholder.png"}
+            href={product.images[0] || "/placeholder.png"}
           />
         )}
       </Head>
@@ -147,7 +131,7 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             {product.images.map((image, index) => (
               <SwiperSlide key={index}>
                 <Image
-                  src={image.source || "/placeholder.png"}
+                  src={image || "/placeholder.png"}
                   alt={product.name}
                   width={248}
                   height={248}
@@ -186,12 +170,14 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
 
         <span
           className={`block text-center ${
-            inStock ? "text-green-600" : "text-red-600"
+            product.availability === "in stock"
+              ? "text-green-600"
+              : "text-red-600"
           } font-bold mt-2 mb-1 transition-opacity duration-700 ${
             productLoaded ? "opacity-100" : "opacity-0"
           }`}
         >
-          {inStock ? "In Stock" : "Out of Stock"}
+          {product.availability}
         </span>
 
         <div
@@ -209,8 +195,8 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             <strong
               className={`strikeout text-3xl font-semibold text-[var(--main500)]`}
             >
-              ${salePrice.toFixed(2).split(".")[0]}
-              <sup>.00</sup>
+              ${product.sale_price.split(".")[0]}
+              <sup>.{product.sale_price.split(".")[1]}</sup>
             </strong>
             <span className="text-gray-500 text-sm">Per Week</span>
           </button>
@@ -223,15 +209,15 @@ const ProductHero = ({ product }: { product: ProductInfo | null }) => {
             <strong
               className={`strikeout text-3xl font-semibold text-[var(--main500)]`}
             >
-              ${markedUpPrice.toFixed(2).split(".")[0]}
-              <sup>.{markedUpPrice.toFixed(2).split(".")[1]}</sup>
+              ${product.price.split(".")[0]}
+              <sup>.{product.price.split(".")[1]}</sup>
             </strong>
           </button>
         </div>
       </div>
 
       <button
-      id="unlock-price-btn"
+        id="unlock-price-btn"
         onClick={handleButtonClick}
         className="unlock-my-price w-full bg-[var(--accent400)] text-white font-semibold py-3 rounded-sm"
       >
