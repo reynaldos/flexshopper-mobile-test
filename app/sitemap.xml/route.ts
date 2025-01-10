@@ -7,7 +7,7 @@ export async function GET() {
   const staticUrls = [{ url: `${baseUrl}/`, priority: "0.1" }];
   // Fetch dynamic URLs, such as product pages
   try {
-    const response = await fetch(`${baseUrl}/api/v1/getProductIds`, {
+    const response = await fetch(`${baseUrl}/api/v2/getProductIds`, {
       method: "GET",
       headers: {
        'x-api-auth-token': process.env.API_AUTH_TOKEN || '',
