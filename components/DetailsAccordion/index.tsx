@@ -1,18 +1,18 @@
 "use client";
 
-import { ProductInfo } from "@/types/index";
 import Image from "next/image";
 import React, { useState, useRef, useEffect } from "react";
 import { cleanUpFeatures } from "@/utils/strings";
 import styles from "./DetailsAccordion.module.css";
 import DetailsAccordionSkeleton from "./loading";
 import Proposition65Modal from "../Proposition65Modal";
+import { Product } from "@/types/v2";
 
 const DetailsAccordion = ({
   product,
   accordianItems = ["Overview", "Features", "Specs"],
 }: {
-  product: ProductInfo | null;
+  product: Product | null;
   accordianItems?: string[];
 }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -130,7 +130,7 @@ const DetailsAccordion = ({
                     className="w-48 h-48 object-contain m-auto mb-8"
                     width={192}
                     height={192}
-                    src={product.images[0]?.source || "/placeholder.png"}
+                    src={product.images[0] || "/placeholder.png"}
                     alt={product.name}
                     loading="eager"
                     priority

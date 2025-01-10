@@ -4,6 +4,9 @@ import React, { useEffect } from "react";
 import "./useTrafficSplitter.css";
 import { saveToCookies } from "@/utils/functions";
 import { useFeatureFlagVariantKey, usePostHog } from "posthog-js/react";
+import { fetchMockProductInfo } from "@/mock/mockAPI";
+import { Product } from "@/types/v2";
+import { notFound } from "next/navigation";
 
 // Types
 type RedirectUrl = "widgets" | "no-widgets" | "legacy";
@@ -37,18 +40,45 @@ export default function UseTrafficSplitter({
     return redirects[variant] || "no-widgets";
   };
 
-  const buildRedirectUrl = (
+  async function fetchProduct(productId: string): Promise<Product> {
+    if (process.env.NEXT_PUBLIC_USE_MOCK === "true") {
+      return await fetchMockProductInfo();
+    }
+
+    const response = await fetch(`/api/v2/fetchProduct/${productId}`, {
+      next: { revalidate: 300 }, // Caching for 5 minutes at the CDN level
+      method: "GET",
+      headers: {
+        "x-api-auth-token": process.env.API_AUTH_TOKEN || "98BAF5FBCCBBD4F6",
+      },
+    });
+
+    if (!response.ok) {
+      notFound();
+    }
+
+    return response.json();
+  }
+
+  const buildRedirectUrl = async (
     route: RedirectUrl,
     productId: string,
     queryParams: URLSearchParams
-  ): string => {
+  ): Promise<string> => {
     const adId = queryParams.get("fbaid") || "defaultAdId";
     const source = queryParams.get("utm_source") || "defaultSource";
     const campaign = queryParams.get("utm_campaign") || "defaultCampaign";
     const term = queryParams.get("utm_term") || "defaultAdset";
 
-    const appendCampaignSuffix = (campaign:string, suffix:string) =>
-    campaign.includes(suffix) ? campaign : `${campaign}${suffix}`;
+    const appendCampaignSuffix = (campaign: string, suffix: string) => {
+      const withoutSuffix = campaign.replace(new RegExp(`${suffix}$`), ""); // Remove suffix only from the end
+      return `${withoutSuffix}${suffix}`; // Append the suffix exactly once
+    };
+
+    let productData;
+    if (route === "legacy") {
+      productData = await fetchProduct(productId);
+    }
 
     const urlTemplates = {
       widgets: `${BASE_URL}/${productId}?noRedirect=true&fbaid=${adId}&utm_source=${source}&utm_medium=social&utm_campaign=${appendCampaignSuffix(
@@ -59,7 +89,7 @@ export default function UseTrafficSplitter({
         campaign,
         "-no-widgets"
       )}&utm_term=${term}&utm_content=AdJuiceMobileLite`,
-      legacy: `${FLEXSHOPPER_URL}/product/${productId}?fbaid=${adId}&utm_source=${source}&utm_medium=social&utm_campaign=${campaign}&utm_term=${term}&utm_content=AdJuiceMobileRedirect`,
+      legacy: `${productData?.link}?fbaid=${adId}&utm_source=${source}&utm_medium=social&utm_campaign=${campaign}&utm_term=${term}&utm_content=AdJuiceMobileRedirect`,
     };
 
     return urlTemplates[route];
@@ -73,7 +103,7 @@ export default function UseTrafficSplitter({
       }
 
       const queryParams = new URLSearchParams(window.location.search);
-      const redirectUrl = buildRedirectUrl(
+      const redirectUrl = await buildRedirectUrl(
         redirectRoute,
         productId,
         queryParams

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/third-parties": "^14.2.15",
+    "csv-parse": "^5.6.0",
     "csv-writer": "^1.6.0",
     "logrocket": "^9.0.0",
     "next": "^14.2.15",
@@ -17,6 +18,7 @@
     "react": "^18",
     "react-dom": "^18",
     "sharp": "0.30.4",
+    "ssh2-sftp-client": "^11.0.0",
     "swiper": "^11.1.14"
   },
   "devDependencies": {
@@ -24,6 +26,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/sharp": "^0.31.1",
+    "@types/ssh2-sftp-client": "^9.0.4",
     "eslint": "^8",
     "eslint-config-next": "14.2.15",
     "postcss": "^8",
