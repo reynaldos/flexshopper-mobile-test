@@ -1,6 +1,7 @@
 // mockProductData.ts
 
-import { ProductInfo } from "../types";
+import { Product } from "@/types/v2";
+import { ProductInfo } from "../types/v1";
 
 export const mockProductData: ProductInfo = {
   mpn: "BB20151320",
@@ -382,6 +383,38 @@ export const mockProductData: ProductInfo = {
     },
   ],
   reviews: [],
+};
+
+export const mockProductData2: Product = {
+  "legacy_id": "67042dbc9874cd49c53097b3",
+  "id": "FSG_1000030606",
+  "mpn": "1000030606",
+  "name": "PS5 Dual Sense - Camo",
+  "description": "Infused with unique micro patterns of the iconic PlayStation Shapes, the stylish DualSense Gray Camouflage wireless controller brings a fresh urban aesthetic into play. Complete the look by adding the matching camo design PULSE 3D wireless headset and PS5 console covers to your gaming setup.",
+  "features": "<ul><li>PS5, Mac,Android, iOS</li><li>Rumble vibration</li><li>Headset jack</li><li>Wireless</li><li>rechargeable</li><li>Battery pack</li></ul>",
+  "specs": "<table><tbody><tr><td>UPC</td><td>711719554783</td></tr><tr><td>Material</td><td>Electronic Components</td></tr><tr><td>Carton Length (in)</td><td>8</td></tr><tr><td>Carton Width (in)</td><td>8</td></tr><tr><td>Carton Height (in)</td><td>3</td></tr><tr><td>Carton Weight (lbs)</td><td>2</td></tr><tr><td>Delivery Type</td><td>Small Parcel</td></tr><tr><td>Warranty Details</td><td>1 Year - Limited Manufacturer</td></tr><tr><td>Warranty Phone</td><td>1-800-345-7669</td></tr><tr id=\"prop65Row\"><td>California residents</td><td><a href=\"#\" class=\"js-prop65PageBtn\"><strong>Click here</strong></a> for Proposition 65 warning.</td></tr></tbody></table>",
+  "images": [
+    "https://store.flexshopper.com/media/catalog/product/1/0/1000030606.jpg-rlkey_3npygtqg3owc9d86kevlxo0vp_dl_0-dl_0",
+    "https://dl.dropboxusercontent.com/scl/fi/jqtw5vemim6xdme0adwnx/1000030606.jpg?rlkey=3npygtqg3owc9d86kevlxo0vp&dl=0?dl=0"
+  ],
+  "link": "https://store.flexshopper.com/ps5-dual-sense-camo-fsg1000030606",
+  "price": "89.99",
+  "sale_price": "2.68",
+  "availability": "in stock",
+  "condition": "new",
+  "brand": {
+    "name": "Sony",
+    "displayName": "Sony",
+    "description": "Sony",
+    "slug": "sony",
+    "id": "6704102f5c767a31ea0d8bd5"
+  },
+  "vendorName": "FlexChoice",
+  "size": "",
+  "color": "",
+  "gender": "",
+  "material": "",
+  "category": "video-games"
 };
 
 export const mockProductList: ProductInfo[] = [
@@ -961,8 +994,10 @@ export const mockProductList: ProductInfo[] = [
           _logo: {
             caption: "Ashley Furniture",
             description: "Ashley Furniture",
-            source: "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/logo-ashley-signature.png",
-            sourceCdn: "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/logo-ashley-signature.png",
+            source:
+              "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/logo-ashley-signature.png",
+            sourceCdn:
+              "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/logo-ashley-signature.png",
             primaryFlag: true,
             createdAt: null,
             updatedAt: "2016-07-26T15:13:58.336Z",
@@ -972,8 +1007,10 @@ export const mockProductList: ProductInfo[] = [
           _secondaryLogo: {
             caption: "Ashley Furniture",
             description: "Ashley Furniture",
-            source: "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
-            sourceCdn: "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
+            source:
+              "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
+            sourceCdn:
+              "https://cdn.flexshopper.xyz/marketing-images/layout/logos-vendors/flexshopper-color.png",
             primaryFlag: true,
             createdAt: null,
             updatedAt: null,
@@ -1400,8 +1437,10 @@ export const mockProductList: ProductInfo[] = [
           _logo: {
             caption: "Regala",
             description: "Regala",
-            source: "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/regala.png",
-            sourceCdn: "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/regala.png",
+            source:
+              "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/regala.png",
+            sourceCdn:
+              "https://flexshopper-assets.s3.amazonaws.com/marketing-images/layout/logos-vendors/regala.png",
             primaryFlag: true,
           },
         },
@@ -1586,3 +1625,101 @@ export const mockProductList: ProductInfo[] = [
     reviews: [],
   },
 ];
+
+export const mockProductList2: Product[] = [ {
+  "legacy_id": "67042dbc9874cd49c53097b3",
+  "id": "FSG_1000030606",
+  "mpn": "1000030606",
+  "name": "PS5 Dual Sense - Camo",
+  "description": "Infused with unique micro patterns of the iconic PlayStation Shapes, the stylish DualSense Gray Camouflage wireless controller brings a fresh urban aesthetic into play. Complete the look by adding the matching camo design PULSE 3D wireless headset and PS5 console covers to your gaming setup.",
+  "features": "<ul><li>PS5, Mac,Android, iOS</li><li>Rumble vibration</li><li>Headset jack</li><li>Wireless</li><li>rechargeable</li><li>Battery pack</li></ul>",
+  "specs": "<table><tbody><tr><td>UPC</td><td>711719554783</td></tr><tr><td>Material</td><td>Electronic Components</td></tr><tr><td>Carton Length (in)</td><td>8</td></tr><tr><td>Carton Width (in)</td><td>8</td></tr><tr><td>Carton Height (in)</td><td>3</td></tr><tr><td>Carton Weight (lbs)</td><td>2</td></tr><tr><td>Delivery Type</td><td>Small Parcel</td></tr><tr><td>Warranty Details</td><td>1 Year - Limited Manufacturer</td></tr><tr><td>Warranty Phone</td><td>1-800-345-7669</td></tr><tr id=\"prop65Row\"><td>California residents</td><td><a href=\"#\" class=\"js-prop65PageBtn\"><strong>Click here</strong></a> for Proposition 65 warning.</td></tr></tbody></table>",
+  "images": [
+    "https://store.flexshopper.com/media/catalog/product/1/0/1000030606.jpg-rlkey_3npygtqg3owc9d86kevlxo0vp_dl_0-dl_0",
+    "https://dl.dropboxusercontent.com/scl/fi/jqtw5vemim6xdme0adwnx/1000030606.jpg?rlkey=3npygtqg3owc9d86kevlxo0vp&dl=0?dl=0"
+  ],
+  "link": "https://store.flexshopper.com/ps5-dual-sense-camo-fsg1000030606",
+  "price": "89.99",
+  "sale_price": "2.68",
+  "availability": "in stock",
+  "condition": "new",
+  "brand": {
+    "name": "Sony",
+    "displayName": "Sony",
+    "description": "Sony",
+    "slug": "sony",
+    "id": "6704102f5c767a31ea0d8bd5"
+  },
+  "vendorName": "FlexChoice",
+  "size": "",
+  "color": "",
+  "gender": "",
+  "material": "",
+  "category": "video-games"
+},
+{
+  "legacy_id": "67042c8e9874cd49c52bb0c1",
+  "id": "BTG_PER-0000352",
+  "mpn": "PER-0000352",
+  "name": "Periphio Astral Prebuilt Gaming PC - AMD Ryzen 5 4600G (4.2GHz Turbo)  Radeon Vega 7 Graphics  1TB M.2 NVMe SSD  16GB DDR4 RAM  Windows 11 Ready  WiFi + Bluetooth",
+  "description": "Periphio is run by PC Gamers, and built around the simple idea of building the best gaming PCs for every budget. Our parent company, Blair Technology Group, is the world's largest Microsoft Authorized Refurbisher, and from them we have access to premier production technology and assets. We build cutting-edge, brand-new gaming computers that provide the latest and greatest PC gaming experience, as well as renewed gaming systems that use a blend of repurposed and new hardware to maximize your dollar; all while offering an incredible entry point into the PC gaming space! Whether it's a hybrid or brand new gaming PC, every system from Periphio is thoughtfully designed, from the case it's in, to the hardware that powers your gaming, and every PC from Periphio includes the added confidence of a full system warranty, tech support, and money-back guarantee! Built with passion and care, join the thousands of others that trust Periphio as \"Your Path to PC Gaming\"!",
+  "features": "<ul><li>QUALITY 1080p GAMING Prebuilt Starter Gaming PC built for smooth 1080p PC Gaming; Integrated Graphics supported by high-speed 3200MHz; Solid 100+ FPS performance in most eSport titles at low to mid-range settings; AAA Gaming PC</li><li>PERFORMANCE TESTED IN-HOUSE Periphio is one of the few PC-building companies in the world to share real-world performance results from in-house testing; check out benchmark videos and infographics; See guaranteed performance in the image gallery! Future drivers will continue to improve your hardware!</li><li>AURA SERIES GAMING CASE The Aura Series Gaming Computers come with controllable RGB Lighting, housed in an elegant minimalist gaming case  Full Pane Tempered Glass side panel  Triple Rad AIO expandable  Futureproof Setup with Plenty of PSU and room to grow</li><li>ULTRA-FAST M.2 NVMe STORAGE Primary Solid-State Storage used for Hyper-fast bootup and loading games; 1TB M.2 NVMe SSD with additional SATA ports for future expansion; PCI-e powered storage for your OS, games, programs and documents</li><li>BUY WITH CONFIDENCE Included with your purchase is a 1-Year Total System Warranty, 30-Day Hassle-Free Return Policy, and Free Life-Time Technical Support</li></ul>",
+  "specs": "<table><tbody><tr><td>UPC</td><td>810015714546</td></tr><tr><td>Color</td><td>White</td></tr><tr><td>CPU</td><td>Ryzen</td></tr><tr><td>Memory</td><td>16 GB DDR4</td></tr><tr><td>Operating System</td><td>Windows 11 Home</td></tr><tr><td>Storage</td><td>1 TB NVMe</td></tr><tr><td>Total Shipping Weight in Lbs</td><td>30</td></tr><tr><td>Carton Length (in)</td><td>18</td></tr><tr><td>Carton Width (in)</td><td>19</td></tr><tr><td>Carton Height (in)</td><td>9</td></tr><tr><td>Carton Weight (lbs)</td><td>26</td></tr><tr><td>Delivery Type</td><td>Small Parcel</td></tr><tr><td>Warranty Details</td><td>1 Year Warranty</td></tr><tr><td>Warranty Phone</td><td>(855) 252-4784</td></tr><tr><td>Warranty Email</td><td>support@blairtech.com</td></tr><tr><td>Warranty Website</td><td>https://blairtech.com</td></tr><tr id=\"prop65Row\"><td>California residents</td><td><a href=\"#\" class=\"js-prop65PageBtn\"><strong>Click here</strong></a> for Proposition 65 warning.</td></tr></tbody></table>",
+  "images": [
+    "https://store.flexshopper.com/media/catalog/product/b/t/btg_bbfe5d78832e370969edc45550e42d72.jpeg",
+    "https://cdn.pimber.ly/public/asset/raw/632433c710aac2001bd4d90f/ffcb9bba/64cbc4aa7b9dca003e00000d/Periphio-Astral-5600G-Front-Hero.jpg",
+    "https://cdn.pimber.ly/public/asset/raw/632433c710aac2001bd4d90f/5598ab25/64cab4977b9dca4d5800000e/ASTRAL-INFO-RGB.jpg",
+    "https://cdn.pimber.ly/public/asset/raw/632433c710aac2001bd4d90f/5598ab25/64cab4737b9dca4d5800000b/Periphio-Astral-Info-Benchmarks-4600G.jpg",
+    "https://cdn.pimber.ly/public/asset/raw/632433c710aac2001bd4d90f/ffcb9bba/64cbc53d7b9dca003e000010/Periphio-Astral-4600G-Internal.jpg",
+    "https://cdn.pimber.ly/public/asset/raw/632433c710aac2001bd4d90f/ffcb9bba/64cbc4da7b9dca003e00000e/Periphio-Astral-4600G-Side-Tempered-Glass-Panel.jpg",
+    "https://cdn.pimber.ly/public/asset/raw/632433c710aac2001bd4d90f/5598ab25/64cab4847b9dca4d5800000c/ASTRAL-INFO-TOP-PANEL.jpg",
+    "https://cdn.pimber.ly/public/asset/raw/632433c710aac2001bd4d90f/5598ab25/64cab48f7b9dca4d5800000d/ASTRAL-INFO-SIDE-PANEL.jpg",
+    "https://cdn.pimber.ly/public/asset/raw/632433c710aac2001bd4d90f/ffcb9bba/64cbc5327b9dca003e00000f/Periphio-Astral-4600G-Rear.jpg"
+  ],
+  "link": "https://store.flexshopper.com/periphio-astral-prebuilt-gaming-pc-amd-ryzen-5-4600g-42ghz-turbo-radeon-vega-7-graphics-1tb-m2-nvme-ssd-16gb-ddr4-ram-windows-11-ready-wifi-bluetooth-132508per-0000352",
+  "price": "689.99",
+  "sale_price": "20.57",
+  "availability": "in stock",
+  "condition": "new",
+  "brand": {
+    "name": "Periphio",
+    "id": "67042c6f9874cd49c52b0902"
+  },
+  "vendorName": "BlairTech",
+  "size": "",
+  "color": "",
+  "gender": "",
+  "material": "",
+  "category": "computers-and-tablets"
+},
+{
+  "legacy_id": "670498ee9874cd49c5e7c653",
+  "id": "ASH_M59341",
+  "mpn": "M59341",
+  "name": "Ashley - 12 Inch Memory Foam King Mattress",
+  "description": "When it comes to your comfort, discover this ultra-plush 12-inch mattress. Its thick layer of memory foam conforms to your body, delivering amazing support, pressure relief and comfort. The memory foam layer is paired with a super-thick layer of firm support foam, which helps reduce motion transfer so you and your partner can enjoy an undisturbed sleep. This mattress arrives in a box for easy setup. Foundation/box spring available, sold separately.",
+  "features": "<ul><li>Comfort level: medium</li><li>12\" profile height</li><li>2\" memory foam</li><li>10\" firm support foam</li><li>Stretch knit cover</li><li>Adjustable base compatible</li></ul>",
+  "specs": "<table><tbody><tr><td>UPC</td><td>24052813647</td></tr><tr><td>Style</td><td>Traditional</td></tr><tr><td>Color</td><td>White</td></tr><tr><td>Assembly Required?</td><td>N</td></tr><tr><td>Assembly Instructions Included?</td><td>N</td></tr><tr><td>Assembly Type</td><td>No Assembly</td></tr><tr><td>Condition</td><td>new</td></tr><tr><td>Carton Length (in)</td><td>13.50</td></tr><tr><td>Carton Width (in)</td><td>81</td></tr><tr><td>Carton Height (in)</td><td>13.50</td></tr><tr><td>Carton Weight (lbs)</td><td>86</td></tr><tr><td>Delivery Type</td><td>Small Parcel</td></tr><tr><td>Warranty Details</td><td>No Warranty</td></tr><tr id=\"prop65Row\"><td>California residents</td><td><a href=\"#\" class=\"js-prop65PageBtn\"><strong>Click here</strong></a> for Proposition 65 warning.</td></tr></tbody></table>",
+  "images": [
+    "https://store.flexshopper.com/media/catalog/product/a/0/a0ae3d67ae1c7aae49170f16f53d4877.jpg",
+    "https://s7d3.scene7.com/is/image/AshleyFurniture/M59331-ANGLED-ALT-SW?$huge$"
+  ],
+  "link": "https://store.flexshopper.com/12-inch-memory-foam-king-mattress-ashm59341",
+  "price": "739.99",
+  "sale_price": "22.06",
+  "availability": "in stock",
+  "condition": "new",
+  "brand": {
+    "name": "Ashley Furniture",
+    "displayName": "Ashley Furniture",
+    "description": "Ashley Furniture",
+    "slug": "ashley-furniture",
+    "id": "670498ecb584804d2566e9c5"
+  },
+  "vendorName": "AshleyFurniture",
+  "size": "",
+  "color": "",
+  "gender": "",
+  "material": "",
+  "category": "furniture"
+}];

@@ -1,7 +1,7 @@
 // app/products/[productId]/page.tsx
 
 import dynamic from "next/dynamic";
-import { ProductInfo } from "@/types/index";
+import { Product } from "@/types/v2";
 // import { mockProductList } from "@/mock/mockData";
 import { fetchMockProductInfo, fetchMockProductList } from "@/mock/mockAPI";
 import { notFound } from "next/navigation";
@@ -13,13 +13,13 @@ const ProductSwiper = dynamic(() => import("@/components/ProductSwiper"));
 import "./styles.css";
 
 // Fetch product data server-side
-async function fetchProduct(productId: string): Promise<ProductInfo | null> {
+async function fetchProduct(productId: string): Promise<Product | null> {
   if (process.env.NEXT_PUBLIC_USE_MOCK === "true") {
     return await fetchMockProductInfo();
   }
 
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/fetchProduct/${productId}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v2/fetchProduct/${productId}`,
     {
       next: { revalidate: 300 }, // Caching for 5 minutes at the CDN level
       method: "GET",
@@ -36,7 +36,7 @@ async function fetchProduct(productId: string): Promise<ProductInfo | null> {
   return response.json();
 }
 
-async function fetchRandomProducts(product: ProductInfo | null) {
+async function fetchRandomProducts(product: Product | null) {
   if (!product) return;
 
   try {
@@ -47,9 +47,9 @@ async function fetchRandomProducts(product: ProductInfo | null) {
 
     if (product.id) {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/getRandomIds/${
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/v2/getRandomIds/${
           product.id
-        }?category=${product.breadcrumbs[0].slug || ""}`,
+        }?category=${product.category || ""}`,
         {
           next: { revalidate: 300 },
           method: "GET",
