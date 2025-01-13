@@ -67,6 +67,7 @@ export async function GET() {
           mpn: product.mpn,
           name: updatedProduct.title,
           description: product.description,
+          slug: product.slug,
           features: product.features || "",
           specs: product.specs || "",
           images: [

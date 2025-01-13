@@ -42,6 +42,7 @@ export async function GET(
       (item: any) =>
         item.id === productId ||
         item.legacy_id === productId ||
+        item.slug === productId ||
         item.mpn === productId.slice(4)
     );
 
