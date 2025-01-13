@@ -31,7 +31,7 @@ jobs:
 
       - name: Deploy to Server
         env:
-          HOST: 172.17.183.243
+          HOST: 44.199.151.209
           USERNAME: root
           TARGET_DIR: /var/www/flexshopper-mobile-test
           APP_NAME: flexshopper-mobile-test #should match the name of the server block
