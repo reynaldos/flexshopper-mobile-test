@@ -24,7 +24,7 @@ export default function UseTrafficSplitter({
   productId: string;
 }): JSX.Element {
   const posthog = usePostHog();
-  const variant = useFeatureFlagVariantKey("redirect-toggle") || "no-widgets";
+  const variant = useFeatureFlagVariantKey("redirect-toggle") || "error";
 
   if (process.env.NEXT_PUBLIC_ENV === "dev") {
     posthog.featureFlags.override({ "redirect-toggle": "no-widgets" });
@@ -37,7 +37,7 @@ export default function UseTrafficSplitter({
       legacy: "legacy",
       widgets: "widgets",
     };
-    return redirects[variant] || "no-widgets";
+    return redirects[variant] || "redirectError";
   };
 
   async function fetchProduct(productId: string): Promise<Product> {
@@ -146,7 +146,8 @@ export default function UseTrafficSplitter({
       }, 300);
     };
 
-    if (variant && productId) {
+    if (variant !== 'error' && productId) {
+        console.log("variant", variant);
       redirectLogic(variantToRedirect(variant as string));
     }
   }, [variant, productId]);
